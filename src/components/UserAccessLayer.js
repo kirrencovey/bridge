@@ -9,10 +9,11 @@ export default class UserAccessLayer extends Component {
   }
 
   componentDidMount() {
-    UserManager.get(this.activeUserId()).then(activeUser =>
+    UserManager.get(this.activeUserId(), "users").then(activeUser =>
       this.setState({ activeUser: activeUser })
     )
   }
+
   activeUserId = () => parseInt(sessionStorage.getItem("credentials"))
 
   render() {

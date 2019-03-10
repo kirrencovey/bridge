@@ -27,7 +27,7 @@ export default class Login extends Component {
         if (users.length) {
           alert(`Email ${this.state.email} already exits!`)
         } else {
-          UserManager.addUser(newUser).then(user => {
+          UserManager.add(newUser, "users").then(user => {
             sessionStorage.setItem("credentials", parseInt(user.id))
             this.props.setAuth()
           })
@@ -41,7 +41,7 @@ export default class Login extends Component {
   handleLogin = e => {
     e.preventDefault()
     if (this.state.email && this.state.password) {
-      UserManager.searchUP(this.state.email, this.state.password).then(
+      UserManager.searchEP(this.state.email, this.state.password).then(
         user => {
           if (!user.length) {
             alert("Wrong email or password!")
