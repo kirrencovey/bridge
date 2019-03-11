@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import BehaviorList from "../behavior/BehaviorList(OneAnimal)"
+import SessionList from "../sessions/SessionList(OneAnimal)";
 
 export default class AnimalDetail extends Component {
     render() {
@@ -16,7 +17,9 @@ export default class AnimalDetail extends Component {
                 <h6>Behaviors</h6>
                 <BehaviorList animal={animal}
                         assignedBehaviors={this.props.assignedBehaviors}/>
-                <h6>Training Session History</h6>
+                <h6>Training History</h6>
+                <SessionList animal={animal}
+                        sessionBehaviors={this.props.sessionBehaviors}/>
                 {/* <button
                     type="button"
                     className="btn btn-success"

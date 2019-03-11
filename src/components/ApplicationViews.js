@@ -2,9 +2,9 @@ import React, { Component } from "react"
 import { Route, Redirect } from "react-router-dom"
 import Login from "./auth/Login"
 import HomePage from "./home/HomePage"
-import AnimalList from "./animal/AnimalList"
+import AnimalPage from "./animal/AnimalPage"
 import BehaviorPage from "./behavior/BehaviorPage"
-import SessionList from "./sessions/SessionList"
+import SessionPage from "./sessions/SessionPage"
 import AnimalForm from "./animal/AnimalForm"
 import BehaviorForm from "./behavior/BehaviorForm"
 import SessionForm from "./sessions/SessionForm"
@@ -65,7 +65,7 @@ class ApplicationViews extends Component {
          {/* Animal Routes */}
         <Route exact path="/animals" render={props => {
           if (this.isAuthenticated()) {
-            return <AnimalList {...props}
+            return <AnimalPage {...props}
                       activeUser={this.state.activeUser}
                       animals={this.state.animals} />
           } else {
@@ -108,7 +108,7 @@ class ApplicationViews extends Component {
         {/* Session Routes */}
         <Route exact path="/sessions" render={props => {
           if (this.isAuthenticated()) {
-            return <SessionList {...props}
+            return <SessionPage {...props}
                       sessions={this.state.sessions} />
           } else {
             return <Redirect to="/login" />

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import SessionCard from "./SessionCard";
 
-export default class SessionList extends Component {
+export default class SessionPage extends Component {
     render() {
         return (
             <React.Fragment>

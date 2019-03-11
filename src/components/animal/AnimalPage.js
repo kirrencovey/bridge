@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import AnimalCard from "./AnimalCard"
 
-export default class AnimalList extends Component {
+export default class AnimalPage extends Component {
     render() {
         return (
             <React.Fragment>
