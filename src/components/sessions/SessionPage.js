@@ -10,8 +10,15 @@ export default class SessionPage extends Component {
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</button>
-                List of user's training session history<br/>
-                <SessionCard />
+                {
+                    this.props.sessions.filter(session => session.userId === this.props.activeUser.id)
+                        .map(session =>
+                            <div key={session.id}>
+                                <SessionCard session={session}
+                                    history={this.props.history}
+                                    sessionBehaviors={this.props.sessionBehaviors}/>
+                            </div>)
+                }
             </React.Fragment>
         )
     }
