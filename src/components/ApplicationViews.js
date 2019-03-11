@@ -37,7 +37,7 @@ class ApplicationViews extends Component {
     .then(animals => newState.animals = animals)
     .then(() => BehaviorManager.getAll("behaviors"))
     .then(behaviors => newState.behaviors = behaviors)
-    .then(() => SessionManager.getAll("sessions"))
+    .then(() => SessionManager.getAll("sessions?_expand=animal"))
     .then(sessions => newState.sessions = sessions)
     .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))  //Expand behavior --do elsewhere??
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
@@ -112,7 +112,8 @@ class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <SessionPage {...props}
                       sessions={this.state.sessions}
-                      activeUser={this.state.activeUser} />
+                      activeUser={this.state.activeUser}
+                      sessionBehaviors={this.state.sessionBehaviors} />
           } else {
             return <Redirect to="/login" />
           }
