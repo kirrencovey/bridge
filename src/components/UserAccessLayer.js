@@ -8,12 +8,14 @@ export default class UserAccessLayer extends Component {
     activeUser: {}
   }
 
+  //Uses active user ID to fetch active user object and sets state
   componentDidMount() {
     UserManager.get(this.activeUserId(), "users").then(activeUser =>
       this.setState({ activeUser: activeUser })
     )
   }
 
+  //Gets active user ID from session storage
   activeUserId = () => parseInt(sessionStorage.getItem("credentials"))
 
   render() {
