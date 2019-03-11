@@ -9,9 +9,22 @@ export default class AnimalList extends Component {
                     className="btn btn-success" //TODO Edit classes
                     onClick={() => {
                         this.props.history.push("/animals/new")}
-                    }>Add New Animal</button>
-                List of user's animals<br/>
-                <AnimalCard />
+                    }>Add New Animal</button><br/>
+
+                {/* Filter out current user's animals */}
+                <section className="animalCardSection"></section>
+
+                {
+                    this.props.animals.filter(animal => animal.userId === this.props.activeUser.id)
+                        .map(animal =>
+                            <div className="animal" key={animal.id}>
+                                <AnimalCard animal={animal}
+                                        history={this.props.history}
+                                        /* activeUser={this.props.activeUser} */ />
+                            </div>
+                    )
+                }
+
             </React.Fragment>
         )
     }

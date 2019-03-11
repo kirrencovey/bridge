@@ -22,7 +22,8 @@ class ApplicationViews extends Component {
     // users: [],  TODO is this needed anywhere?
     animals: [],
     behaviors: [],
-    sessions: []
+    sessions: [],
+    activeUser: {}
   }
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
@@ -36,6 +37,7 @@ class ApplicationViews extends Component {
     .then(behaviors => newState.behaviors = behaviors)
     .then(() => SessionManager.getAll("sessions"))
     .then(sessions => newState.sessions = sessions)
+    .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
   }
 
@@ -55,9 +57,11 @@ class ApplicationViews extends Component {
           }
         }} />
 
+         {/* Animal Routes */}
         <Route exact path="/animals" render={props => {
           if (this.isAuthenticated()) {
             return <AnimalList {...props}
+                      activeUser={this.state.activeUser}
                       animals={this.state.animals} />
           } else {
             return <Redirect to="/login" />
@@ -68,13 +72,15 @@ class ApplicationViews extends Component {
                       addAnimal={this.addAnimal} />
         }} />
         <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-          return <AnimalDetail {...props} />
+          return <AnimalDetail {...props} 
+                      animals={this.state.animals} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}
                         updateAnimal={this.updateAnimal} />
         }} />
 
+        {/* Behavior Routes */}
         <Route exact path="/behaviors" render={props => {
           if (this.isAuthenticated()) {
             return <BehaviorList {...props}
@@ -92,6 +98,7 @@ class ApplicationViews extends Component {
                         updateBehavior={this.updateBehavior} />
         }} />
 
+        {/* Session Routes */}
         <Route exact path="/sessions" render={props => {
           if (this.isAuthenticated()) {
             return <SessionList {...props}
