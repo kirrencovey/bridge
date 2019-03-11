@@ -79,6 +79,7 @@ class ApplicationViews extends Component {
         <Route exact path="/animals/:animalId(\d+)" render={(props) => {
           return <AnimalDetail {...props}
                       animals={this.state.animals}
+                      sessions={this.state.sessions}
                       assignedBehaviors={this.state.assignedBehaviors}
                       sessionBehaviors={this.state.sessionBehaviors} />
         }} />
