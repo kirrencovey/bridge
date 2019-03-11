@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+
 class Nav extends Component {
   logout = () => {
     sessionStorage.clear("credentials")
@@ -13,11 +14,20 @@ class Nav extends Component {
         <ul className="nav nav-pills">
           <li className="nav-item">
             <Link className="nav-link" to="/">
-              Nutshell
+              Home
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/animals">Animals</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/behaviors">Behaviors</Link>
+          </li>
+          <li className="nav-item">
+              <Link className="nav-link" to="/sessions">History</Link>
+          </li>
         </ul>
-        <a className="nav-link">Aloha 🌺 {this.props.activeUser.username}</a>
+        <a className="nav-link">Hello {this.props.activeUser.firstName}!</a>
         <button
           type="button"
           className="btn btn-outline-info"

@@ -16,6 +16,7 @@ export default class Login extends Component {
     this.setState(stateToChange)
   }
 
+  //When register button is clicked
   handleRegister = e => {
     e.preventDefault()
     const newUser = {
@@ -23,13 +24,15 @@ export default class Login extends Component {
       password: this.state.password
     }
     if (this.state.email && this.state.password) {
+      //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
       UserManager.searchEmail(this.state.email).then(users => {
         if (users.length) {
           alert(`Email ${this.state.email} already exits!`)
         } else {
-          UserManager.addUser(newUser).then(user => {
+          //If email doesn't already exist, adds new user and sets state of active user
+          UserManager.add(newUser, "users").then(user => {
             sessionStorage.setItem("credentials", parseInt(user.id))
-            this.props.setAuth()
+            this.props.setAuth() //TO DO **????
           })
         }
       })
@@ -38,10 +41,13 @@ export default class Login extends Component {
     }
   }
 
+  //When login button is clicked
   handleLogin = e => {
     e.preventDefault()
     if (this.state.email && this.state.password) {
-      UserManager.searchUP(this.state.email, this.state.password).then(
+
+      //Checks if email and password are in data ** TO DO make auth more secure
+      UserManager.searchEP(this.state.email, this.state.password).then(
         user => {
           if (!user.length) {
             alert("Wrong email or password!")
@@ -56,6 +62,8 @@ export default class Login extends Component {
     }
   }
 
+
+  //TO DO make separate login and register forms - register takes first and last name
   render() {
     return (
       <React.Fragment>
