@@ -6,12 +6,18 @@ export default class BehaviorPage extends Component {
         return (
             <React.Fragment>
                 <button type="button"
-                    className="btn btn-success" //TODO Edit classes
+                    className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
-                    }>Add New Behavior</button>
-                List of user's behaviors<br/>
-                <BehaviorCard />
+                    }>Add New Behavior</button><br/>
+                {
+                    this.props.behaviors.filter(behavior => behavior.userId === this.props.activeUser.id)
+                        .map(behavior =>
+                            <div key={behavior.id}>
+                                <BehaviorCard behavior={behavior}
+                                    history={this.props.history} />
+                            </div>)
+                }
             </React.Fragment>
         )
     }

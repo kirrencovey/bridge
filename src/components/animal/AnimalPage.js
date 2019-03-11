@@ -17,7 +17,7 @@ export default class AnimalPage extends Component {
                 {
                     this.props.animals.filter(animal => animal.userId === this.props.activeUser.id)
                         .map(animal =>
-                            <div className="animal" key={animal.id}>
+                            <div key={animal.id}>
                                 <AnimalCard animal={animal}
                                         history={this.props.history} />
                             </div>
