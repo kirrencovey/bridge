@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import BehaviorList from "../behavior/BehaviorList(OneAnimal)"
 
 export default class AnimalDetail extends Component {
     render() {
@@ -9,10 +10,12 @@ export default class AnimalDetail extends Component {
             <React.Fragment>
                 <h2>{animal.name}</h2>
                 {animal.species}<br/>
-                <img src={animal.image}></img><br/>
+                {animal.image}<br/>
                 <h6>Notes</h6>
                 {animal.notes}
                 <h6>Behaviors</h6>
+                <BehaviorList animal={animal}
+                        assignedBehaviors={this.props.assignedBehaviors}/>
                 <h6>Training Session History</h6>
                 {/* <button
                     type="button"

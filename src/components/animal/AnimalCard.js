@@ -6,7 +6,7 @@ export default class AnimalCard extends Component {
             <React.Fragment>
                 <h2>{this.props.animal.name}</h2>
                 {this.props.animal.species}<br/>
-                <img src={this.props.animal.image}></img><br/>
+                {this.props.animal.image}<br/>
                 <button
                     type="button"
                     className="btn btn-success"

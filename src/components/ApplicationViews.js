@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom"
 import Login from "./auth/Login"
 import HomePage from "./home/HomePage"
 import AnimalList from "./animal/AnimalList"
-import BehaviorList from "./behavior/BehaviorList"
+import BehaviorPage from "./behavior/BehaviorPage"
 import SessionList from "./sessions/SessionList"
 import AnimalForm from "./animal/AnimalForm"
 import BehaviorForm from "./behavior/BehaviorForm"
@@ -48,7 +48,6 @@ class ApplicationViews extends Component {
   }
 
   render() {
-    console.log(this.props.activeUser)
     console.log(this.state)
 
     return <React.Fragment>
@@ -91,7 +90,7 @@ class ApplicationViews extends Component {
         {/* Behavior Routes */}
         <Route exact path="/behaviors" render={props => {
           if (this.isAuthenticated()) {
-            return <BehaviorList {...props}
+            return <BehaviorPage {...props}
                       behaviors={this.props.behaviors} />
           } else {
             return <Redirect to="/login" />
