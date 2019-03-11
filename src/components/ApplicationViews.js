@@ -23,6 +23,8 @@ class ApplicationViews extends Component {
     animals: [],
     behaviors: [],
     sessions: [],
+    assignedBehaviors: [],
+    sessionBehaviors: [],
     activeUser: {}
   }
 
@@ -37,6 +39,10 @@ class ApplicationViews extends Component {
     .then(behaviors => newState.behaviors = behaviors)
     .then(() => SessionManager.getAll("sessions"))
     .then(sessions => newState.sessions = sessions)
+    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))  //Expand behavior --do elsewhere??
+    .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))  //Expand session & behavior --needed??
+    .then(sessionBehaviors => newState.sessionBehaviors = sessionBehaviors)
     .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
   }
@@ -72,8 +78,10 @@ class ApplicationViews extends Component {
                       addAnimal={this.addAnimal} />
         }} />
         <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-          return <AnimalDetail {...props} 
-                      animals={this.state.animals} />
+          return <AnimalDetail {...props}
+                      animals={this.state.animals}
+                      assignedBehaviors={this.state.assignedBehaviors}
+                      sessionBehaviors={this.state.sessionBehaviors} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}
