@@ -30,6 +30,16 @@ class ApplicationViews extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
+  // Function to add new animal to database. Invoked by submit button on AnimalForm
+  addAnimal = animal =>
+        AnimalManager.add(animal, "animals")
+            .then(() => AnimalManager.getAll("animals"))
+            .then(animals =>
+            this.setState({
+                animals: animals
+            })
+  )
+
   componentDidMount() {
     const newState = {}
 
@@ -74,6 +84,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/animals/new" render={(props) => {
           return <AnimalForm {...props}
+                      activeUser={this.state.activeUser}
                       addAnimal={this.addAnimal} />
         }} />
         <Route exact path="/animals/:animalId(\d+)" render={(props) => {
