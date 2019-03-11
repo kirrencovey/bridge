@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import BehaviorCard from "./BehaviorCard"
 
-export default class BehaviorList extends Component {
+export default class BehaviorPage extends Component {
     render() {
         return (
             <React.Fragment>

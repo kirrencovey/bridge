@@ -2,9 +2,9 @@ import React, { Component } from "react"
 import { Route, Redirect } from "react-router-dom"
 import Login from "./auth/Login"
 import HomePage from "./home/HomePage"
-import AnimalList from "./animal/AnimalList"
-import BehaviorList from "./behavior/BehaviorList"
-import SessionList from "./sessions/SessionList"
+import AnimalPage from "./animal/AnimalPage"
+import BehaviorPage from "./behavior/BehaviorPage"
+import SessionPage from "./sessions/SessionPage"
 import AnimalForm from "./animal/AnimalForm"
 import BehaviorForm from "./behavior/BehaviorForm"
 import SessionForm from "./sessions/SessionForm"
@@ -22,7 +22,10 @@ class ApplicationViews extends Component {
     // users: [],  TODO is this needed anywhere?
     animals: [],
     behaviors: [],
-    sessions: []
+    sessions: [],
+    assignedBehaviors: [],
+    sessionBehaviors: [],
+    activeUser: {}
   }
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
@@ -36,11 +39,15 @@ class ApplicationViews extends Component {
     .then(behaviors => newState.behaviors = behaviors)
     .then(() => SessionManager.getAll("sessions"))
     .then(sessions => newState.sessions = sessions)
+    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))  //Expand behavior --do elsewhere??
+    .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))  //Expand session & behavior --needed??
+    .then(sessionBehaviors => newState.sessionBehaviors = sessionBehaviors)
+    .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
   }
 
   render() {
-    console.log(this.props.activeUser)
     console.log(this.state)
 
     return <React.Fragment>
@@ -55,9 +62,11 @@ class ApplicationViews extends Component {
           }
         }} />
 
+         {/* Animal Routes */}
         <Route exact path="/animals" render={props => {
           if (this.isAuthenticated()) {
-            return <AnimalList {...props}
+            return <AnimalPage {...props}
+                      activeUser={this.state.activeUser}
                       animals={this.state.animals} />
           } else {
             return <Redirect to="/login" />
@@ -68,16 +77,21 @@ class ApplicationViews extends Component {
                       addAnimal={this.addAnimal} />
         }} />
         <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-          return <AnimalDetail {...props} />
+          return <AnimalDetail {...props}
+                      animals={this.state.animals}
+                      sessions={this.state.sessions}
+                      assignedBehaviors={this.state.assignedBehaviors}
+                      sessionBehaviors={this.state.sessionBehaviors} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}
                         updateAnimal={this.updateAnimal} />
         }} />
 
+        {/* Behavior Routes */}
         <Route exact path="/behaviors" render={props => {
           if (this.isAuthenticated()) {
-            return <BehaviorList {...props}
+            return <BehaviorPage {...props}
                       behaviors={this.props.behaviors} />
           } else {
             return <Redirect to="/login" />
@@ -92,9 +106,10 @@ class ApplicationViews extends Component {
                         updateBehavior={this.updateBehavior} />
         }} />
 
+        {/* Session Routes */}
         <Route exact path="/sessions" render={props => {
           if (this.isAuthenticated()) {
-            return <SessionList {...props}
+            return <SessionPage {...props}
                       sessions={this.state.sessions} />
           } else {
             return <Redirect to="/login" />

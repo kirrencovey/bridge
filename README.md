@@ -1,4 +1,4 @@
-# Nutshell 🌰
+# Bridge! An App for Animal Trainers
 
 ## What is this project and what does it do?
 

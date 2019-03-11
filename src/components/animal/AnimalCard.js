@@ -4,14 +4,16 @@ export default class AnimalCard extends Component {
     render() {
         return (
             <React.Fragment>
-                One Animal
-                {/* <button
+                <h2>{this.props.animal.name}</h2>
+                {this.props.animal.species}<br/>
+                {this.props.animal.image}<br/>
+                <button
                     type="button"
                     className="btn btn-success"
                     onClick={() => {
-                        this.props.history.push(`/animals/${this.props.animal.id}/edit`)
+                        this.props.history.push(`/animals/${this.props.animal.id}`)
                     }}
-                    >Edit</button> */}
+                    >Details</button>
             </React.Fragment>
         )
     }
