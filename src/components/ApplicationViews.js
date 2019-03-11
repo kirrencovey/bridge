@@ -92,7 +92,8 @@ class ApplicationViews extends Component {
         <Route exact path="/behaviors" render={props => {
           if (this.isAuthenticated()) {
             return <BehaviorPage {...props}
-                      behaviors={this.props.behaviors} />
+                      behaviors={this.state.behaviors}
+                      activeUser={this.state.activeUser} />
           } else {
             return <Redirect to="/login" />
           }
@@ -110,7 +111,8 @@ class ApplicationViews extends Component {
         <Route exact path="/sessions" render={props => {
           if (this.isAuthenticated()) {
             return <SessionPage {...props}
-                      sessions={this.state.sessions} />
+                      sessions={this.state.sessions}
+                      activeUser={this.state.activeUser} />
           } else {
             return <Redirect to="/login" />
           }
