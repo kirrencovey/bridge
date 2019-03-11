@@ -13,34 +13,35 @@ import SessionDetail from "./sessions/SessionDetail"
 import AnimalEdit from "./animal/AnimalEdit"
 import BehaviorEdit from "./behavior/BehaviorEdit"
 import SessionEdit from "./sessions/SessionEdit"
+import AnimalManager from "../modules/AnimalManager"
+import BehaviorManager from "../modules/BehaviorManager"
+import SessionManager from "../modules/SessionManager"
 
 class ApplicationViews extends Component {
   state = {
-    users: [],
+    // users: [],  TODO is this needed anywhere?
     animals: [],
     behaviors: [],
     sessions: []
   }
-  
+
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   componentDidMount() {
-    const newState = {
-      users: [],
-      animals: [],
-      behaviors: [],
-      sessions: []
-    }
+    const newState = {}
 
-    let currentUserId = sessionStorage.getItem("credentials")
-
-
-    /*...........*/
-    // .then(() => this.setState(newState))
+    AnimalManager.getAll("animals")
+    .then(animals => newState.animals = animals)
+    .then(() => BehaviorManager.getAll("behaviors"))
+    .then(behaviors => newState.behaviors = behaviors)
+    .then(() => SessionManager.getAll("sessions"))
+    .then(sessions => newState.sessions = sessions)
+    .then(() => this.setState(newState))
   }
 
   render() {
     console.log(this.props.activeUser)
+    console.log(this.state)
 
     return <React.Fragment>
 
