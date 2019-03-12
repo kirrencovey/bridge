@@ -40,6 +40,13 @@ class ApplicationViews extends Component {
         })
   )
 
+  updateAnimal = editedAnimalObject =>
+    AnimalManager.update(editedAnimalObject, "animals")
+      .then(() => AnimalManager.getAll("animals")
+        .then(animals => {
+          this.setState({ animals: animals })
+        }))
+
   // Function to add new behavior to database. Invoked by submit button on BehaviorForm
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
@@ -126,6 +133,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}
+                        activeUser={this.state.activeUser}
                         updateAnimal={this.updateAnimal} />
         }} />
 
