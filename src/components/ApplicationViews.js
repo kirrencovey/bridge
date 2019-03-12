@@ -127,6 +127,7 @@ class ApplicationViews extends Component {
           return <AnimalDetail {...props}
                       animals={this.state.animals}
                       sessions={this.state.sessions}
+                      behaviors={this.state.behaviors}
                       assignedBehaviors={this.state.assignedBehaviors}
                       sessionBehaviors={this.state.sessionBehaviors} />
         }} />
