@@ -19,6 +19,7 @@ export default class AnimalDetail extends Component {
                         assignedBehaviors={this.props.assignedBehaviors}/>
                 <h6>Training History</h6>
                 <SessionList animal={animal}
+                        history={this.props.history}
                         sessions={this.props.sessions}
                         sessionBehaviors={this.props.sessionBehaviors}/>
                 {/* <button

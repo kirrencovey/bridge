@@ -32,23 +32,35 @@ class ApplicationViews extends Component {
 
   // Function to add new animal to database. Invoked by submit button on AnimalForm
   addAnimal = animal =>
-        AnimalManager.add(animal, "animals")
-            .then(() => AnimalManager.getAll("animals"))
-            .then(animals =>
-            this.setState({
-                animals: animals
-            })
+    AnimalManager.add(animal, "animals")
+        .then(() => AnimalManager.getAll("animals"))
+        .then(animals =>
+        this.setState({
+            animals: animals
+        })
   )
 
-    // Function to add new behavior to database. Invoked by submit button on BehaviorForm
-    addBehavior = behavior =>
+  // Function to add new behavior to database. Invoked by submit button on BehaviorForm
+  addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
-        .then(() => BehaviorManager.getAll("behaviors"))
-        .then(behaviors =>
-        this.setState({
-            behaviors: behaviors
-        })
-)
+      .then(() => BehaviorManager.getAll("behaviors"))
+      .then(behaviors =>
+      this.setState({
+          behaviors: behaviors
+      })
+  )
+
+  // Function to add new session to database. Invoked by submit button on SessionForm
+  addSession = session =>
+    SessionManager.add(session, "sessions")
+
+  // Function to add new session behavior to database. Invoked by add/finish buttons on SessionForm
+  addSessionBehavior = sessionBehavior =>
+  SessionManager.add(sessionBehavior, "sessionBehaviors")
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
+    .then(() => SessionManager.getAll("sessions?_expand=animal"))
+    .then(sessions => this.setState({sessions: sessions}))
 
   componentDidMount() {
     const newState = {}
@@ -140,9 +152,13 @@ class ApplicationViews extends Component {
             return <Redirect to="/login" />
           }
         }} />
-        <Route path="/sessions/new" render={(props) => {
+        <Route exact path="/sessions/new" render={(props) => {
           return <SessionForm {...props}
-                      addSession={this.addSession} />
+                      addSession={this.addSession}
+                      addSessionBehavior={this.addSessionBehavior}
+                      assignedBehaviors={this.state.assignedBehaviors}
+                      animals={this.state.animals}
+                      activeUser={this.state.activeUser} />
         }} />
         <Route exact path="/sessions/:sessionId(\d+)" render={(props) => {
           return <SessionDetail {...props} />
