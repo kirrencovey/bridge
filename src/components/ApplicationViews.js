@@ -40,6 +40,16 @@ class ApplicationViews extends Component {
             })
   )
 
+    // Function to add new behavior to database. Invoked by submit button on BehaviorForm
+    addBehavior = behavior =>
+    BehaviorManager.add(behavior, "behaviors")
+        .then(() => BehaviorManager.getAll("behaviors"))
+        .then(behaviors =>
+        this.setState({
+            behaviors: behaviors
+        })
+)
+
   componentDidMount() {
     const newState = {}
 
@@ -111,6 +121,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/behaviors/new" render={(props) => {
           return <BehaviorForm {...props}
+                      activeUser={this.state.activeUser}
                       addBehavior={this.addBehavior} />
         }} />
         <Route path="/behaviors/:behaviorId(\d+)/edit" render={props => {
