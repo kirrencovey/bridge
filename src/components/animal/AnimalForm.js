@@ -8,7 +8,7 @@ export default class AnimalForm extends Component {
     species: "",
     notes:"",
     image: ""
-  };
+  }
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {

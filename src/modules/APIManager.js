@@ -20,5 +20,6 @@ export default {
       },
       body: JSON.stringify(obj)
     }).then(data => data.json())
+    .then((res) => {return res})
   }
 }

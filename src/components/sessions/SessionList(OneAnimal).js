@@ -15,28 +15,11 @@ export default class SessionList extends Component {
                             </div>)
                 }
                 <button type="button"
-                    className="btn btn-success" //TODO Edit classes
+                    className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
-                    }>Start a Session</button>
+                    }>Start a Session</button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
             </React.Fragment>
         )
     }
 }
-
-
-
-
-
-
-
-    {/* THIS CODE WILL DISPLAY EACH TRAINED BEHAVIOR WITH DATE, NAME, RATING, NOTES
-        BUT I DECIDED TO START WITH A CARD FOR EACH WHOLE SESSION INSTEAD
-        {
-        this.props.sessionBehaviors.filter(sessionBehavior => sessionBehavior.session.animalId === this.props.animal.id)
-            .map(sessionBehavior => <div key={sessionBehavior.id}>
-                    {sessionBehavior.session.date}<br/>
-                    {sessionBehavior.behavior.name}, {sessionBehavior.rating}/5<br/>
-                    {sessionBehavior.notes}
-                </div>)
-    } */}

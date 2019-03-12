@@ -19,7 +19,7 @@ export default class BehaviorForm extends Component {
     Local method for validation, creating animal object, and
     invoking the function reference passed from parent component
     */
-  constructNewAnimal = evt => {
+  constructNewBehavior = evt => {
     evt.preventDefault()
     // Ensure name & summary are filled in.
     if (this.state.behaviorName === "" || this.state.summary === "") {
@@ -64,7 +64,7 @@ export default class BehaviorForm extends Component {
           </div>
           <button
             type="submit"
-            onClick={this.constructNewAnimal}
+            onClick={this.constructNewBehavior}
             className="btn btn-primary"
           >
             Submit
