@@ -50,6 +50,13 @@ class ApplicationViews extends Component {
       })
   )
 
+  updateBehavior = editedBehaviorObject =>
+    BehaviorManager.update(editedBehaviorObject, "behaviors")
+      .then(() => BehaviorManager.getAll("behaviors")
+        .then(behaviors => {
+          this.setState({ behaviors: behaviors })
+        }))
+
   // Function to add new session to database. Invoked by submit button on SessionForm
   addSession = session =>
     SessionManager.add(session, "sessions")
@@ -61,6 +68,7 @@ class ApplicationViews extends Component {
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
     .then(() => SessionManager.getAll("sessions?_expand=animal"))
     .then(sessions => this.setState({sessions: sessions}))
+
 
   componentDidMount() {
     const newState = {}
@@ -138,6 +146,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/behaviors/:behaviorId(\d+)/edit" render={props => {
             return <BehaviorEdit {...props}
+                        activeUser={this.state.activeUser}
                         updateBehavior={this.updateBehavior} />
         }} />
 

@@ -21,5 +21,14 @@ export default {
       body: JSON.stringify(obj)
     }).then(data => data.json())
     .then((res) => {return res})
+  },
+  update (editedObject, category) {
+    return fetch(`${Settings.remoteURL}/${category}/${editedObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedObject)
+    }).then(data => data.json())
   }
 }
