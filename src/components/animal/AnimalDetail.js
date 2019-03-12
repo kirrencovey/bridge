@@ -7,7 +7,6 @@ export default class AnimalDetail extends Component {
     render() {
         // Get animal id from params
         const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
-        console.log(animal)
 
         return (
             <React.Fragment>
