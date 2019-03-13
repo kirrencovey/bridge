@@ -22,13 +22,13 @@ export default class SessionDetail extends Component {
                         </div>
                     )
                 }
-                <button
+                {/* <button
                     type="button"
                     className="btn btn-success"
                     onClick={() => {
                         this.props.history.push(`/sessions/${session.id}/edit`)
                     }}
-                    >Edit</button>
+                    >Edit</button> */}
             </React.Fragment>
         )
     }
