@@ -6,7 +6,7 @@ export default class AnimalPage extends Component {
         return (
             <React.Fragment>
                 <button type="button"
-                    className="btn btn-success" //TODO Edit classes
+                    className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/animals/new")}
                     }>Add New Animal</button><br/>
@@ -19,7 +19,8 @@ export default class AnimalPage extends Component {
                         .map(animal =>
                             <div key={animal.id}>
                                 <AnimalCard animal={animal}
-                                        history={this.props.history} />
+                                        history={this.props.history}
+                                        deleteAnimal={this.props.deleteAnimal} />
                             </div>
                     )
                 }

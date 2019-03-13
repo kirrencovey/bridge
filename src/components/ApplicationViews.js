@@ -50,6 +50,12 @@ class ApplicationViews extends Component {
           this.setState({ animals: animals })
         }))
 
+  deleteAnimal = animalId => {
+    AnimalManager.delete(animalId, "animals")
+      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+      .then(animals => this.setState({ animals: animals })))
+  }
+
   // Function to add new behavior to database. Invoked by submit button on BehaviorForm
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
@@ -68,14 +74,10 @@ class ApplicationViews extends Component {
       .then(behaviors => {this.setState({ behaviors: behaviors })}))
 
   deleteBehavior = behaviorId => {
-    // let confirm = window.confirm("Are you sure you want to delete this behavior? Doing so will delete all associated training records.")
-    //   if (confirm === true) {
           BehaviorManager.delete(behaviorId, "behaviors")
             .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
             .then(behaviors => {this.setState({ behaviors: behaviors })}))
-        }
-      // })
-    // }
+  }
 
   // Function to add new session to database. Invoked by submit button on SessionForm
   addSession = session =>
@@ -126,7 +128,8 @@ class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <AnimalPage {...props}
                       activeUser={this.state.activeUser}
-                      animals={this.state.animals} />
+                      animals={this.state.animals}
+                      deleteAnimal={this.deleteAnimal} />
           } else {
             return <Redirect to="/login" />
           }
