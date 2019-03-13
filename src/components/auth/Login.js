@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import "./login.css"
 import UserManager from "../../modules/UserManager"
+import { Button } from 'reactstrap'
+
 
 export default class Login extends Component {
   // Set initial state
@@ -88,12 +90,12 @@ export default class Login extends Component {
             placeholder={` Don't tell!`}
             required=""
           />
-          <button type="submit" onClick={this.handleLogin}>
+          <Button color="secondary" type="submit" onClick={this.handleLogin}>
             Sign in
-          </button>
-          <button type="submit" onClick={this.handleRegister}>
+          </Button>
+          <Button color="info" type="submit" onClick={this.handleRegister}>
             Register
-          </button>
+          </Button>
         </form>
       </React.Fragment>
     )

@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import BehaviorManager from "../../modules/BehaviorManager"
+import { Button } from 'reactstrap'
+
 
 export default class BehaviorEdit extends Component {
 // Set initial state
@@ -76,13 +78,13 @@ state = {
                 value={this.state.summary}
             />
             </div>
-            <button
+            <Button color="info"
             type="submit"
             onClick={this.updateExistingBehavior}
             className="btn btn-primary"
             >
             Submit
-            </button>
+            </Button>
         </form>
         </React.Fragment>
     )

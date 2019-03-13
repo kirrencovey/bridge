@@ -91,7 +91,7 @@ class ApplicationViews extends Component {
 
   deleteSession = sessionId => {
     SessionManager.delete(sessionId, "sessions")
-      .then(() => SessionManager.getAll("sessions?_expand=animal")
+      .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`)
       .then(sessions => this.setState({ sessions: sessions })))
   }
 

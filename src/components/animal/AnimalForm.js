@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Button } from 'reactstrap'
+
 
 export default class AnimalForm extends Component {
   // Set initial state
@@ -87,13 +89,13 @@ export default class AnimalForm extends Component {
               placeholder="TODO how to upload image??"
             />
           </div>
-          <button
+          <Button color="info"
             type="submit"
             onClick={this.constructNewAnimal}
             className="btn btn-primary"
           >
             Submit
-          </button>
+          </Button>
         </form>
       </React.Fragment>
     )

@@ -1,15 +1,18 @@
 import React, { Component } from "react"
-import SessionCard from "./SessionCard";
+import SessionCard from "./SessionCard"
+import { Button } from 'reactstrap'
+
 
 export default class SessionPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <button type="button"
+                <Button color="info"
+                    type="button"
                     className="btn btn-success" //TODO Edit classes
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
-                    }>Start a Session</button>
+                    }>Start a Session</Button>
                 {
                     this.props.sessions.sort((sessionA, sessionB) => {
                         return new Date(sessionB.date) - new Date(sessionA.date)})

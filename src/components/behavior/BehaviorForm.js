@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Button } from 'reactstrap'
+
 
 export default class BehaviorForm extends Component {
 
@@ -63,13 +65,13 @@ render() {
             placeholder="Summary of behavior, tools needed, visual or verbal cues to be used, etc"
           />
         </div>
-        <button
+        <Button color="info"
           type="submit"
           onClick={this.constructNewBehavior}
           className="btn btn-primary"
         >
           Submit
-        </button>
+        </Button>
       </form>
     </React.Fragment>
   )

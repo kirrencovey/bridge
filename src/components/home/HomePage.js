@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Button } from 'reactstrap'
+
 
 
 class HomePage extends Component {
@@ -9,24 +11,24 @@ class HomePage extends Component {
                     <h1>Welcome to Bridge!</h1>
                     Ready to train?
                 </section>
-                <button type="button"
-                    className="btn btn-success"
+                <Button color="info"
+                    type="button"
                     id="sessionButton"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
-                    }>Start A Session</button>
+                    }>Start A Session</Button>
                     <br/>
-                    <button type="button"
-                    className="btn btn-success"
+                    <Button color="secondary"
+                    type="button"
                     onClick={() => {
                         this.props.history.push("/animals/new")}
-                    }>Add New Animal</button>
+                    }>Add New Animal</Button>
                     <br/>
-                    <button type="button"
-                    className="btn btn-success"
+                    <Button color="secondary"
+                    type="button"
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
-                    }>Add New Behavior</button>
+                    }>Add New Behavior</Button>
             </React.Fragment>
         )
     }

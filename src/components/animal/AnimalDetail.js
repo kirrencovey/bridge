@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import BehaviorList from "../behavior/BehaviorList(OneAnimal)"
 import SessionList from "../sessions/SessionList(OneAnimal)"
+import { Button } from 'reactstrap'
+
 
 
 export default class AnimalDetail extends Component {
@@ -15,13 +17,12 @@ export default class AnimalDetail extends Component {
                 {animal.image}<br/>
                 <h6>Notes</h6>
                 {animal.notes}<br/>
-                <button
+                <Button color="info"
                     type="button"
-                    className="btn btn-success"
                     onClick={() => {
                         this.props.history.push(`/animals/${animal.id}/edit`)
                     }}
-                    >Edit Details</button>
+                    >Edit Details</Button>
                 <h6>Behaviors</h6>
                 <BehaviorList animal={animal}
                         addAssignedBehavior={this.props.addAssignedBehavior}

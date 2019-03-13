@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
+import { Button } from 'reactstrap'
+
 
 export default class SessionForm extends Component {
     // Set initial state
@@ -104,14 +106,14 @@ export default class SessionForm extends Component {
               id="date"
             />
           </div>
-          <button
+          <Button color="info"
             type="submit"
             onClick={this.constructNewSession}
             className="btn btn-primary"
             id="startTraining"
           >
             Start Training!
-          </button>
+          </Button>
         </form>
 
         {/* sessionBehavior Form */}
@@ -158,22 +160,21 @@ export default class SessionForm extends Component {
               placeholder="Any notes?"
             />
           </div>
-          <button
+          <Button color="secondary"
             type="submit"
             onClick={this.constructNewSessionBehavior}
-            className="btn btn-primary"
             id="trainAgain"
           >
             Add & Train Another!
-          </button>
-          <button
+          </Button>
+          <Button color="info"
             type="submit"
             onClick={this.constructNewSessionBehavior}
             className="btn btn-primary"
             id="finishSession"
           >
             Finish Session
-          </button>
+          </Button>
         </form>
       </React.Fragment>
     )
