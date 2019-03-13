@@ -40,7 +40,6 @@ export default class SessionForm extends Component {
       this.props
         .addSession(session)
         .then((sessionObj) => this.setState({sessionId: sessionObj.id}))
-        .then(() => console.log(this.state))
         .then(() => document.querySelector("#trainingForm").classList.toggle("hidden"))
     }
   }

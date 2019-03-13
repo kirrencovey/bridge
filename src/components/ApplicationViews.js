@@ -57,6 +57,12 @@ class ApplicationViews extends Component {
       })
   )
 
+  // Function to assign a new behavior to an animal. Invoked on AnimalDetail (BehaviorList)
+  addAssignedBehavior = assignedBehavior =>
+      BehaviorManager.add(assignedBehavior, "assignedBehaviors")
+      .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
+      .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
+
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
       .then(() => BehaviorManager.getAll("behaviors")
@@ -127,8 +133,10 @@ class ApplicationViews extends Component {
           return <AnimalDetail {...props}
                       animals={this.state.animals}
                       sessions={this.state.sessions}
+                      behaviors={this.state.behaviors}
                       assignedBehaviors={this.state.assignedBehaviors}
-                      sessionBehaviors={this.state.sessionBehaviors} />
+                      sessionBehaviors={this.state.sessionBehaviors}
+                      addAssignedBehavior={this.addAssignedBehavior} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}
