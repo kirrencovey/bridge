@@ -15,7 +15,8 @@ export default class BehaviorPage extends Component {
                         .map(behavior =>
                             <div key={behavior.id}>
                                 <BehaviorCard behavior={behavior}
-                                    history={this.props.history} />
+                                    history={this.props.history}
+                                    deleteBehavior={this.props.deleteBehavior} />
                             </div>)
                 }
             </React.Fragment>

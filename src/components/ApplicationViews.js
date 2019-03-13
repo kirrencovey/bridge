@@ -36,7 +36,7 @@ class ApplicationViews extends Component {
   // Function to add new animal to database. Invoked by submit button on AnimalForm
   addAnimal = animal =>
     AnimalManager.add(animal, "animals")
-        .then(() => AnimalManager.getAll("animals"))
+        .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`))
         .then(animals =>
         this.setState({
             animals: animals
@@ -45,7 +45,7 @@ class ApplicationViews extends Component {
 
   updateAnimal = editedAnimalObject =>
     AnimalManager.update(editedAnimalObject, "animals")
-      .then(() => AnimalManager.getAll("animals")
+      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
       .then(animals => {
           this.setState({ animals: animals })
         }))
@@ -54,11 +54,7 @@ class ApplicationViews extends Component {
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
       .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
-      .then(behaviors =>
-      this.setState({
-          behaviors: behaviors
-      })
-  )
+      .then(behaviors => this.setState({ behaviors: behaviors }))
 
   // Function to assign a new behavior to an animal. Invoked on AnimalDetail (BehaviorList)
   addAssignedBehavior = assignedBehavior =>
@@ -69,9 +65,17 @@ class ApplicationViews extends Component {
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
       .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
-        .then(behaviors => {
-          this.setState({ behaviors: behaviors })
-        }))
+      .then(behaviors => {this.setState({ behaviors: behaviors })}))
+
+  deleteBehavior = behaviorId => {
+    // let confirm = window.confirm("Are you sure you want to delete this behavior? Doing so will delete all associated training records.")
+    //   if (confirm === true) {
+          BehaviorManager.delete(behaviorId, "behaviors")
+            .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
+            .then(behaviors => {this.setState({ behaviors: behaviors })}))
+        }
+      // })
+    // }
 
   // Function to add new session to database. Invoked by submit button on SessionForm
   addSession = session =>
@@ -89,7 +93,7 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {}
 
-    AnimalManager.getAll("animals")
+    AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
     .then(animals => newState.animals = animals)
     .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
     .then(behaviors => newState.behaviors = behaviors)
@@ -152,7 +156,8 @@ class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <BehaviorPage {...props}
                       behaviors={this.state.behaviors}
-                      activeUser={this.state.activeUser} />
+                      activeUser={this.state.activeUser}
+                      deleteBehavior={this.deleteBehavior} />
           } else {
             return <Redirect to="/login" />
           }
