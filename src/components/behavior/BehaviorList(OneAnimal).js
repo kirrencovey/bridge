@@ -16,6 +16,7 @@ export default class BehaviorList extends Component {
 
     constructNewAssignedBehavior = evt => {
         evt.preventDefault()
+        // Ensure a behavior has been chosen from the dropdown
         if (this.state.behaviorId === "") {
             window.alert("Please choose a behavior to add")
         } else {
@@ -60,6 +61,7 @@ export default class BehaviorList extends Component {
               <option value="">Add A Behavior</option>
               {
                   this.props.behaviors.map(b => {
+                      // Only show behaviors that don't already exist on that animal
                     if (behaviorNameArray.includes(b.name) === false) {
                     return <option key={b.id} id={b.id} value={b.id}>{b.name}</option>
                     }})
