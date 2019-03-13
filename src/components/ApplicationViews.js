@@ -18,6 +18,8 @@ import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
 
 class ApplicationViews extends Component {
+  activeUserId = this.props.activeUserId()
+
   state = {
     // users: [],  TODO is this needed anywhere?
     animals: [],
@@ -27,6 +29,7 @@ class ApplicationViews extends Component {
     sessionBehaviors: [],
     activeUser: {}
   }
+
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
@@ -43,14 +46,14 @@ class ApplicationViews extends Component {
   updateAnimal = editedAnimalObject =>
     AnimalManager.update(editedAnimalObject, "animals")
       .then(() => AnimalManager.getAll("animals")
-        .then(animals => {
+      .then(animals => {
           this.setState({ animals: animals })
         }))
 
   // Function to add new behavior to database. Invoked by submit button on BehaviorForm
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
-      .then(() => BehaviorManager.getAll("behaviors"))
+      .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
       .then(behaviors =>
       this.setState({
           behaviors: behaviors
@@ -65,7 +68,7 @@ class ApplicationViews extends Component {
 
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
-      .then(() => BehaviorManager.getAll("behaviors")
+      .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
         .then(behaviors => {
           this.setState({ behaviors: behaviors })
         }))
@@ -88,13 +91,13 @@ class ApplicationViews extends Component {
 
     AnimalManager.getAll("animals")
     .then(animals => newState.animals = animals)
-    .then(() => BehaviorManager.getAll("behaviors"))
+    .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
     .then(behaviors => newState.behaviors = behaviors)
     .then(() => SessionManager.getAll("sessions?_expand=animal"))
     .then(sessions => newState.sessions = sessions)
-    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))  //Expand behavior --do elsewhere??
+    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
-    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))  //Expand session & behavior --needed??
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
     .then(sessionBehaviors => newState.sessionBehaviors = sessionBehaviors)
     .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
