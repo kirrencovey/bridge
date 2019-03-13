@@ -10,7 +10,8 @@ export default class SessionCard extends Component {
                 <h6>{this.props.session.animal.species}</h6>
                 <TrainedBehaviorCard session={this.props.session}
                     history={this.props.history}
-                    sessionBehaviors={this.props.sessionBehaviors} />
+                    sessionBehaviors={this.props.sessionBehaviors}
+                    deleteSession={this.props.deleteSession} />
             </React.Fragment>
         )
     }

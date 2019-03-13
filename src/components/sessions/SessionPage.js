@@ -3,6 +3,7 @@ import SessionCard from "./SessionCard";
 
 export default class SessionPage extends Component {
     render() {
+        console.log(this.props.sessions)
         return (
             <React.Fragment>
                 <button type="button"
@@ -11,12 +12,14 @@ export default class SessionPage extends Component {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</button>
                 {
-                    this.props.sessions.filter(session => session.userId === this.props.activeUser.id)
+                    this.props.sessions.sort(function (newsA, newsB) {
+                        return new Date(newsB.date) - new Date(newsA.date)})
                         .map(session =>
                             <div key={session.id}>
                                 <SessionCard session={session}
                                     history={this.props.history}
-                                    sessionBehaviors={this.props.sessionBehaviors}/>
+                                    sessionBehaviors={this.props.sessionBehaviors}
+                                    deleteSession={this.props.deleteSession} />
                             </div>)
                 }
             </React.Fragment>

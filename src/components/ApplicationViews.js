@@ -83,6 +83,12 @@ class ApplicationViews extends Component {
   addSession = session =>
     SessionManager.add(session, "sessions")
 
+  deleteSession = sessionId => {
+    SessionManager.delete(sessionId, "sessions")
+      .then(() => SessionManager.getAll("sessions?_expand=animal")
+      .then(sessions => this.setState({ sessions: sessions })))
+  }
+
   // Function to add new session behavior to database. Invoked by add/finish buttons on SessionForm
   addSessionBehavior = sessionBehavior =>
   SessionManager.add(sessionBehavior, "sessionBehaviors")
@@ -99,7 +105,7 @@ class ApplicationViews extends Component {
     .then(animals => newState.animals = animals)
     .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
     .then(behaviors => newState.behaviors = behaviors)
-    .then(() => SessionManager.getAll("sessions?_expand=animal"))
+    .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`))
     .then(sessions => newState.sessions = sessions)
     .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
@@ -182,7 +188,8 @@ class ApplicationViews extends Component {
             return <SessionPage {...props}
                       sessions={this.state.sessions}
                       activeUser={this.state.activeUser}
-                      sessionBehaviors={this.state.sessionBehaviors} />
+                      sessionBehaviors={this.state.sessionBehaviors}
+                      deleteSession={this.deleteSession} />
           } else {
             return <Redirect to="/login" />
           }

@@ -17,6 +17,16 @@ export default class TrainedBehaviorCard extends Component {
                         this.props.history.push(`/sessions/${this.props.session.id}`)
                     }}
                     >Details</button>
+                    <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => {
+                        let confirm = window.confirm("Are you sure you want to delete this session?")
+                        if (confirm === true) {
+                            this.props.deleteSession(this.props.session.id)
+                        }
+                    }}
+                >Delete</button>
             </React.Fragment>
         )
     }
