@@ -48,7 +48,18 @@ export default class BehaviorList extends Component {
                 {/* Filter out current animal's behaviors, make list item for each */}
                 {
                     thisAnimalsBehaviors
-                        .map(behavior => <li key={behavior.id}>{behavior.behavior.name}</li>)
+                        .map(behavior => <div key={behavior.id}><div>{behavior.behavior.name}</div>
+                              <button
+                                  type="button"
+                                  className="btn btn-success"
+                                  onClick={() => {
+                                      let confirm = window.confirm("Are you sure you want to delete this behavior?")
+                                      if (confirm === true) {
+                                          this.props.deleteAssignedBehavior(behavior.id)
+                                      }
+                                  }}
+                              >Delete</button>
+                            </div>)
                 }
 
                 {/* dropdown to add behaviors to animal */}

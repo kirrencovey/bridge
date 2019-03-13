@@ -32,7 +32,7 @@ export default class SessionForm extends Component {
     }else {
       const session = {
         userId: this.props.activeUser.id,
-        animalId: this.state.animalId,
+        animalId: parseInt(this.state.animalId),
         date: this.state.date
       }
 
@@ -51,9 +51,9 @@ export default class SessionForm extends Component {
         window.alert("Please choose and rate a behavior")
     }else {
         const sessionBehavior = {
-            sessionId: this.state.sessionId,  //TODO get session id from session form??
-            behaviorId: this.state.behaviorId,
-            rating: this.state.rating,
+            sessionId: this.state.sessionId,
+            behaviorId: parseInt(this.state.behaviorId),
+            rating: parseInt(this.state.rating),
             notes: this.state.notes
         }
         // Check which button was clicked
@@ -77,7 +77,7 @@ export default class SessionForm extends Component {
       <React.Fragment>
 
           {/* session form */}
-        <form class="sessionForm" id="sessionForm">
+        <form className="sessionForm" id="sessionForm">
         <div className="form-group">
             <label htmlFor="animal">Animal to Train</label>
             <select

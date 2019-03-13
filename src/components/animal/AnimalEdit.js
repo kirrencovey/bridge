@@ -7,7 +7,7 @@ export default class AnimalEdit extends Component {
     userId: "",
     animalName: "",
     species: "",
-    notes:"",
+    notes: "",
     image: "",
     id: parseInt(this.props.match.params.animalId)
   }

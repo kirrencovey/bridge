@@ -14,6 +14,16 @@ export default class AnimalCard extends Component {
                         this.props.history.push(`/animals/${this.props.animal.id}`)
                     }}
                     >Details</button>
+                <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => {
+                        let confirm = window.confirm("Are you sure you want to delete this animal? Doing so will delete all associated training records.")
+                        if (confirm === true) {
+                            this.props.deleteAnimal(this.props.animal.id)
+                        }
+                    }}
+                >Delete</button>
             </React.Fragment>
         )
     }

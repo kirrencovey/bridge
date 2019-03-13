@@ -6,7 +6,7 @@ export default class AnimalForm extends Component {
     userId: "",
     animalName: "",
     species: "",
-    notes:"",
+    notes: "",
     image: ""
   }
 
@@ -15,7 +15,7 @@ export default class AnimalForm extends Component {
     const stateToChange = {}
     stateToChange[evt.target.id] = evt.target.value
     this.setState(stateToChange)
-  };
+  }
 
     /*
     Local method for validation, creating animal object, and

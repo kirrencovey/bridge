@@ -11,12 +11,14 @@ export default class SessionPage extends Component {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</button>
                 {
-                    this.props.sessions.filter(session => session.userId === this.props.activeUser.id)
+                    this.props.sessions.sort((sessionA, sessionB) => {
+                        return new Date(sessionB.date) - new Date(sessionA.date)})
                         .map(session =>
                             <div key={session.id}>
                                 <SessionCard session={session}
                                     history={this.props.history}
-                                    sessionBehaviors={this.props.sessionBehaviors}/>
+                                    sessionBehaviors={this.props.sessionBehaviors}
+                                    deleteSession={this.props.deleteSession} />
                             </div>)
                 }
             </React.Fragment>

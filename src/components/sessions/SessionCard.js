@@ -9,14 +9,9 @@ export default class SessionCard extends Component {
                 <h5>{this.props.session.animal.name}</h5>
                 <h6>{this.props.session.animal.species}</h6>
                 <TrainedBehaviorCard session={this.props.session}
-                    sessionBehaviors={this.props.sessionBehaviors} />
-                <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={() => {
-                        this.props.history.push(`/sessions/${this.props.session.id}/edit`)
-                    }}
-                    >Edit</button>
+                    history={this.props.history}
+                    sessionBehaviors={this.props.sessionBehaviors}
+                    deleteSession={this.props.deleteSession} />
             </React.Fragment>
         )
     }

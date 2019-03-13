@@ -11,6 +11,7 @@ export default class SessionList extends Component {
                         .map(session => <div key={session.id}>
                                 {session.date}<br/>
                                 <TrainedBehaviorCard session={session}
+                                        history={this.props.history}
                                         sessionBehaviors={this.props.sessionBehaviors}/>
                             </div>)
                 }

@@ -25,6 +25,7 @@ export default class AnimalDetail extends Component {
                 <h6>Behaviors</h6>
                 <BehaviorList animal={animal}
                         addAssignedBehavior={this.props.addAssignedBehavior}
+                        deleteAssignedBehavior={this.props.deleteAssignedBehavior}
                         behaviors={this.props.behaviors}
                         assignedBehaviors={this.props.assignedBehaviors}/>
                 <h6>Training History</h6>
