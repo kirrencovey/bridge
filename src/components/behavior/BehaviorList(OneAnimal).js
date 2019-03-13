@@ -2,9 +2,6 @@ import React, { Component } from "react"
 
 export default class BehaviorList extends Component {
 
-
-    // ******************* WORKING ********************
-
     // Set initial state
     state = {
         behaviorId: ""
@@ -38,9 +35,6 @@ export default class BehaviorList extends Component {
                 behaviorId: ""
         })
         }
-
-        // **************************************************
-
 
     render() {
 
