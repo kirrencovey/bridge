@@ -62,11 +62,17 @@ class ApplicationViews extends Component {
       .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
       .then(behaviors => this.setState({ behaviors: behaviors }))
 
-  // Function to assign a new behavior to an animal. Invoked on AnimalDetail (BehaviorList)
+  // Function to assign a new behavior to an animal. Invoked on AnimalDetail>BehaviorList
   addAssignedBehavior = assignedBehavior =>
       BehaviorManager.add(assignedBehavior, "assignedBehaviors")
       .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
       .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
+
+  // Function to delete assigned behavior from an animal. Invoked on AnimalDetail>BehaviorList
+  deleteAssignedBehavior = assignedBehavior =>
+    BehaviorManager.delete(assignedBehavior, "assignedBehaviors")
+    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
+    .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
 
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
@@ -152,7 +158,8 @@ class ApplicationViews extends Component {
                       behaviors={this.state.behaviors}
                       assignedBehaviors={this.state.assignedBehaviors}
                       sessionBehaviors={this.state.sessionBehaviors}
-                      addAssignedBehavior={this.addAssignedBehavior} />
+                      addAssignedBehavior={this.addAssignedBehavior}
+                      deleteAssignedBehavior={this.deleteAssignedBehavior} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}

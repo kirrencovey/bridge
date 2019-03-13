@@ -3,7 +3,6 @@ import AnimalCard from "./AnimalCard"
 
 export default class AnimalPage extends Component {
     render() {
-        console.log(this.props.animals)
         return (
             <React.Fragment>
                 <button type="button"
