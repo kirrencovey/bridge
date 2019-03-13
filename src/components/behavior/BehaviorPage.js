@@ -11,7 +11,17 @@ export default class BehaviorPage extends Component {
                         this.props.history.push("/behaviors/new")}
                     }>Add New Behavior</button><br/>
                 {
-                    this.props.behaviors.filter(behavior => behavior.userId === this.props.activeUser.id)
+                    this.props.behaviors
+                        // Sort behaviors alphabetically by name
+                        .sort((a, b) => {
+                            var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                            var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }})
                         .map(behavior =>
                             <div key={behavior.id}>
                                 <BehaviorCard behavior={behavior}
