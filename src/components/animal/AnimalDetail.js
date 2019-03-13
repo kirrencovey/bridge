@@ -24,6 +24,7 @@ export default class AnimalDetail extends Component {
                     >Edit Details</button>
                 <h6>Behaviors</h6>
                 <BehaviorList animal={animal}
+                        addAssignedBehavior={this.props.addAssignedBehavior}
                         behaviors={this.props.behaviors}
                         assignedBehaviors={this.props.assignedBehaviors}/>
                 <h6>Training History</h6>
