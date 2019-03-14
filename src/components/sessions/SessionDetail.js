@@ -12,13 +12,15 @@ export default class SessionDetail extends Component {
         return (
             <React.Fragment>
                 <div className="card">
-                {session.date}<br/>
-                <h2>{animal.name}</h2>
+                <div className="sessionDetailHeading">
+                    <h2>{animal.name}</h2>
+                    <div>{session.date}</div>
+                </div>
                 {
                     thisSessionBehaviors.map(sb =>
                         <div className="card" key={sb.id}>
-                            {sb.behavior.name}, {sb.rating}/5
-                            <br/>
+                            <div className="behaviorCardHeading">{sb.behavior.name}: {sb.rating}/5
+                            </div>
                             {sb.notes}
                         </div>
                     )

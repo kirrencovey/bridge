@@ -67,3 +67,13 @@ body {
 #mainBtn {
     height: 70px;
 }
+
+.behaviorCardHeading {
+    font-size: 1.15em;
+}
+
+.sessionDetailHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
