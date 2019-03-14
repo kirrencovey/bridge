@@ -1,5 +1,7 @@
 import React, { Component } from "react"
-import AnimalManager from "../../modules/AnimalManager";
+import AnimalManager from "../../modules/AnimalManager"
+import { Button } from 'reactstrap'
+
 
 export default class AnimalEdit extends Component {
     // Set initial state
@@ -103,13 +105,13 @@ export default class AnimalEdit extends Component {
               value={this.state.image}
             />
           </div>
-          <button
+          <Button color="info"
             type="submit"
             onClick={this.updateExistingAnimal}
             className="btn btn-primary"
           >
             Submit
-          </button>
+          </Button>
         </form>
       </React.Fragment>
     )

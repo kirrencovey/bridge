@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import TrainedBehaviorCard from "../behavior/TrainedBehaviorCard"
+import { Button } from 'reactstrap'
+
 
 export default class SessionList extends Component {
     render() {
@@ -15,11 +17,12 @@ export default class SessionList extends Component {
                                         sessionBehaviors={this.props.sessionBehaviors}/>
                             </div>)
                 }
-                <button type="button"
+                <Button color="info"
+                    type="button"
                     className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
-                    }>Start a Session</button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
+                    }>Start a Session</Button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
             </React.Fragment>
         )
     }

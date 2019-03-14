@@ -1,15 +1,18 @@
 import React, { Component } from "react"
 import BehaviorCard from "./BehaviorCard"
+import { Button } from 'reactstrap'
+
 
 export default class BehaviorPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <button type="button"
+                <Button color="info"
+                    type="button"
                     className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
-                    }>Add New Behavior</button><br/>
+                    }>Add New Behavior</Button><br/>
                 {
                     this.props.behaviors
                         // Sort behaviors alphabetically by name

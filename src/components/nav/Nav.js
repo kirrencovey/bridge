@@ -6,6 +6,7 @@ class Nav extends Component {
   logout = () => {
     sessionStorage.clear("credentials")
     this.props.setAuth()
+    this.props.history.push("/")
   }
 
   render() {

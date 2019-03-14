@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Button } from 'reactstrap'
+
 
 export default class BehaviorList extends Component {
 
@@ -49,7 +51,7 @@ export default class BehaviorList extends Component {
                 {
                     thisAnimalsBehaviors
                         .map(behavior => <div key={behavior.id}><div>{behavior.behavior.name}</div>
-                              <button
+                              <Button color="info"
                                   type="button"
                                   className="btn btn-success"
                                   onClick={() => {
@@ -58,7 +60,7 @@ export default class BehaviorList extends Component {
                                           this.props.deleteAssignedBehavior(behavior.id)
                                       }
                                   }}
-                              >Delete</button>
+                              >Delete</Button>
                             </div>)
                 }
 
@@ -78,10 +80,11 @@ export default class BehaviorList extends Component {
                     }})
               }
             </select>
-                <button type="button"
+                <Button color="info"
+                    type="button"
                     className="btn btn-success"
                     onClick={this.constructNewAssignedBehavior}
-                    >Add</button>
+                    >Add</Button>
             </React.Fragment>
         )
     }

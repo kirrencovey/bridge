@@ -1,15 +1,18 @@
 import React, { Component } from "react"
 import AnimalCard from "./AnimalCard"
+import { Button } from 'reactstrap'
+
 
 export default class AnimalPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <button type="button"
+                <Button color="info"
+                    type="button"
                     className="btn btn-success"
                     onClick={() => {
                         this.props.history.push("/animals/new")}
-                    }>Add New Animal</button><br/>
+                    }>Add New Animal</Button><br/>
 
                 <section className="animalCardSection"></section>
 

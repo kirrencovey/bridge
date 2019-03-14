@@ -23,7 +23,7 @@ export default class UserAccessLayer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Nav setAuth={this.props.setAuth} activeUser={this.state.activeUser} />
+        <Nav setAuth={this.props.setAuth} history={this.props.history} activeUser={this.state.activeUser} />
         <ApplicationViews
           activeUserId={this.activeUserId}
           activeUser={this.state.activeUser}
