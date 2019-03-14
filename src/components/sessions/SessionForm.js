@@ -38,11 +38,16 @@ export default class SessionForm extends Component {
         date: this.state.date
       }
 
-      // Create the animal
+      // Create the session
       this.props
         .addSession(session)
         .then((sessionObj) => this.setState({sessionId: sessionObj.id}))
-        .then(() => document.querySelector("#trainingForm").classList.toggle("hidden"))
+        // Show the training form
+        .then(() => {
+          let animal = this.props.animals.find(a => a.id === parseInt(this.state.animalId))
+          document.querySelector("#trainingForm").classList.toggle("hidden")
+          document.querySelector("#sessionForm").innerHTML=`<h3>Training ${animal.name}</h3>`
+        })
     }
   }
 
