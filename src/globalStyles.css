@@ -10,7 +10,11 @@ body {
 #root {
     display: flex;
     flex-direction: column;
+}
+
+#homeCard {
     text-align: center;
+    margin: 40px 0px 10px 0px;
 }
 
 /* #homeTitle {

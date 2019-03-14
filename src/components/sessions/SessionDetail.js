@@ -11,11 +11,12 @@ export default class SessionDetail extends Component {
 
         return (
             <React.Fragment>
+                <div className="card">
                 {session.date}<br/>
                 <h2>{animal.name}</h2>
                 {
                     thisSessionBehaviors.map(sb =>
-                        <div key={sb.id}>
+                        <div className="card" key={sb.id}>
                             {sb.behavior.name}, {sb.rating}/5
                             <br/>
                             {sb.notes}
@@ -29,6 +30,7 @@ export default class SessionDetail extends Component {
                         this.props.history.push(`/sessions/${session.id}/edit`)
                     }}
                     >Edit</button> */}
+                    </div>
             </React.Fragment>
         )
     }

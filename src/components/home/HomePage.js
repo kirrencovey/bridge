@@ -7,8 +7,10 @@ class HomePage extends Component {
     render() {
         return (
             <React.Fragment>
-                    <h1 id="homeTitle">Welcome to Bridge!</h1>
-                    <div id="homeText">Ready to train?</div>
+                    <div id="homeCard">
+                        <h1 id="homeTitle">Welcome to Bridge!</h1>
+                        <div id="homeText">Ready to train?</div>
+                    </div>
                 <Button color="info"
                     type="button"
                     className="addBtn mainBtn"
