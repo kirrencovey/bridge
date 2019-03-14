@@ -17,7 +17,7 @@ class Bridge extends Component {
  }
   render() {
     return <React.Fragment>
-        <IsAuth isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
+        <IsAuth {...this.props} isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
       </React.Fragment>
   }
 }

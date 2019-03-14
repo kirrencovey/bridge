@@ -16,6 +16,7 @@ import SessionEdit from "./sessions/SessionEdit"
 import AnimalManager from "../modules/AnimalManager"
 import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
+import Register from "./auth/RegisterForm";
 
 class ApplicationViews extends Component {
   activeUserId = this.props.activeUserId()
@@ -125,7 +126,7 @@ class ApplicationViews extends Component {
 
     return <React.Fragment>
 
-        <Route path="/login" component={Login} />
+        <Route exact path="/login" component={Login} />
 
         <Route exact path="/" render={props => {
           if (this.isAuthenticated()) {

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "./login.css"
 import UserManager from "../../modules/UserManager"
 import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 
 export default class Login extends Component {
@@ -11,6 +12,10 @@ export default class Login extends Component {
     username: ""
   }
 
+  goToRegister = evt => {
+    this.props.history.push("/register")
+  }
+
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {}
@@ -18,37 +23,12 @@ export default class Login extends Component {
     this.setState(stateToChange)
   }
 
-  //When register button is clicked
-  handleRegister = e => {
-    e.preventDefault()
-    const newUser = {
-      email: this.state.email,
-      password: this.state.password
-    }
-    if (this.state.email && this.state.password) {
-      //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
-      UserManager.searchEmail(this.state.email).then(users => {
-        if (users.length) {
-          alert(`Email ${this.state.email} already exits!`)
-        } else {
-          //If email doesn't already exist, adds new user and sets state of active user
-          UserManager.add(newUser, "users").then(user => {
-            sessionStorage.setItem("credentials", parseInt(user.id))
-            this.props.setAuth() //TO DO **????
-          })
-        }
-      })
-    } else {
-      alert("Please Fill Out Form 😬!")
-    }
-  }
-
   //When login button is clicked
   handleLogin = e => {
     e.preventDefault()
     if (this.state.email && this.state.password) {
 
-      //Checks if email and password are in data ** TO DO make auth more secure
+      //Checks if email and password are in data
       UserManager.searchEP(this.state.email, this.state.password).then(
         user => {
           if (!user.length) {
@@ -71,8 +51,9 @@ export default class Login extends Component {
       <React.Fragment>
         <h1>Bridge!</h1>
         <h3>An app for animal trainers</h3>
-        <form className="loginForm">
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <form className="loginForm" id="loginForm">
+          <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
           <label htmlFor="inputEmail">Email</label>
           <input
             onChange={this.handleFieldChange}
@@ -93,10 +74,14 @@ export default class Login extends Component {
           <Button color="secondary" type="submit" onClick={this.handleLogin}>
             Sign in
           </Button>
-          <Button color="info" type="submit" onClick={this.handleRegister}>
-            Register
-          </Button>
         </form>
+
+        New user?
+        <Link to="/register" >
+        <Button color="info" type="submit">
+            Register
+        </Button>
+      </Link>
       </React.Fragment>
     )
   }
