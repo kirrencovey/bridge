@@ -19,7 +19,7 @@ export default class SessionList extends Component {
                 }
                 <Button color="info"
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-success addBtn"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</Button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
