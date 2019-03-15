@@ -77,3 +77,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
+
+#loginForm,
+#registerForm {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 15px;
+}
