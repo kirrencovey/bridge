@@ -116,50 +116,6 @@ render() {
       </Container>
 
 
-{/* 
-
-    <form className="registerForm" id="registerForm">
-    <h1 className="h3 mb-3 font-weight-normal">Register</h1>
-    <label htmlFor="inputFirstName">First Name</label>
-    <input
-      onChange={this.handleFieldChange}
-      type="firstName"
-      id="firstName"
-      placeholder="first name"
-      required=""
-      autoFocus=""
-    />
-    <label htmlFor="inputLastName">Last Name</label>
-    <input
-      onChange={this.handleFieldChange}
-      type="lastName"
-      id="lastName"
-      placeholder="last name"
-      required=""
-      autoFocus=""
-    />
-    <label htmlFor="inputEmail">Email</label>
-    <input
-      onChange={this.handleFieldChange}
-      type="email"
-      id="email"
-      placeholder={`email@email.com`}
-      required=""
-      autoFocus=""
-    />
-    <label htmlFor="inputPassword">Password</label>
-    <input
-      onChange={this.handleFieldChange}
-      type="password"
-      id="password"
-      placeholder={` Don't tell!`}
-      required=""
-    />
-    <Button color="info" type="submit" onClick={this.handleRegister}>
-      Register
-    </Button>
-  </form> */}
-
 </React.Fragment>
     )
 }
