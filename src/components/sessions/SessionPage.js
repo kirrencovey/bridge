@@ -9,7 +9,7 @@ export default class SessionPage extends Component {
             <React.Fragment>
                 <Button color="info"
                     type="button"
-                    className="btn btn-success" //TODO Edit classes
+                    className="btn btn-success addBtn"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</Button>
@@ -17,7 +17,7 @@ export default class SessionPage extends Component {
                     this.props.sessions.sort((sessionA, sessionB) => {
                         return new Date(sessionB.date) - new Date(sessionA.date)})
                         .map(session =>
-                            <div key={session.id}>
+                            <div key={session.id} className="card">
                                 <SessionCard session={session}
                                     history={this.props.history}
                                     sessionBehaviors={this.props.sessionBehaviors}

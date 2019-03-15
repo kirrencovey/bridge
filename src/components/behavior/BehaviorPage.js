@@ -9,10 +9,10 @@ export default class BehaviorPage extends Component {
             <React.Fragment>
                 <Button color="info"
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-success addBtn"
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
-                    }>Add New Behavior</Button><br/>
+                    }>Add New Behavior</Button>
                 {
                     this.props.behaviors
                         // Sort behaviors alphabetically by name
@@ -26,7 +26,7 @@ export default class BehaviorPage extends Component {
                                 return 1;
                             }})
                         .map(behavior =>
-                            <div key={behavior.id}>
+                            <div key={behavior.id} className="card">
                                 <BehaviorCard behavior={behavior}
                                     history={this.props.history}
                                     deleteBehavior={this.props.deleteBehavior} />

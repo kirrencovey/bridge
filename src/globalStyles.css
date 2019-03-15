@@ -1,3 +1,79 @@
 .hidden {
     visibility: hidden;
 }
+
+body {
+    padding: 20px;
+    padding-top: 100px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+#homeCard {
+    text-align: center;
+    margin: 40px 0px 10px 0px;
+}
+
+/* #homeTitle {
+    
+} */
+
+/* #homeText {
+
+} */
+
+#root > button {
+    margin: 10px 60px;
+    padding: 10px;
+}
+
+.card {
+    min-width: 200px;
+    max-width: 400px;
+    border: 1px solid lightgray;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px lightgray;
+}
+
+.cardContents {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.cardPhoto {
+    width: 150px;
+    height: 100px;
+    border: 1px solid lightgray;
+    align-self: center;
+}
+
+.cardTitle {
+    font-size: 1.5em;
+}
+
+.btnContainer > button {
+    width: 50%;
+}
+
+.addBtn {
+    font-size: 1.2em;
+}
+
+#mainBtn {
+    height: 70px;
+}
+
+.behaviorCardHeading {
+    font-size: 1.15em;
+}
+
+.sessionDetailHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

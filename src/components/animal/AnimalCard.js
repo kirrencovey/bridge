@@ -5,9 +5,12 @@ export default class AnimalCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>{this.props.animal.name}</h2>
-                {this.props.animal.species}<br/>
-                {this.props.animal.image}<br/>
+                <div className="cardContents">
+                    <div className="cardTitle">{this.props.animal.name}</div>
+                    <div className="cardSubtitle">{this.props.animal.species}</div>
+                </div>
+                    <div className="cardPhoto">{this.props.animal.image}</div>
+                <div className="btnContainer">
                 <Button color="info"
                     type="button"
                     onClick={() => {
@@ -23,6 +26,7 @@ export default class AnimalCard extends Component {
                         }
                     }}
                 >Delete</Button>
+                </div>
             </React.Fragment>
         )
     }

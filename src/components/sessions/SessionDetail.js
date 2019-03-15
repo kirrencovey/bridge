@@ -7,17 +7,19 @@ export default class SessionDetail extends Component {
         const session = this.props.sessions.find(s => s.id === parseInt(this.props.match.params.sessionId)) || {}
         const animal = session.animal || {}
         const thisSessionBehaviors = this.props.sessionBehaviors.filter(sb => sb.sessionId === session.id)
-        console.log(thisSessionBehaviors)
 
         return (
             <React.Fragment>
-                {session.date}<br/>
-                <h2>{animal.name}</h2>
+                <div className="card">
+                <div className="sessionDetailHeading">
+                    <h2>{animal.name}</h2>
+                    <div>{session.date}</div>
+                </div>
                 {
                     thisSessionBehaviors.map(sb =>
-                        <div key={sb.id}>
-                            {sb.behavior.name}, {sb.rating}/5
-                            <br/>
+                        <div className="card" key={sb.id}>
+                            <div className="behaviorCardHeading">{sb.behavior.name}: {sb.rating}/5
+                            </div>
                             {sb.notes}
                         </div>
                     )
@@ -29,6 +31,7 @@ export default class SessionDetail extends Component {
                         this.props.history.push(`/sessions/${session.id}/edit`)
                     }}
                     >Edit</button> */}
+                    </div>
             </React.Fragment>
         )
     }

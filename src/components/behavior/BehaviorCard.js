@@ -8,6 +8,7 @@ export default class BehaviorCard extends Component {
             <React.Fragment>
                 <h5>{this.props.behavior.name}</h5>
                 {this.props.behavior.summary}<br/>
+                <div className="btnContainer">
                 <Button color="info"
                     type="button"
                     className="btn btn-success"
@@ -24,6 +25,7 @@ export default class BehaviorCard extends Component {
                         }
                     }}
                 >Delete</Button>
+                </div>
             </React.Fragment>
         )
     }

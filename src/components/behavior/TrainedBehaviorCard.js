@@ -12,6 +12,7 @@ export default class TrainedBehaviorCard extends Component {
                                 {sessionBehavior.behavior.name}, {sessionBehavior.rating}/5
                             </div>)
                 }
+                <div className="btnContainer">
                 <Button color="info"
                     type="button"
                     className="btn btn-success"
@@ -28,6 +29,7 @@ export default class TrainedBehaviorCard extends Component {
                         }
                     }}
                 >Delete</Button>
+                </div>
             </React.Fragment>
         )
     }

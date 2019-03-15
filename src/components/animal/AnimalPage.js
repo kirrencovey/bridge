@@ -9,10 +9,10 @@ export default class AnimalPage extends Component {
             <React.Fragment>
                 <Button color="info"
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-success addBtn"
                     onClick={() => {
                         this.props.history.push("/animals/new")}
-                    }>Add New Animal</Button><br/>
+                    }>Add New Animal</Button>
 
                 <section className="animalCardSection"></section>
 
@@ -30,7 +30,7 @@ export default class AnimalPage extends Component {
                                 return 1;
                             }})
                         .map(animal =>
-                            <div key={animal.id}>
+                            <div key={animal.id} className="card">
                                 <AnimalCard animal={animal}
                                         history={this.props.history}
                                         deleteAnimal={this.props.deleteAnimal} />
