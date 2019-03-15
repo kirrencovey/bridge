@@ -84,3 +84,17 @@ body {
     border-radius: .25rem;
     padding: 15px;
 }
+
+.behaviorListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.animalBehaviorBtn {
+    flex-basis: 20%;
+}
+
+#behaviorId {
+    flex-basis: 80%;
+}
