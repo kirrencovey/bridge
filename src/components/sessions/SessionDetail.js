@@ -7,7 +7,6 @@ export default class SessionDetail extends Component {
         const session = this.props.sessions.find(s => s.id === parseInt(this.props.match.params.sessionId)) || {}
         const animal = session.animal || {}
         const thisSessionBehaviors = this.props.sessionBehaviors.filter(sb => sb.sessionId === session.id)
-        console.log(thisSessionBehaviors)
 
         return (
             <React.Fragment>
