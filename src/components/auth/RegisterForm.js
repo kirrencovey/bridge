@@ -1,6 +1,11 @@
 import React, { Component } from "react"
-import { Button } from 'reactstrap'
+// import { Button } from 'reactstrap'
 import UserManager from '../../modules/UserManager'
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+  } from 'reactstrap'
 
 export default class Register extends Component {
 
@@ -49,6 +54,70 @@ render() {
     return (
     <React.Fragment>
 
+<h1>Bridge!</h1>
+        <h3>An app for animal trainers</h3>
+
+<Container className="registerForm">
+        <h2>Register</h2>
+        <Form className="form">
+          <Col>
+            <FormGroup>
+              <Label>First Name</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="firstName"
+                id="firstName"
+                placeholder="first name"
+                required=""
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="examplePassword">Last Name</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="lastName"
+                id="lastName"
+                placeholder="last name"
+                required=""
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="examplePassword">Email</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="email"
+                id="email"
+                placeholder={`email@email.com`}
+                required=""
+                autoFocus=""
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="password"
+                id="password"
+                placeholder="**********"
+                required=""
+              />
+            </FormGroup>
+          </Col>
+          <Button color="info" type="submit" onClick={this.handleRegister}>
+            Register
+          </Button>
+        </Form>
+      </Container>
+
+
+{/* 
+
     <form className="registerForm" id="registerForm">
     <h1 className="h3 mb-3 font-weight-normal">Register</h1>
     <label htmlFor="inputFirstName">First Name</label>
@@ -89,7 +158,7 @@ render() {
     <Button color="info" type="submit" onClick={this.handleRegister}>
       Register
     </Button>
-  </form>
+  </form> */}
 
 </React.Fragment>
     )

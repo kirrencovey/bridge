@@ -1,15 +1,18 @@
 import React, { Component } from "react"
 import "./login.css"
 import UserManager from "../../modules/UserManager"
-import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
-
+import {
+Container, Col, Form,
+FormGroup, Label, Input,
+Button,
+} from 'reactstrap'
 
 export default class Login extends Component {
   // Set initial state
   state = {
     password: "",
-    username: ""
+    email: ""
   }
 
   goToRegister = evt => {
@@ -52,29 +55,39 @@ export default class Login extends Component {
         <h1>Bridge!</h1>
         <h3>An app for animal trainers</h3>
 
-        <form className="loginForm" id="loginForm">
-          <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
-          <label htmlFor="inputEmail">Email</label>
-          <input
-            onChange={this.handleFieldChange}
-            type="email"
-            id="email"
-            placeholder={`email@email.com`}
-            required=""
-            autoFocus=""
-          />
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            onChange={this.handleFieldChange}
-            type="password"
-            id="password"
-            placeholder={` Don't tell!`}
-            required=""
-          />
+
+      <Container className="loginForm">
+        <h2>Sign In</h2>
+        <Form className="form">
+          <Col>
+            <FormGroup>
+              <Label>Email</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="myemail@email.com"
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="password"
+                name="password"
+                id="password"
+                placeholder="********"
+              />
+            </FormGroup>
+          </Col>
           <Button color="secondary" type="submit" onClick={this.handleLogin}>
             Sign in
           </Button>
-        </form>
+        </Form>
+      </Container>
 
         New user?
         <Link to="/register" >
