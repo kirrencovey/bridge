@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button } from 'reactstrap'
+import { Button, FormGroup, Input } from 'reactstrap'
+
 
 
 export default class SessionForm extends Component {
@@ -87,7 +88,8 @@ export default class SessionForm extends Component {
         <form className="sessionForm" id="sessionForm">
         <div className="form-group">
             <label htmlFor="animal">Animal to Train</label>
-            <select
+            <Input
+              type="select"
               defaultValue=""
               name="animal"
               id="animalId"
@@ -99,7 +101,7 @@ export default class SessionForm extends Component {
                   {a.name}
                 </option>
               ))}
-            </select>
+            </Input>
           </div>
           <div className="form-group">
             <label htmlFor="date">Date</label>

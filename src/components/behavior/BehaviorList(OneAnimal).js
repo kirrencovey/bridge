@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import { Button } from 'reactstrap'
-
+import { Button, FormGroup, Input } from 'reactstrap'
 
 export default class BehaviorList extends Component {
 
@@ -30,6 +29,7 @@ export default class BehaviorList extends Component {
           // Create the behavior
           this.props
             .addAssignedBehavior(assignedBehavior)
+          this.setState({behaviorId: ""})
         }
       }
 
@@ -50,41 +50,43 @@ export default class BehaviorList extends Component {
                 {/* Filter out current animal's behaviors, make list item for each */}
                 {
                     thisAnimalsBehaviors
-                        .map(behavior => <div key={behavior.id}><div>{behavior.behavior.name}</div>
-                              <Button color="info"
-                                  type="button"
-                                  className="btn btn-success"
-                                  onClick={() => {
-                                      let confirm = window.confirm("Are you sure you want to delete this behavior?")
-                                      if (confirm === true) {
-                                          this.props.deleteAssignedBehavior(behavior.id)
-                                      }
-                                  }}
-                              >Delete</Button>
-                            </div>)
+                        .map(behavior => {
+                            return <div key={behavior.id} className="behaviorListItem">
+                                <div>{behavior.behavior.name}</div>
+                                <Button color="info"
+                                    type="button"
+                                    className="btn btn-success animalBehaviorBtn"
+                                    onClick={() => {
+                                        let confirm = window.confirm("Are you sure you want to delete this behavior?")
+                                        if (confirm === true) {
+                                            this.props.deleteAssignedBehavior(behavior.id)
+                                        }
+                                    }}
+                                >Delete</Button>
+                            </div>
+                        })
                 }
 
                 {/* dropdown to add behaviors to animal */}
-                <select
-              defaultValue=""
-              name="behavior"
-              id="behaviorId"
-              onChange={this.handleFieldChange}
-            >
-              <option value="">Add A Behavior</option>
-              {
-                  this.props.behaviors.map(b => {
-                      // Only show behaviors that don't already exist on that animal
-                    if (behaviorNameArray.includes(b.name) === false) {
-                    return <option key={b.id} id={b.id} value={b.id}>{b.name}</option>
-                    }})
-              }
-            </select>
-                <Button color="info"
-                    type="button"
-                    className="btn btn-success"
-                    onClick={this.constructNewAssignedBehavior}
+
+                <FormGroup className="behaviorListItem">
+                    <Input defaultValue="" type="select" name="behavior" id="behaviorId" onChange={this.handleFieldChange}>
+                        <option value="">Add A Behavior</option>
+                        {
+                        this.props.behaviors.map(b => {
+                            // Only show behaviors that don't already exist on that animal
+                            if (behaviorNameArray.includes(b.name) === false) {
+                            return <option key={b.id} id={b.id} value={b.id}>{b.name}</option>
+                            }})
+                        }
+                    </Input>
+                    <Button color="info"
+                        type="button"
+                        className="btn btn-success animalBehaviorBtn"
+                        onClick={this.constructNewAssignedBehavior}
                     >Add</Button>
+                </FormGroup>
+
             </React.Fragment>
         )
     }

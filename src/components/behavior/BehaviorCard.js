@@ -6,8 +6,8 @@ export default class BehaviorCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <h5>{this.props.behavior.name}</h5>
-                {this.props.behavior.summary}<br/>
+                <div className="cardTitle">{this.props.behavior.name}</div>
+                <div>{this.props.behavior.summary}</div>
                 <div className="btnContainer">
                 <Button color="info"
                     type="button"

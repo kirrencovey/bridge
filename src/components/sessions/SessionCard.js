@@ -5,9 +5,11 @@ export default class SessionCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <h6>{this.props.session.date}</h6>
-                <h5>{this.props.session.animal.name}</h5>
-                <h6>{this.props.session.animal.species}</h6>
+                <div>{this.props.session.date}</div>
+                <div className="cardContents">
+                    <div className="cardTitle">{this.props.session.animal.name}</div>
+                    <div className="cardSubtitle">{this.props.session.animal.species}</div>
+                </div>
                 <TrainedBehaviorCard session={this.props.session}
                     history={this.props.history}
                     sessionBehaviors={this.props.sessionBehaviors}

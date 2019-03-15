@@ -101,7 +101,7 @@ class ApplicationViews extends Component {
   SessionManager.add(sessionBehavior, "sessionBehaviors")
     .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
-    .then(() => SessionManager.getAll("sessions?_expand=animal&userId=${this.activeUserId}"))
+    .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`))
     .then(sessions => this.setState({sessions: sessions}))
 
 

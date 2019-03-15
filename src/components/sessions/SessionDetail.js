@@ -11,9 +11,9 @@ export default class SessionDetail extends Component {
         return (
             <React.Fragment>
                 <div className="card">
-                <div className="sessionDetailHeading">
-                    <h2>{animal.name}</h2>
-                    <div>{session.date}</div>
+                <div className="cardContents">
+                    <div className="cardTitle">{animal.name}</div>
+                    <div className="cardSubtitle">{session.date}</div>
                 </div>
                 {
                     thisSessionBehaviors.map(sb =>
