@@ -57,7 +57,7 @@ render() {
 <h1>Bridge!</h1>
         <h3>An app for animal trainers</h3>
 
-<Container className="registerForm">
+<Container id="registerForm">
         <h2>Register</h2>
         <Form className="form">
           <Col>

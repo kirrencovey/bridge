@@ -56,7 +56,7 @@ export default class Login extends Component {
         <h3>An app for animal trainers</h3>
 
 
-      <Container className="loginForm">
+      <Container id="loginForm">
         <h2>Sign In</h2>
         <Form className="form">
           <Col>
