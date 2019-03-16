@@ -69,7 +69,7 @@ export default class SessionForm extends Component {
         // Create the session behavior and redirect user to animal list
         this.props
             .addSessionBehavior(sessionBehavior)
-            .then(() => this.props.history.push("/sessions"))
+            .then(() => this.props.history.push(`/animals/${this.state.animalId}`))
         } else if(evt.target.id === "trainAgain") {
             // Create the session behavior but remain on page and clear form for re-use
             this.props.addSessionBehavior(sessionBehavior)
@@ -115,15 +115,6 @@ export default class SessionForm extends Component {
             placeholder="date placeholder"
           />
 
-
-            {/* <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              required
-              className="form-control"
-              onChange={this.handleFieldChange}
-              id="date"
-            /> */}
           </div>
           <Button color="info"
             type="submit"

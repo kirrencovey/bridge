@@ -97,3 +97,8 @@
     font-size: .9em;
     color: rgba(0, 0, 0, 0.658);
 }
+
+.container {
+    margin: 15px;
+    max-width: 100%;
+}
