@@ -72,12 +72,13 @@
     justify-content: space-between;
 }
 
-#loginForm,
+/* #loginForm,
 #registerForm {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     padding: 15px;
-}
+    max-width: 100%;
+} */
 
 .behaviorListItem {
     display: flex;
@@ -98,7 +99,15 @@
     color: rgba(0, 0, 0, 0.658);
 }
 
-.container {
+.formContainer {
     margin: 15px;
     max-width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 15px;
+    max-width: 100%;
+}
+
+.formTitle {
+    text-align: center;
 }

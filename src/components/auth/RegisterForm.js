@@ -57,8 +57,8 @@ render() {
 <h1>Bridge!</h1>
         <h3>An app for animal trainers</h3>
 
-<Container id="registerForm">
-        <h2>Register</h2>
+<div className="formContainer" id="registerForm">
+        <h2 className="formTitle">Register</h2>
         <Form className="form">
           <Col>
             <FormGroup>
@@ -113,7 +113,7 @@ render() {
             Register
           </Button>
         </Form>
-      </Container>
+      </div>
 
 
 </React.Fragment>

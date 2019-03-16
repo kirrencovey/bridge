@@ -56,8 +56,8 @@ export default class Login extends Component {
         <h3>An app for animal trainers</h3>
 
 
-      <Container id="loginForm">
-        <h2>Sign In</h2>
+      <div className="formContainer" id="loginForm">
+        <h2 className="formTitle">Sign In</h2>
         <Form className="form">
           <Col>
             <FormGroup>
@@ -87,7 +87,7 @@ export default class Login extends Component {
             Sign in
           </Button>
         </Form>
-      </Container>
+      </div>
 
         New user?
         <Link to="/register" >

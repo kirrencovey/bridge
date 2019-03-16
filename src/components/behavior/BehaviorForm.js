@@ -44,16 +44,17 @@ constructNewBehavior = evt => {
 render() {
   return (
     <React.Fragment>
-      <form className="behaviorForm">
+      <form className="behaviorForm formContainer">
+      <h2 className="formTitle">New Behavior</h2>
         <div className="form-group">
-          <label htmlFor="behaviorName">Behavior name</label>
+          <label htmlFor="behaviorName">Name</label>
           <input
             type="text"
             required
             className="form-control"
             onChange={this.handleFieldChange}
             id="behaviorName"
-            placeholder="Behavior name"
+            placeholder="Name"
           />
         </div>
         <div className="form-group">

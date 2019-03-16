@@ -48,17 +48,17 @@ export default class AnimalForm extends Component {
 
   render() {
     return (
-      <div>
-        <form className="animalForm">
+        <form className="animalForm formContainer">
+          <h2 className="formTitle">New Animal</h2>
           <div className="form-group">
-            <label htmlFor="animalName">Animal name</label>
+            <label htmlFor="animalName">Name</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={this.handleFieldChange}
               id="animalName"
-              placeholder="Animal name"
+              placeholder="Name"
             />
           </div>
           <div className="form-group">
@@ -105,7 +105,6 @@ export default class AnimalForm extends Component {
             Submit
           </Button>
         </form>
-      </div>
     )
   }
 }

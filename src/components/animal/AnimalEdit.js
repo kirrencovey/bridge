@@ -63,9 +63,10 @@ export default class AnimalEdit extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="animalEditForm">
+        <form className="animalEditForm formContainer">
+          <h2 className="formTitle">Edit Animal</h2>
           <div className="form-group">
-            <label htmlFor="animalName">Animal name</label>
+            <label htmlFor="animalName">Name</label>
             <input
               type="text"
               required
