@@ -13,11 +13,11 @@ export default class SessionDetail extends Component {
                 <div className="card">
                 <div className="cardContents">
                     <div className="cardTitle">{animal.name}</div>
-                    <div className="cardSubtitle">{session.date}</div>
+                    <div className="date">{session.date}</div>
                 </div>
                 {
                     thisSessionBehaviors.map(sb =>
-                        <div className="card" key={sb.id}>
+                        <div className="innerCard" key={sb.id}>
                             <div className="behaviorCardHeading">{sb.behavior.name}: {sb.rating}/5
                             </div>
                             {sb.notes}

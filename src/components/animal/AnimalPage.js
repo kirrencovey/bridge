@@ -14,7 +14,7 @@ export default class AnimalPage extends Component {
                         this.props.history.push("/animals/new")}
                     }>Add New Animal</Button>
 
-                <section className="animalCardSection"></section>
+                <section className="cardContainer">
 
                 {/* Filter out current user's animals, make animal card for each */}
                 {
@@ -37,7 +37,7 @@ export default class AnimalPage extends Component {
                             </div>
                     )
                 }
-
+                </section>
             </React.Fragment>
         )
     }

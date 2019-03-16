@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button, FormGroup, Input } from 'reactstrap'
+import { Button, FormGroup, Input, Label } from 'reactstrap'
 
 
 
@@ -104,14 +104,26 @@ export default class SessionForm extends Component {
             </Input>
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date</label>
+
+          <Label for="date">Date</Label>
+          <Input
+            required
+            type="date"
+            name="date"
+            id="date"
+            onChange={this.handleFieldChange}
+            placeholder="date placeholder"
+          />
+
+
+            {/* <label htmlFor="date">Date</label>
             <input
               type="date"
               required
               className="form-control"
               onChange={this.handleFieldChange}
               id="date"
-            />
+            /> */}
           </div>
           <Button color="info"
             type="submit"
@@ -127,7 +139,8 @@ export default class SessionForm extends Component {
         <form className="trainingForm hidden" id="trainingForm">
         <div className="form-group">
             <label htmlFor="behavior">Behavior</label>
-            <select
+            <Input
+              type="select"
               required
               defaultValue=""
               name="behavior"
@@ -139,11 +152,12 @@ export default class SessionForm extends Component {
                 this.props.assignedBehaviors.filter(behavior => behavior.animalId === parseInt(this.state.animalId))
                   .map(b => (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>))
               }
-            </select>
+            </Input>
           </div>
           <div className="form-group">
             <label htmlFor="rating">Rating</label>
-            <select
+            <Input
+              type="select"
               required
               defaultValue=""
               name="rating"
@@ -156,7 +170,7 @@ export default class SessionForm extends Component {
                 <option key="3" id="3" value="3">3</option>
                 <option key="4" id="4" value="4">4</option>
                 <option key="5" id="5" value="5">5</option>
-            </select>
+            </Input>
           </div>
           <div className="form-group">
             <label htmlFor="notes">Notes</label>
