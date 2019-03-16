@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button, FormGroup, Input } from 'reactstrap'
+import { Button, FormGroup, Input, Label } from 'reactstrap'
 
 
 
@@ -104,14 +104,26 @@ export default class SessionForm extends Component {
             </Input>
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date</label>
+
+          <Label for="date">Date</Label>
+          <Input
+            required
+            type="date"
+            name="date"
+            id="date"
+            onChange={this.handleFieldChange}
+            placeholder="date placeholder"
+          />
+
+
+            {/* <label htmlFor="date">Date</label>
             <input
               type="date"
               required
               className="form-control"
               onChange={this.handleFieldChange}
               id="date"
-            />
+            /> */}
           </div>
           <Button color="info"
             type="submit"
