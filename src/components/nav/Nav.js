@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import "./nav.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -10,11 +9,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap'
+  NavLink } from 'reactstrap'
 
 class Navigation extends Component {
 
@@ -66,35 +61,9 @@ class Navigation extends Component {
                   </Nav>
                 </Collapse>
               </Navbar>
-          );
+          )
         }
       }
 
-
-      // <nav className="navbar navbar-light fixed-top light-blue flex-md-nowrap p-0 shadow">
-      //   <ul className="nav nav-pills">
-      //     <li className="nav-item">
-      //       <Link className="nav-link" to="/">Home</Link>
-      //     </li>
-      //     <li className="nav-item">
-      //       <Link className="nav-link" to="/animals">Animals</Link>
-      //     </li>
-      //     <li className="nav-item">
-      //       <Link className="nav-link" to="/behaviors">Behaviors</Link>
-      //     </li>
-      //     <li className="nav-item">
-      //         <Link className="nav-link" to="/sessions">History</Link>
-      //     </li>
-        // <button
-        //   type="button"
-        //   className="btn btn-outline-light"
-        //   onClick={this.logout}>
-        //   Logout
-        // </button>
-      //   </ul>
-      // </nav>
-//     )
-//   }
-// }
 
 export default Navigation
