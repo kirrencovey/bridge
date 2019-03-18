@@ -1,3 +1,5 @@
+/* GLOBAL STYLES */
+
 body {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Roboto', sans-serif;
@@ -24,21 +26,28 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
 }
 
-.homeCard {
-    text-align: center;
-    margin: 40px 0px 10px 0px;
+.date {
+    font-size: .9em;
+    color: rgba(0, 0, 0, 0.658);
 }
 
-#root > button {
-    margin: 10px 60px;
-    padding: 10px;
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+/* CARD STYLES */
+.cardContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 .card {
-    min-width: 300px;
-    max-width: 400px;
+    width: 300px;
     border: 1px solid lightgray;
-    margin: 5px 25px;
+    margin: 5px 5px;
     padding: 10px;
     box-shadow: 3px 3px lightgray;
 }
@@ -50,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 5px;
 }
 
-.cardContents {
+.cardHeading {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -69,8 +78,24 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.cardSubtitle {
+    align-items: stretch;
+}
+
 .btnContainer > button {
     width: 50%;
+}
+
+
+/* HOME/LOGIN/REGISTER */
+.homeCard {
+    text-align: center;
+    margin: 40px 0px 10px 0px;
+}
+
+#root > button {
+    margin: 10px 60px;
+    padding: 10px;
 }
 
 .addBtn {
@@ -81,16 +106,25 @@ h1, h2, h3, h4, h5, h6 {
     height: 70px;
 }
 
-.behaviorCardHeading {
-    font-size: 1.15em;
+.homeTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-bottom: 30px;
 }
 
-.sessionDetailHeading {
+
+/* .behaviorCardHeading {
+    font-size: 1.15em;
+} */
+
+/* .sessionDetailHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+} */
 
+
+/* BEHAVIOR LIST STYLES */
 .behaviorListItem {
     display: flex;
     flex-direction: row;
@@ -98,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .behaviorListItem > button {
-    flex-basis: 20%;
+    flex-basis: 22%;
     font-size: .8em;
     padding: 2px;
     margin: 2px;
@@ -111,14 +145,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
+
+/* FORM STYLES */
 .form-control {
     font-size: .9em;
     font-weight: 300;
-}
-
-.date {
-    font-size: .9em;
-    color: rgba(0, 0, 0, 0.658);
 }
 
 .formContainer {
@@ -134,13 +165,4 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.homeTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    margin-bottom: 30px;
-}
 
-.navbar-brand {
-    font-family: 'Montserrat', sans-serif;
-
-}

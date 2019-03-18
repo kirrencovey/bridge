@@ -5,7 +5,7 @@ export default class AnimalCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="cardContents">
+                <div className="cardHeading">
                     <div className="cardTitle">{this.props.animal.name}</div>
                     <div className="cardSubtitle">{this.props.animal.species}</div>
                 </div>

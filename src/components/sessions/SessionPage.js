@@ -13,6 +13,7 @@ export default class SessionPage extends Component {
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
                     }>Start a Session</Button>
+                <div className="cardContainer">
                 {
                     this.props.sessions.sort((sessionA, sessionB) => {
                         return new Date(sessionB.date) - new Date(sessionA.date)})
@@ -24,6 +25,7 @@ export default class SessionPage extends Component {
                                     deleteSession={this.props.deleteSession} />
                             </div>)
                 }
+                </div>
             </React.Fragment>
         )
     }

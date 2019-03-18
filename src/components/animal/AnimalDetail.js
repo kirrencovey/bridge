@@ -11,9 +11,9 @@ export default class AnimalDetail extends Component {
         const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
 
         return (
-            <React.Fragment>
+            <div className="cardContainer">
                 <div className="card">
-                <div className="cardContents">
+                <div className="cardHeading">
                     <h2>{animal.name}</h2>
                     <div className="cardSubtitle">{animal.species}</div>
                 </div>
@@ -43,7 +43,7 @@ export default class AnimalDetail extends Component {
                         sessions={this.props.sessions}
                         sessionBehaviors={this.props.sessionBehaviors}/>
                         </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
