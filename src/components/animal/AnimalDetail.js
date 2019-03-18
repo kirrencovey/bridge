@@ -17,7 +17,7 @@ export default class AnimalDetail extends Component {
                     <h2>{animal.name}</h2>
                     <div className="cardSubtitle">{animal.species}</div>
                 </div>
-                {animal.image}<br/>
+                <div className="cardPhoto">{animal.image}</div>
                 <h5>Notes</h5>
                 {animal.notes}<br/>
                 <Button color="info"
