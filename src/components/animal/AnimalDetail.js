@@ -13,8 +13,10 @@ export default class AnimalDetail extends Component {
         return (
             <React.Fragment>
                 <div className="card">
-                <h2>{animal.name}</h2>
-                {animal.species}<br/>
+                <div className="cardContents">
+                    <h2>{animal.name}</h2>
+                    <div className="cardSubtitle">{animal.species}</div>
+                </div>
                 {animal.image}<br/>
                 <h5>Notes</h5>
                 {animal.notes}<br/>
