@@ -10,6 +10,7 @@ export default class SessionList extends Component {
                 {/* Filter out current animal's sessions, make card for each */}
                 {
                     this.props.sessions.filter(session => session.animalId === this.props.animal.id)
+                    .sort((sessionA, sessionB) => new Date(sessionB.date) - new Date(sessionA.date))
                         .map(session => <div className="innerCard" key={session.id}>
                                 <div className="date">{session.date}</div>
                                 <TrainedBehaviorCard session={session}

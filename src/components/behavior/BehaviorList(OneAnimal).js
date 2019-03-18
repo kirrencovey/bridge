@@ -73,10 +73,21 @@ export default class BehaviorList extends Component {
                     <Input defaultValue="" type="select" name="behavior" id="behaviorId" onChange={this.handleFieldChange}>
                         <option value="">Add A Behavior</option>
                         {
-                        this.props.behaviors.map(b => {
-                            // Only show behaviors that don't already exist on that animal
-                            if (behaviorNameArray.includes(b.name) === false) {
-                            return <option key={b.id} id={b.id} value={b.id}>{b.name}</option>
+                        this.props.behaviors
+                            // Sort behaviors alphabetically by name
+                            .sort((a, b) => {
+                                var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                                var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }})
+                            .map(b => {
+                                // Only show behaviors that don't already exist on that animal
+                                if (behaviorNameArray.includes(b.name) === false) {
+                                return <option key={b.id} id={b.id} value={b.id}>{b.name}</option>
                             }})
                         }
                     </Input>

@@ -41,7 +41,7 @@ class Navigation extends Component {
     return (
 
 
-              <Navbar color="light" light fixed sticky="top" expand="md" >
+              <Navbar color="light" light sticky="top" expand="md" >
                 <NavbarBrand href="/">bridge!</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>

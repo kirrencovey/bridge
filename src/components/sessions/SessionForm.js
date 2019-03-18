@@ -101,11 +101,23 @@ export default class SessionForm extends Component {
               onChange={this.handleFieldChange}
             >
               <option value="">Select an Animal</option>
-              {this.props.animals.map(a => (
-                <option key={a.id} id={a.id} value={a.id}>
-                  {a.name}
-                </option>
-              ))}
+              {this.props.animals
+                // Sort animals alphabetically by name
+                .sort((a, b) => {
+                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }})
+                .map(a => (
+                  <option key={a.id} id={a.id} value={a.id}>
+                    {a.name}
+                  </option>
+                ))
+              }
             </Input>
           </div>
           <div className="form-group">
@@ -147,6 +159,16 @@ export default class SessionForm extends Component {
               <option value="">Select a Behavior</option>
               { //Filter behaviors available for current animal
                 this.props.assignedBehaviors.filter(behavior => behavior.animalId === parseInt(this.state.animalId))
+                  // Sort behaviors alphabetically by name
+                  .sort((a, b) => {
+                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }})
                   .map(b => (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>))
               }
             </Input>
