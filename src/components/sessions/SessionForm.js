@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button, FormGroup, Input, Label } from 'reactstrap'
+import { Button, Input, Label } from 'reactstrap'
 
 
 

@@ -52,12 +52,12 @@ export default class Register extends Component {
 
 render() {
     return (
-    <React.Fragment>
+    <div className="homeCard">
 
-<h1>Bridge!</h1>
-        <h3>An app for animal trainers</h3>
+      <h1 className="homeTitle">bridge!</h1>
+      <div className="homeText">an app for animal trainers</div>
 
-<div className="formContainer" id="registerForm">
+      <div className="formContainer" id="registerForm">
         <h2 className="formTitle">Register</h2>
         <Form className="form">
           <Col>
@@ -116,7 +116,7 @@ render() {
       </div>
 
 
-</React.Fragment>
+</div>
     )
 }
 }

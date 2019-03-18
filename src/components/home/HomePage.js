@@ -7,9 +7,9 @@ class HomePage extends Component {
     render() {
         return (
             <React.Fragment>
-                    <div id="homeCard">
-                        <h1 id="homeTitle">Welcome to Bridge!</h1>
-                        <div id="homeText">Ready to train?</div>
+                    <div className="homeCard">
+                        <h1 className="homeTitle">bridge!</h1>
+                        <div className="homeText">ready to train?</div>
                     </div>
                 <Button color="info"
                     type="button"
@@ -17,19 +17,19 @@ class HomePage extends Component {
                     id="mainBtn"
                     onClick={() => {
                         this.props.history.push("/sessions/new")}
-                    }>Start A Session</Button>
+                    }>Start Training!</Button>
                     <Button color="secondary"
                     className="addBtn mainBtn"
                     type="button"
                     onClick={() => {
                         this.props.history.push("/animals/new")}
-                    }>Add New Animal</Button>
+                    }>Add Animal</Button>
                     <Button color="secondary"
                     className="addBtn mainBtn"
                     type="button"
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
-                    }>Add New Behavior</Button>
+                    }>Add Behavior</Button>
             </React.Fragment>
         )
     }

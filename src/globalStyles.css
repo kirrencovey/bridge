@@ -1,3 +1,20 @@
+body {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: .9em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -7,7 +24,7 @@
     flex-direction: column;
 }
 
-#homeCard {
+.homeCard {
     text-align: center;
     margin: 40px 0px 10px 0px;
 }
@@ -48,6 +65,8 @@
 
 .cardTitle {
     font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .btnContainer > button {
@@ -72,26 +91,29 @@
     justify-content: space-between;
 }
 
-/* #loginForm,
-#registerForm {
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    padding: 15px;
-    max-width: 100%;
-} */
-
 .behaviorListItem {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.animalBehaviorBtn {
+.behaviorListItem > button {
     flex-basis: 20%;
+    font-size: .8em;
+    padding: 2px;
+    margin: 2px;
 }
 
 #behaviorId {
-    flex-basis: 80%;
+    flex-basis: 75%;
+    padding: 5px;
+    font-size: .9em;
+    font-weight: 300;
+}
+
+.form-control {
+    font-size: .9em;
+    font-weight: 300;
 }
 
 .date {
@@ -110,4 +132,15 @@
 
 .formTitle {
     text-align: center;
+}
+
+.homeTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+
 }

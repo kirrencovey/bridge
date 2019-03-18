@@ -16,7 +16,7 @@ export default class AnimalDetail extends Component {
                 <h2>{animal.name}</h2>
                 {animal.species}<br/>
                 {animal.image}<br/>
-                <h6>Notes</h6>
+                <h5>Notes</h5>
                 {animal.notes}<br/>
                 <Button color="info"
                     id="animalAddBehavior"

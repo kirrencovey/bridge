@@ -57,12 +57,12 @@ export default class BehaviorList extends Component {
                                     type="button"
                                     className="btn btn-success animalBehaviorBtn"
                                     onClick={() => {
-                                        let confirm = window.confirm("Are you sure you want to delete this behavior?")
+                                        let confirm = window.confirm("Are you sure you want to remove this behavior?")
                                         if (confirm === true) {
                                             this.props.deleteAssignedBehavior(behavior.id)
                                         }
                                     }}
-                                >Delete</Button>
+                                >Remove</Button>
                             </div>
                         })
                 }
