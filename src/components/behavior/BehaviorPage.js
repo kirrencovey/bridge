@@ -13,6 +13,7 @@ export default class BehaviorPage extends Component {
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
                     }>Add New Behavior</Button>
+                <div className="cardContainer">
                 {
                     this.props.behaviors
                         // Sort behaviors alphabetically by name
@@ -32,6 +33,7 @@ export default class BehaviorPage extends Component {
                                     deleteBehavior={this.props.deleteBehavior} />
                             </div>)
                 }
+                </div>
             </React.Fragment>
         )
     }

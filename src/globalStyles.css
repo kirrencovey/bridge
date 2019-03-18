@@ -1,3 +1,22 @@
+/* GLOBAL STYLES */
+
+body {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: .9em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -7,21 +26,28 @@
     flex-direction: column;
 }
 
-#homeCard {
-    text-align: center;
-    margin: 40px 0px 10px 0px;
+.date {
+    font-size: .9em;
+    color: rgba(0, 0, 0, 0.658);
 }
 
-#root > button {
-    margin: 10px 60px;
-    padding: 10px;
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+/* CARD STYLES */
+.cardContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 .card {
-    min-width: 300px;
-    max-width: 400px;
+    width: 300px;
     border: 1px solid lightgray;
-    margin: 5px 25px;
+    margin: 5px 5px;
     padding: 10px;
     box-shadow: 3px 3px lightgray;
 }
@@ -33,7 +59,7 @@
     margin: 5px;
 }
 
-.cardContents {
+.cardHeading {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -48,10 +74,28 @@
 
 .cardTitle {
     font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.cardSubtitle {
+    align-items: stretch;
 }
 
 .btnContainer > button {
     width: 50%;
+}
+
+
+/* HOME/LOGIN/REGISTER */
+.homeCard {
+    text-align: center;
+    margin: 40px 0px 10px 0px;
+}
+
+#root > button {
+    margin: 10px 60px;
+    padding: 10px;
 }
 
 .addBtn {
@@ -62,38 +106,63 @@
     height: 70px;
 }
 
-.behaviorCardHeading {
-    font-size: 1.15em;
+.homeTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-bottom: 30px;
 }
 
-.sessionDetailHeading {
+
+/* .behaviorCardHeading {
+    font-size: 1.15em;
+} */
+
+/* .sessionDetailHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+} */
 
-#loginForm,
-#registerForm {
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    padding: 15px;
-}
 
+/* BEHAVIOR LIST STYLES */
 .behaviorListItem {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.animalBehaviorBtn {
-    flex-basis: 20%;
+.behaviorListItem > button {
+    flex-basis: 22%;
+    font-size: .8em;
+    padding: 2px;
+    margin: 2px;
 }
 
 #behaviorId {
-    flex-basis: 80%;
+    flex-basis: 75%;
+    padding: 5px;
+    font-size: .9em;
+    font-weight: 300;
 }
 
-.date {
+
+/* FORM STYLES */
+.form-control {
     font-size: .9em;
-    color: rgba(0, 0, 0, 0.658);
+    font-weight: 300;
 }
+
+.formContainer {
+    margin: 15px;
+    max-width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 15px;
+    max-width: 100%;
+}
+
+.formTitle {
+    text-align: center;
+}
+
+

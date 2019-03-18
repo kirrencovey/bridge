@@ -5,7 +5,7 @@ export default class SessionCard extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="cardContents">
+                <div className="cardHeading">
                     <div className="cardTitle">{this.props.session.animal.name}</div>
                         <div className="date">{this.props.session.date}</div>
                         {/* <div className="cardSubtitle">{this.props.session.animal.species}</div> */}

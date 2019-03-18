@@ -51,13 +51,13 @@ export default class Login extends Component {
   //TO DO make separate login and register forms - register takes first and last name
   render() {
     return (
-      <React.Fragment>
-        <h1>Bridge!</h1>
-        <h3>An app for animal trainers</h3>
+      <div className="homeCard">
+        <h1 className="homeTitle">bridge!</h1>
+        <div className="homeText">an app for animal trainers</div>
 
 
-      <Container id="loginForm">
-        <h2>Sign In</h2>
+      <div className="formContainer" id="loginForm">
+        <h2 className="formTitle">Sign In</h2>
         <Form className="form">
           <Col>
             <FormGroup>
@@ -87,15 +87,15 @@ export default class Login extends Component {
             Sign in
           </Button>
         </Form>
-      </Container>
+      </div>
 
-        New user?
+        <div>New user?</div>
         <Link to="/register" >
         <Button color="info" type="submit">
             Register
         </Button>
       </Link>
-      </React.Fragment>
+      </div>
     )
   }
 }

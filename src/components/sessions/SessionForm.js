@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button, FormGroup, Input, Label } from 'reactstrap'
+import { Button, Input, Label } from 'reactstrap'
 
 
 
@@ -43,11 +43,15 @@ export default class SessionForm extends Component {
       this.props
         .addSession(session)
         .then((sessionObj) => this.setState({sessionId: sessionObj.id}))
-        // Show the training form
         .then(() => {
+          // Set state of animal name for use on training form
           let animal = this.props.animals.find(a => a.id === parseInt(this.state.animalId))
+          this.setState({ animalName: animal.name })
+          // Show the training form
           document.querySelector("#trainingForm").classList.toggle("hidden")
-          document.querySelector("#sessionForm").innerHTML=`<h3>Training ${animal.name}</h3>`
+          // Hide the session form
+          document.querySelector("#sessionForm").innerHTML=""
+          document.querySelector("#sessionForm").classList.toggle("formContainer")
         })
     }
   }
@@ -69,7 +73,7 @@ export default class SessionForm extends Component {
         // Create the session behavior and redirect user to animal list
         this.props
             .addSessionBehavior(sessionBehavior)
-            .then(() => this.props.history.push("/sessions"))
+            .then(() => this.props.history.push(`/animals/${this.state.animalId}`))
         } else if(evt.target.id === "trainAgain") {
             // Create the session behavior but remain on page and clear form for re-use
             this.props.addSessionBehavior(sessionBehavior)
@@ -85,7 +89,8 @@ export default class SessionForm extends Component {
       <React.Fragment>
 
           {/* session form */}
-        <form className="sessionForm" id="sessionForm">
+        <form className="sessionForm formContainer" id="sessionForm">
+        <h2 className="formTitle">New Training Session</h2>
         <div className="form-group">
             <label htmlFor="animal">Animal to Train</label>
             <Input
@@ -95,12 +100,24 @@ export default class SessionForm extends Component {
               id="animalId"
               onChange={this.handleFieldChange}
             >
-              <option value="">Select an animal</option>
-              {this.props.animals.map(a => (
-                <option key={a.id} id={a.id} value={a.id}>
-                  {a.name}
-                </option>
-              ))}
+              <option value="">Select an Animal</option>
+              {this.props.animals
+                // Sort animals alphabetically by name
+                .sort((a, b) => {
+                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }})
+                .map(a => (
+                  <option key={a.id} id={a.id} value={a.id}>
+                    {a.name}
+                  </option>
+                ))
+              }
             </Input>
           </div>
           <div className="form-group">
@@ -115,15 +132,6 @@ export default class SessionForm extends Component {
             placeholder="date placeholder"
           />
 
-
-            {/* <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              required
-              className="form-control"
-              onChange={this.handleFieldChange}
-              id="date"
-            /> */}
           </div>
           <Button color="info"
             type="submit"
@@ -136,7 +144,8 @@ export default class SessionForm extends Component {
         </form>
 
         {/* sessionBehavior Form */}
-        <form className="trainingForm hidden" id="trainingForm">
+        <form className="formContainer trainingForm hidden" id="trainingForm">
+        <h2 className="formTitle">Training {this.state.animalName}</h2>
         <div className="form-group">
             <label htmlFor="behavior">Behavior</label>
             <Input
@@ -147,9 +156,19 @@ export default class SessionForm extends Component {
               id="behaviorId"
               onChange={this.handleFieldChange}
             >
-              <option value="">Select a behavior</option>
+              <option value="">Select a Behavior</option>
               { //Filter behaviors available for current animal
                 this.props.assignedBehaviors.filter(behavior => behavior.animalId === parseInt(this.state.animalId))
+                  // Sort behaviors alphabetically by name
+                  .sort((a, b) => {
+                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }})
                   .map(b => (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>))
               }
             </Input>
@@ -181,12 +200,13 @@ export default class SessionForm extends Component {
               placeholder="Any notes?"
             />
           </div>
+          <div className="btnContainer">
           <Button color="secondary"
             type="submit"
             onClick={this.constructNewSessionBehavior}
             id="trainAgain"
           >
-            Add & Train Another!
+            Another Behavior!
           </Button>
           <Button color="info"
             type="submit"
@@ -196,6 +216,7 @@ export default class SessionForm extends Component {
           >
             Finish Session
           </Button>
+          </div>
         </form>
       </React.Fragment>
     )

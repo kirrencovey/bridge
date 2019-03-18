@@ -9,7 +9,7 @@ export default class SessionDetail extends Component {
         const thisSessionBehaviors = this.props.sessionBehaviors.filter(sb => sb.sessionId === session.id)
 
         return (
-            <React.Fragment>
+            <div className="cardContainer">
                 <div className="card">
                 <div className="cardContents">
                     <div className="cardTitle">{animal.name}</div>
@@ -32,7 +32,7 @@ export default class SessionDetail extends Component {
                     }}
                     >Edit</button> */}
                     </div>
-            </React.Fragment>
+            </div>
         )
     }
 }

@@ -57,9 +57,10 @@ state = {
     render() {
     return (
         <React.Fragment>
-        <form className="behaviorEditForm">
+        <form className="behaviorEditForm formContainer">
+            <h2 className="formTitle">Edit Behavior</h2>
             <div className="form-group">
-            <label htmlFor="behaviorName">Behavior name</label>
+            <label htmlFor="behaviorName">Name</label>
             <input
                 type="text"
                 required
