@@ -161,8 +161,8 @@ export default class SessionForm extends Component {
                 this.props.assignedBehaviors.filter(behavior => behavior.animalId === parseInt(this.state.animalId))
                   // Sort behaviors alphabetically by name
                   .sort((a, b) => {
-                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
-                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
+                    var nameA = a.behavior.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.behavior.name.toUpperCase() // ignore upper and lowercase
                     if (nameA < nameB) {
                         return -1;
                     }
