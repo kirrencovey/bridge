@@ -65,17 +65,9 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
 }
 
-.cardPhoto {
-    width: 150px;
-    height: 100px;
-    border: 1px solid lightgray;
-    align-self: center;
-}
-
 .cardTitle {
     font-size: 1.5em;
     font-family: 'Montserrat', sans-serif;
-
 }
 
 .cardSubtitle {
@@ -89,7 +81,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btnContainer > button {
-    width: 30%;
+    width: 50%;
+}
+
+.cardContents {
+    display: flex;
+}
+
+.cardTextContents {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+}
+
+/* IMAGE STYLES */
+
+.cardImage,
+.detailImage {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.cardImage {
+    height: auto;
+    width: 33%;
+}
+
+.detailImage {
+    width: 80%;
+    height: auto;
 }
 
 

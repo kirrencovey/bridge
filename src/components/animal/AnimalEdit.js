@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import AnimalManager from "../../modules/AnimalManager"
 import { Button } from 'reactstrap'
+import ImageUpload from "../ImageUpload";
 
 
 export default class AnimalEdit extends Component {
@@ -43,7 +44,7 @@ export default class AnimalEdit extends Component {
       // Create the animal and redirect user to animal list
       this.props
         .updateAnimal(editedAnimal)
-        .then(() => this.props.history.push("/animals"))
+        .then(() => this.props.history.push(`/animals/${this.state.id}`))
     }
   }
 
@@ -58,6 +59,10 @@ export default class AnimalEdit extends Component {
             userId: animal.userId
         })
     })
+    }
+
+    imageUploaded = (url) => {
+      this.setState({image: url})
     }
 
   render() {
@@ -97,14 +102,8 @@ export default class AnimalEdit extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="image">Image TODO image upload?</label>
-            <input
-              type="text"
-              className="form-control"
-              onChange={this.handleFieldChange}
-              id="image"
-              value={this.state.image}
-            />
+            <label htmlFor="image">Choose a New Photo?</label>
+            <ImageUpload imageUploaded={this.imageUploaded.bind(this)}/>
           </div>
           <Button color="info"
             type="submit"
