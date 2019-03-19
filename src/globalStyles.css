@@ -82,8 +82,14 @@ h1, h2, h3, h4, h5, h6 {
     align-items: stretch;
 }
 
+.btnContainer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
 .btnContainer > button {
-    width: 50%;
+    width: 30%;
 }
 
 
