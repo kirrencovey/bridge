@@ -16,7 +16,6 @@ import SessionEdit from "./sessions/SessionEdit"
 import AnimalManager from "../modules/AnimalManager"
 import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
-import Register from "./auth/RegisterForm";
 
 class ApplicationViews extends Component {
   activeUserId = this.props.activeUserId()

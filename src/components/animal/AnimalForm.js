@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button } from 'reactstrap'
 import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
+import ImageUpload from "../ImageUpload";
 
 
 
@@ -46,6 +47,10 @@ export default class AnimalForm extends Component {
     }
   }
 
+  imageUploaded = (url) => {
+    this.setState({image: url})
+  }
+
   render() {
     return (
         <form className="animalForm formContainer">
@@ -81,11 +86,15 @@ export default class AnimalForm extends Component {
               placeholder="Any notes relevant to training?"
             />
           </div>
+
+          <ImageUpload imageUploaded={this.imageUploaded.bind(this)}/>
+
+
           {/* REACTSTRAP file upload vs another type?? */}
-          <FormGroup>
+          {/* <FormGroup>
           <Label for="image">Add a Photo</Label>
           <CustomInput type="file" id="image" name="image" label="Choose a photo" />
-          </FormGroup>
+          </FormGroup> */}
           {/* <div className="form-group">
             <label htmlFor="image">Image TODO image upload?</label>
             <input
