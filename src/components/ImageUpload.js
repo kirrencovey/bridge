@@ -41,13 +41,9 @@ class ImageUpload extends Component {
                     .then(url => {
                         this.setState({url})
                     })
-                    .then(this.onImageUploaded())
+                    .then(() => this.onImageUploaded())
             }
         )
-    }
-
-    onImageUploaded = () => {
-        this.props.imageUploaded(this.state.url)
     }
 
     render() {
@@ -64,10 +60,6 @@ class ImageUpload extends Component {
                     <Button
                         color="secondary"
                         onClick={this.handleUpload}
-                    >Choose</Button>
-                    <Button
-                        color="info"
-                        onClick={this.onImageUploaded.bind(this)}
                     >Upload</Button>
                 </div>
             </React.Fragment>
