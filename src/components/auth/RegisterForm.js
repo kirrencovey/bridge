@@ -43,6 +43,7 @@ export default class Register extends Component {
                 sessionStorage.setItem("credentials", parseInt(user.id))
                 this.props.setAuth() //TO DO **????
               })
+              .then(() => this.props.history.push("/"))
             }
           })
         } else {
