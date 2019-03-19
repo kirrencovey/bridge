@@ -65,17 +65,9 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
 }
 
-.cardPhoto {
-    width: 150px;
-    height: 100px;
-    border: 1px solid lightgray;
-    align-self: center;
-}
-
 .cardTitle {
     font-size: 1.5em;
     font-family: 'Montserrat', sans-serif;
-
 }
 
 .cardSubtitle {
@@ -90,6 +82,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .btnContainer > button {
     width: 33%;
+}
+
+/* IMAGE STYLES */
+
+.cardImage,
+.detailImage {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.cardImage {
+    height: 150px;
+    width: auto;
+}
+
+.detailImage {
+    width: 80%;
+    height: auto;
 }
 
 

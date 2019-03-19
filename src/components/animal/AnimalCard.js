@@ -9,7 +9,7 @@ export default class AnimalCard extends Component {
                     <div className="cardTitle">{this.props.animal.name}</div>
                     <div className="cardSubtitle">{this.props.animal.species}</div>
                 </div>
-                    <img src={this.props.animal.image} />
+                    <img className="cardImage" src={this.props.animal.image} />
                 <div className="btnContainer">
                 <Button color="info"
                     type="button"
