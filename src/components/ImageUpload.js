@@ -8,8 +8,8 @@ class ImageUpload extends Component {
         super(props)
         this.state = {
             image: null,
-            url: ""
-            // progress: 0
+            url: "",
+            progress: 0
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleUpload = this.handleUpload.bind(this)
@@ -28,8 +28,8 @@ class ImageUpload extends Component {
         uploadTask.on("state_changed",
             (snapshot) => {
                 // progress function
-                // const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-                // this.setState({progress})
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+                this.setState({progress})
             },
             (error) => {
                 // error function
@@ -42,15 +42,18 @@ class ImageUpload extends Component {
                         this.setState({url})
                     })
                     .then(() => this.onImageUploaded())
+                    .then(() => document.querySelector("#progress").classList.toggle("hidden"))
             }
         )
+    }
+
+    onImageUploaded = () => {
+        this.props.imageUploaded(this.state.url)
     }
 
     render() {
         return (
             <React.Fragment>
-                {/* <progress value={this.state.progress} max="100" /><br /> */}
-                <label htmlFor="image">Add a Photo</label>
                 <div id="imageUpload" className="behaviorListItem">
                     <input
                         className="form-control"
@@ -62,6 +65,7 @@ class ImageUpload extends Component {
                         onClick={this.handleUpload}
                     >Upload</Button>
                 </div>
+                    <div id="progress" className="hidden">Upload Complete!</div>
             </React.Fragment>
         )
     }

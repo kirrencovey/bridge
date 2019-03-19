@@ -81,7 +81,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btnContainer > button {
-    width: 33%;
+    width: 50%;
+}
+
+.cardContents {
+    display: flex;
+}
+
+.cardTextContents {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
 }
 
 /* IMAGE STYLES */
@@ -89,13 +99,13 @@ h1, h2, h3, h4, h5, h6 {
 .cardImage,
 .detailImage {
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 10px;
     align-self: center;
 }
 
 .cardImage {
-    height: 150px;
-    width: auto;
+    height: auto;
+    width: 33%;
 }
 
 .detailImage {

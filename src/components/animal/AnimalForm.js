@@ -87,25 +87,9 @@ export default class AnimalForm extends Component {
             />
           </div>
 
+          <label htmlFor="image">Add a Photo?</label>
           <ImageUpload imageUploaded={this.imageUploaded.bind(this)}/>
 
-
-          {/* REACTSTRAP file upload vs another type?? */}
-          {/* <FormGroup>
-          <Label for="image">Add a Photo</Label>
-          <CustomInput type="file" id="image" name="image" label="Choose a photo" />
-          </FormGroup> */}
-          {/* <div className="form-group">
-            <label htmlFor="image">Image TODO image upload?</label>
-            <input
-              type="text"
-              className="form-control"
-              onChange={this.handleFieldChange}
-              id="image"
-              placeholder="TODO how to upload image??"
-            />
-          </div> */}
-          {/* ***************************************** */}
           <Button color="info"
             type="submit"
             onClick={this.constructNewAnimal}
