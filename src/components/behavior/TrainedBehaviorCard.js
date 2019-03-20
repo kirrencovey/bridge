@@ -15,20 +15,21 @@ export default class TrainedBehaviorCard extends Component {
                 <div className="btnContainer">
                 <Button color="info"
                     type="button"
-                    className="btn btn-success"
+                    className="btn-details"
                     onClick={() => {
                         this.props.history.push(`/sessions/${this.props.session.id}`)
                     }}
                     >Details</Button>
                     <Button color="secondary"
                     type="button"
+                    className="btn-delete"
                     onClick={() => {
                         let confirm = window.confirm("Are you sure you want to delete this session?")
                         if (confirm === true) {
                             this.props.deleteSession(this.props.session.id)
                         }
                     }}
-                >Delete</Button>
+                ><i className="fas fa-trash-alt"></i></Button>
                 </div>
             </React.Fragment>
         )

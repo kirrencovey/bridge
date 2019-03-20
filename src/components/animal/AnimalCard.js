@@ -12,12 +12,14 @@ export default class AnimalCard extends Component {
                         <div className="cardSubtitle">{this.props.animal.species}</div>
                         <div className="btnContainer">
                             <Button color="info"
+                                className="btn-details"
                                 type="button"
                                 onClick={() => {
                                     this.props.history.push(`/animals/${this.props.animal.id}`)
                                 }}
                             >Details</Button>
                             <Button color="secondary"
+                                className="btn-delete"
                                 type="button"
                                 onClick={() => {
                                     let confirm = window.confirm("Are you sure you want to delete this animal? Doing so will delete all associated training records.")
@@ -25,7 +27,7 @@ export default class AnimalCard extends Component {
                                         this.props.deleteAnimal(this.props.animal.id)
                                     }
                                 }}
-                            >Delete</Button>
+                            ><i className="fas fa-trash-alt"></i></Button>
                         </div>
                     </div>
                 </div>

@@ -53,16 +53,16 @@ export default class BehaviorList extends Component {
                         .map(behavior => {
                             return <div key={behavior.id} className="behaviorListItem">
                                 <div>{behavior.behavior.name}</div>
-                                <Button color="info"
+                                <Button color="secondary"
                                     type="button"
-                                    className="btn btn-success animalBehaviorBtn"
+                                    className="btn animalBehaviorBtn"
                                     onClick={() => {
                                         let confirm = window.confirm("Are you sure you want to remove this behavior?")
                                         if (confirm === true) {
                                             this.props.deleteAssignedBehavior(behavior.id)
                                         }
                                     }}
-                                >Remove</Button>
+                                ><i className="fas fa-minus"></i></Button>
                             </div>
                         })
                 }
@@ -92,10 +92,11 @@ export default class BehaviorList extends Component {
                         }
                     </Input>
                     <Button color="info"
+                        id="animalAddBehavior"
                         type="button"
                         className="btn btn-success animalBehaviorBtn"
                         onClick={this.constructNewAssignedBehavior}
-                    >Add</Button>
+                    ><i class="fas fa-plus"></i></Button>
                 </FormGroup>
 
             </React.Fragment>

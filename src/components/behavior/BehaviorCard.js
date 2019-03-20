@@ -11,20 +11,21 @@ export default class BehaviorCard extends Component {
                 <div className="btnContainer">
                 <Button color="info"
                     type="button"
-                    className="btn btn-success"
+                    className="btn-edit"
                     onClick={() => {
                         this.props.history.push(`/behaviors/${this.props.behavior.id}/edit`)
                     }}
-                >Edit</Button>
+                ><i className="fas fa-edit"></i></Button>
                 <Button color="secondary"
                     type="button"
+                    className=".btn-delete"
                     onClick={() => {
                         let confirm = window.confirm("Are you sure you want to delete this behavior? Doing so will delete all associated training records.")
                         if (confirm === true) {
                             this.props.deleteBehavior(this.props.behavior.id)
                         }
                     }}
-                >Delete</Button>
+                ><i className="fas fa-trash-alt"></i></Button>
                 </div>
             </React.Fragment>
         )
