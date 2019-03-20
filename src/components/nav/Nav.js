@@ -34,7 +34,6 @@ class Navigation extends Component {
   logout = () => {
     sessionStorage.clear("credentials")
     this.props.setAuth()
-    this.props.history.push("/")
   }
 
   render() {
@@ -56,7 +55,7 @@ class Navigation extends Component {
                       <NavLink href="/sessions">Training History</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="/sessions" onClick={this.logout}>Logout</NavLink>
+                      <NavLink href="/" onClick={this.logout}>Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>
