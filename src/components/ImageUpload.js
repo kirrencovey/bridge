@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { Button } from 'reactstrap'
 import { storage } from '../firebase'
 
+import AvatarImageCropper from 'react-avatar-image-cropper'
+
 
 class ImageUpload extends Component {
     constructor (props) {
@@ -13,7 +15,13 @@ class ImageUpload extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleUpload = this.handleUpload.bind(this)
+
     }
+
+    actions = [
+        <button key={0}>test_cancel</button>,
+        <button key={1} onClick={this.handleUpload}>test_apply</button>,
+    ]
 
     handleChange = evt => {
         if(evt.target.files[0]) {
@@ -51,6 +59,19 @@ class ImageUpload extends Component {
         this.props.imageUploaded(this.state.url)
     }
 
+
+    apply = (file) => {
+        // handle the blob file you want
+        // such as get the image src
+        var src = window.URL.createObjectURL(file);
+    }
+
+    errorHandler = (type) => {
+        console.log(type);
+    }
+
+
+
     render() {
         return (
             <React.Fragment>
@@ -66,6 +87,16 @@ class ImageUpload extends Component {
                     >Upload</Button>
                 </div>
                     <div id="progress" className="hidden">Upload Complete!</div>
+
+
+                    <div style={{ width: '200px', height: '200px', margin: 'auto', border: '1px solid black' }}>
+                        <AvatarImageCropper apply={this.apply}
+                            errorHandler={this.errorHandler}
+                            actions={this.actions}
+                            handleUpload={this.handleUpload} />
+
+                    </div>
+
             </React.Fragment>
         )
     }
