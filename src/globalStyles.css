@@ -194,3 +194,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+#cropper-container {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border: 1px solid black;
+    margin-bottom: 70px;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+    margin: 48px 0 0 48px;
+}

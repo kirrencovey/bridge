@@ -17,11 +17,7 @@ class ImageUpload extends Component {
         this.handleUpload = this.handleUpload.bind(this)
 
     }
-
-    actions = [
-        <button key={0}>test_cancel</button>,
-        <button key={1} onClick={this.handleUpload}>test_apply</button>,
-    ]
+    
 
     handleChange = evt => {
         if(evt.target.files[0]) {
@@ -30,9 +26,11 @@ class ImageUpload extends Component {
         }
     }
 
-    handleUpload = () => {
-        const {image} = this.state
-        const uploadTask = storage.ref(`images/${image.name}`).put(image)
+    handleUpload = (imageBlob) => {
+        document.querySelector("#cropper-container").innerHTML=`<img class="spinner" src="/images/spinner.gif" />`
+        const dateTime = Date.parse(new Date())
+        const imagePath = `${dateTime}-${imageBlob.name}`
+        const uploadTask = storage.ref(`images/${imagePath}`).put(imageBlob)
         uploadTask.on("state_changed",
             (snapshot) => {
                 // progress function
@@ -41,16 +39,18 @@ class ImageUpload extends Component {
             },
             (error) => {
                 // error function
-                console.log(error)
+                window.alert("Something went wrong. Try another image.")
             },
             () => {
                 // complete function
-                storage.ref("images").child(image.name).getDownloadURL()
+                storage.ref("images").child(imagePath).getDownloadURL()
                     .then(url => {
                         this.setState({url})
                     })
                     .then(() => this.onImageUploaded())
-                    .then(() => document.querySelector("#progress").classList.toggle("hidden"))
+                    .then(() => {
+                        document.querySelector("#cropper-container").innerHTML=`<img src="${this.state.url}" />`
+                    })
             }
         )
     }
@@ -76,24 +76,23 @@ class ImageUpload extends Component {
         return (
             <React.Fragment>
                 <div id="imageUpload" className="behaviorListItem">
-                    <input
+                    {/* <input
                         className="form-control"
                         type="file"
                         onChange={this.handleChange}
-                    />
-                    <Button
+                    /> */}
+                    {/* <Button
                         color="secondary"
                         onClick={this.handleUpload}
-                    >Upload</Button>
+                    >Upload</Button> */}
                 </div>
-                    <div id="progress" className="hidden">Upload Complete!</div>
 
-
-                    <div style={{ width: '200px', height: '200px', margin: 'auto', border: '1px solid black' }}>
-                        <AvatarImageCropper apply={this.apply}
+                    <div id="cropper-container">
+                        <AvatarImageCropper
                             errorHandler={this.errorHandler}
-                            actions={this.actions}
-                            handleUpload={this.handleUpload} />
+                            // actions={this.actions}
+                            apply={this.handleUpload} 
+                            />
 
                     </div>
 
