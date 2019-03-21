@@ -17,7 +17,7 @@ class ImageUpload extends Component {
         this.handleUpload = this.handleUpload.bind(this)
 
     }
-    
+
 
     handleChange = evt => {
         if(evt.target.files[0]) {
@@ -39,7 +39,6 @@ class ImageUpload extends Component {
             },
             (error) => {
                 // error function
-                window.alert("Something went wrong. Try another image.")
             },
             () => {
                 // complete function
@@ -59,42 +58,20 @@ class ImageUpload extends Component {
         this.props.imageUploaded(this.state.url)
     }
 
-
-    apply = (file) => {
-        // handle the blob file you want
-        // such as get the image src
-        var src = window.URL.createObjectURL(file);
-    }
-
     errorHandler = (type) => {
-        console.log(type);
+        window.alert("Something went wrong. Try another image.")
     }
-
-
 
     render() {
         return (
             <React.Fragment>
-                <div id="imageUpload" className="behaviorListItem">
-                    {/* <input
-                        className="form-control"
-                        type="file"
-                        onChange={this.handleChange}
-                    /> */}
-                    {/* <Button
-                        color="secondary"
-                        onClick={this.handleUpload}
-                    >Upload</Button> */}
+
+                <div id="cropper-container">
+                    <AvatarImageCropper
+                        errorHandler={this.errorHandler}
+                        apply={this.handleUpload}
+                        />
                 </div>
-
-                    <div id="cropper-container">
-                        <AvatarImageCropper
-                            errorHandler={this.errorHandler}
-                            // actions={this.actions}
-                            apply={this.handleUpload} 
-                            />
-
-                    </div>
 
             </React.Fragment>
         )
