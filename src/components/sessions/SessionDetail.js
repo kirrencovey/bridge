@@ -18,7 +18,9 @@ export default class SessionDetail extends Component {
                 {
                     thisSessionBehaviors.map(sb =>
                         <div className="innerCard" key={sb.id}>
-                            <div className="behaviorCardHeading">{sb.behavior.name}: {sb.rating}/5
+                            <div className="cardHeading behaviorCardHeading">
+                            <div className="cardTitle">{sb.behavior.name}</div>
+                            <div className="cardTitle">{sb.rating}/5</div>
                             </div>
                             {sb.notes}
                         </div>

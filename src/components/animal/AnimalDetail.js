@@ -21,12 +21,12 @@ export default class AnimalDetail extends Component {
                 <h5>Notes</h5>
                 {animal.notes}<br/>
                 <Button color="info"
-                    id="animalAddBehavior"
+                    className="btn-edit-animal-details"
                     type="button"
                     onClick={() => {
                         this.props.history.push(`/animals/${animal.id}/edit`)
                     }}
-                    >Edit Details</Button>
+                    ><i className="fas fa-edit"></i></Button>
                     </div>
                 <div className="card">
                 <h5>Behaviors</h5>
