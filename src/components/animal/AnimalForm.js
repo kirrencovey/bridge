@@ -53,7 +53,7 @@ export default class AnimalForm extends Component {
 
   render() {
     return (
-        <form className="animalForm formContainer">
+        <div className="animalForm formContainer">
           <h2 className="formTitle">New Animal</h2>
           <div className="form-group">
             <label htmlFor="animalName">Name</label>
@@ -87,7 +87,7 @@ export default class AnimalForm extends Component {
             />
           </div>
 
-          <label htmlFor="image">Add a Photo?</label>
+          <label htmlFor="image">Add a Photo</label>
           <ImageUpload imageUploaded={this.imageUploaded.bind(this)}/>
 
           <Button color="info"
@@ -97,7 +97,7 @@ export default class AnimalForm extends Component {
           >
             Submit
           </Button>
-        </form>
+        </div>
     )
   }
 }
