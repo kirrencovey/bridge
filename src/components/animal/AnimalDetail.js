@@ -41,7 +41,8 @@ export default class AnimalDetail extends Component {
                 <SessionList animal={animal}
                         history={this.props.history}
                         sessions={this.props.sessions}
-                        sessionBehaviors={this.props.sessionBehaviors}/>
+                        sessionBehaviors={this.props.sessionBehaviors}
+                        deleteSession={this.props.deleteSession} />
                         </div>
             </div>
         )

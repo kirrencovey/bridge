@@ -68,7 +68,7 @@ export default class AnimalEdit extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="animalEditForm formContainer">
+        <div className="animalEditForm formContainer">
           <h2 className="formTitle">Edit Animal</h2>
           <div className="form-group">
             <label htmlFor="animalName">Name</label>
@@ -112,7 +112,7 @@ export default class AnimalEdit extends Component {
           >
             Submit
           </Button>
-        </form>
+        </div>
       </React.Fragment>
     )
   }

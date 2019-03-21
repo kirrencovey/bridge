@@ -15,7 +15,8 @@ export default class SessionList extends Component {
                                 <div className="date">{session.date}</div>
                                 <TrainedBehaviorCard session={session}
                                         history={this.props.history}
-                                        sessionBehaviors={this.props.sessionBehaviors}/>
+                                        sessionBehaviors={this.props.sessionBehaviors}
+                                        deleteSession={this.props.deleteSession} />
                             </div>)
                 }
                 <Button color="info"

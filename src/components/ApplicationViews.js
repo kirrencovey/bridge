@@ -159,7 +159,8 @@ class ApplicationViews extends Component {
                       assignedBehaviors={this.state.assignedBehaviors}
                       sessionBehaviors={this.state.sessionBehaviors}
                       addAssignedBehavior={this.addAssignedBehavior}
-                      deleteAssignedBehavior={this.deleteAssignedBehavior} />
+                      deleteAssignedBehavior={this.deleteAssignedBehavior}
+                      deleteSession={this.deleteSession} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEdit {...props}

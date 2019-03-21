@@ -96,7 +96,7 @@ export default class BehaviorList extends Component {
                         type="button"
                         className="btn btn-success animalBehaviorBtn"
                         onClick={this.constructNewAssignedBehavior}
-                    ><i class="fas fa-plus"></i></Button>
+                    ><i className="fas fa-plus"></i></Button>
                 </FormGroup>
 
             </React.Fragment>
