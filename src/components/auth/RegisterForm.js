@@ -100,7 +100,7 @@ render() {
           </Col>
           <Col>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
+              <Label for="password">Password</Label>
               <Input
                 onChange={this.handleFieldChange}
                 type="password"
@@ -110,6 +110,19 @@ render() {
               />
             </FormGroup>
           </Col>
+          {/* TODO CONFIRM PASSWORD */}
+          {/* <Col>
+            <FormGroup>
+              <Label for="confirmPassword">Confirm Password</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="password"
+                id="confirmPassword"
+                placeholder="**********"
+                required=""
+              />
+            </FormGroup>
+          </Col> */}
           <Button color="info" type="submit" onClick={this.handleRegister}>
             Register
           </Button>
