@@ -13,7 +13,7 @@ export default class BehaviorList extends Component {
       }
   
         this.toggleAddModal = this.toggleAddModal.bind(this)
-        // this.toggleDeleteModal = this.toggleDeleteModal.bind(this)
+        this.toggleDeleteModal = this.toggleDeleteModal.bind(this)
     }
   
     toggleAddModal() {
@@ -22,11 +22,11 @@ export default class BehaviorList extends Component {
       }))
     }
   
-    // toggleDeleteModal() {
-    //   this.setState(prevState => ({
-    //     deleteModal: !prevState.deleteModal
-    //   }))
-    // }
+    toggleDeleteModal() {
+      this.setState(prevState => ({
+        deleteModal: !prevState.deleteModal
+      }))
+    }
 
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
