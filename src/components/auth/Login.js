@@ -2,17 +2,25 @@ import React, { Component } from "react"
 import "./login.css"
 import UserManager from "../../modules/UserManager"
 import { Link } from 'react-router-dom'
-import {
-Container, Col, Form,
-FormGroup, Label, Input,
-Button,
-} from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
 
 export default class Login extends Component {
   // Set initial state
-  state = {
-    password: "",
-    email: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+      password: "",
+      email: "",
+      modal: false
+    }
+
+      this.toggle = this.toggle.bind(this)
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }))
   }
 
   goToRegister = evt => {
@@ -44,7 +52,7 @@ export default class Login extends Component {
         }
       )
     } else {
-      alert("Please Fill Out Form 😬!")
+      this.toggle()
     }
   }
 
@@ -56,6 +64,16 @@ export default class Login extends Component {
         <h1 className="homeTitle">bridge!</h1>
         <div className="homeText">an app for animal trainers</div>
 
+      {/* error modal */}
+      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Oops!</ModalHeader>
+        <ModalBody>
+            Please fill out all fields!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggle}>OK</Button>
+        </ModalFooter>
+      </Modal>
 
       <div className="formContainer" id="loginForm">
         <h2 className="formTitle">Sign In</h2>

@@ -1,21 +1,31 @@
 import React, { Component } from "react"
 // import { Button } from 'reactstrap'
 import UserManager from '../../modules/UserManager'
-import {
-  Container, Col, Form,
-  FormGroup, Label, Input,
-  Button,
-  } from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
+
 
 export default class Register extends Component {
 
      // Set initial state
-  state = {
-    firstName: "",
+     constructor(props) {
+      super(props)
+      this.state = {
+        firstName: "",
     lastName: "",
     password: "",
-    username: ""
-  }
+    username: "",
+        modal: false
+      }
+
+        this.toggle = this.toggle.bind(this)
+    }
+
+    toggle() {
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }))
+    }
+
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -47,7 +57,7 @@ export default class Register extends Component {
             }
           })
         } else {
-          alert("Please Fill Out Form 😬!")
+          this.toggle()
         }
       }
 
@@ -57,6 +67,17 @@ render() {
 
       <h1 className="homeTitle">bridge!</h1>
       <div className="homeText">an app for animal trainers</div>
+
+      {/* error modal */}
+      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Oops!</ModalHeader>
+        <ModalBody>
+            Please fill out all fields!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggle}>OK</Button>
+        </ModalFooter>
+      </Modal>
 
       <div className="formContainer" id="registerForm">
         <h2 className="formTitle">Register</h2>
