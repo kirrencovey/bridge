@@ -66,7 +66,7 @@ render() {
             Behavior name and summary are both required.
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          <Button color="secondary" onClick={this.toggle}>OK</Button>
         </ModalFooter>
       </Modal>
 

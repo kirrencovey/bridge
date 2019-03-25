@@ -75,7 +75,7 @@ export default class AnimalForm extends Component {
                   Animal name and species are both required.
               </ModalBody>
               <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button color="secondary" onClick={this.toggle}>OK</Button>
               </ModalFooter>
             </Modal>
 
