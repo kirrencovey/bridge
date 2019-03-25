@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Route, Redirect } from "react-router-dom"
 import Login from "./auth/Login"
-import HomePage from "./home/HomePage"
+import HomePage from "./user/HomePage"
 import AnimalPage from "./animal/AnimalPage"
 import BehaviorPage from "./behavior/BehaviorPage"
 import SessionPage from "./sessions/SessionPage"
@@ -16,6 +16,7 @@ import SessionEdit from "./sessions/SessionEdit"
 import AnimalManager from "../modules/AnimalManager"
 import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
+import UserSettings from "./user/UserSettings";
 
 class ApplicationViews extends Component {
   activeUserId = this.props.activeUserId()
@@ -130,6 +131,15 @@ class ApplicationViews extends Component {
         <Route exact path="/" render={props => {
           if (this.isAuthenticated()) {
             return <HomePage {...props}/>
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/settings" render={props => {
+          if (this.isAuthenticated()) {
+            return <UserSettings {...props}
+                      activeUser={this.state.activeUser} />
           } else {
             return <Redirect to="/login" />
           }

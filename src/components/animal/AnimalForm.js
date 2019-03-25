@@ -1,18 +1,29 @@
 import React, { Component } from "react"
-import { Button } from 'reactstrap'
-import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ImageUpload from "../ImageUpload";
 
 
 
 export default class AnimalForm extends Component {
   // Set initial state
-  state = {
-    userId: "",
-    animalName: "",
-    species: "",
-    notes: "",
-    image: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+        userId: "",
+        animalName: "",
+        species: "",
+        notes: "",
+        image: "",
+      modal: false
+    }
+
+      this.toggle = this.toggle.bind(this)
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }))
   }
 
   // Update state whenever an input field is edited
@@ -30,7 +41,7 @@ export default class AnimalForm extends Component {
     evt.preventDefault()
     // Ensure name & species are filled in. Notes and image are optional.
     if (this.state.animalName === "" || this.state.species === "") {
-      window.alert("Please enter the animal's name and species")
+      this.toggle()
     }else {
       const animal = {
         userId: this.props.activeUser.id,
@@ -53,8 +64,21 @@ export default class AnimalForm extends Component {
 
   render() {
     return (
+
         <div className="animalForm formContainer">
           <h2 className="formTitle">New Animal</h2>
+
+          {/* error modal */}
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>Oops!</ModalHeader>
+              <ModalBody>
+                  Animal name and species are both required.
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle}>OK</Button>
+              </ModalFooter>
+            </Modal>
+
           <div className="form-group">
             <label htmlFor="animalName">Name</label>
             <input

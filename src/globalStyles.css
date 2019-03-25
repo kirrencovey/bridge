@@ -4,6 +4,7 @@ body {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    /* font-size: .8em; */
 }
 
 .btn {
@@ -34,6 +35,10 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
     font-family: 'Montserrat', sans-serif;
 
+}
+
+.smallFont {
+    font-size: .8em;
 }
 
 
@@ -228,4 +233,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 100px;
     height: 100px;
     margin: 48px 0 0 48px;
+}
+
+#cropper {
+    margin-top: 10px;
 }

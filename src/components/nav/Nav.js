@@ -55,6 +55,9 @@ class Navigation extends Component {
                       <NavLink href="/sessions">Training History</NavLink>
                     </NavItem>
                     <NavItem>
+                      <NavLink href="/settings">Settings</NavLink>
+                    </NavItem>
+                    <NavItem>
                       <NavLink href="/" onClick={this.logout}>Logout</NavLink>
                     </NavItem>
                   </Nav>

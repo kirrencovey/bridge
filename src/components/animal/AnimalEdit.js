@@ -103,6 +103,7 @@ export default class AnimalEdit extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="image">Choose a New Photo?</label>
+            <div className="smallFont">(Skipping this step will not remove an existing photo)</div>
             <ImageUpload imageUploaded={this.imageUploaded.bind(this)}/>
           </div>
           <Button color="info"
