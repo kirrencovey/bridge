@@ -1,3 +1,3 @@
 export default {
-    remoteURL: "http://localhost:3003"
+    remoteURL: "http://127.0.0.1:8000"
 }

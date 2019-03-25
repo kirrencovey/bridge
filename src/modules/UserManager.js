@@ -4,9 +4,19 @@ import APIManager from "./APIManager"
 export default Object.create(APIManager, {
   searchEP: {
     value: function (email, password) {
+
     return fetch(
-      `${Settings.remoteURL}/users?email=${email}&password=${password}`
-    ).then(e => e.json())
+      `${Settings.remoteURL}/login`,
+        {
+          method: 'POST',
+          body: JSON.stringify({email, password}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+    ).then(e => {
+      return e.json();
+    })
   }
 },
   searchEmail: {
