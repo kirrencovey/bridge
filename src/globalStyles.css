@@ -59,9 +59,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: .25rem .75rem;
 }
 
-#contactEmail {
+.emphasize {
     font-weight: 500;
     font-size: 1.1em;
+}
+
+.deemphasize {
+    font-weight: 300;
+    font-size: .7em;
 }
 
 /* CARD STYLES */
