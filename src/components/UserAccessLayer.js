@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Navigation from "./nav/Nav"
 import ApplicationViews from "./ApplicationViews"
 import UserManager from "../modules/UserManager"
+import Footer from "./nav/Footer";
 
 export default class UserAccessLayer extends Component {
   state = {
@@ -26,8 +27,8 @@ export default class UserAccessLayer extends Component {
         <Navigation setAuth={this.props.setAuth} history={this.props.history} activeUser={this.state.activeUser} />
         <ApplicationViews
           activeUserId={this.activeUserId}
-          activeUser={this.state.activeUser}
-        />
+          activeUser={this.state.activeUser} />
+        <Footer />
       </React.Fragment>
     )
   }
