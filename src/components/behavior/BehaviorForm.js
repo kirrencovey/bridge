@@ -1,15 +1,27 @@
 import React, { Component } from "react"
-import { Button } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 export default class BehaviorForm extends Component {
 
 // Set initial state
-state = {
-  userId: "",
-  behaviorName: "",
-  summary: ""
-};
+constructor(props) {
+  super(props)
+  this.state = {
+    userId: "",
+    behaviorName: "",
+    summary: "",
+    modal: false
+  }
+
+    this.toggle = this.toggle.bind(this)
+}
+
+toggle() {
+  this.setState(prevState => ({
+    modal: !prevState.modal
+  }))
+}
 
 // Update state whenever an input field is edited
 handleFieldChange = evt => {
@@ -26,7 +38,7 @@ constructNewBehavior = evt => {
   evt.preventDefault()
   // Ensure name & summary are filled in.
   if (this.state.behaviorName === "" || this.state.summary === "") {
-    window.alert("Please enter the behavior name and summary")
+    this.toggle()
   }else {
     const behavior = {
       userId: this.props.activeUser.id,
@@ -46,6 +58,18 @@ render() {
     <React.Fragment>
       <form className="behaviorForm formContainer">
       <h2 className="formTitle">New Behavior</h2>
+
+      {/* error modal */}
+      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Oops!</ModalHeader>
+        <ModalBody>
+            Behavior name and summary are both required.
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+
         <div className="form-group">
           <label htmlFor="behaviorName">Name</label>
           <input

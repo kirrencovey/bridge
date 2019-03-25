@@ -1,20 +1,33 @@
 import React, { Component } from "react"
 import "../../globalStyles.css"
-import { Button, Input, Label } from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 
 
 export default class SessionForm extends Component {
     // Set initial state
-  state = {
-    userId: "",
-    animalId: "",
-    date: "",
-    sessionId: "",
-    behaviorId: "",
-    rating: "",
-    notes: ""
-  }
+    constructor(props) {
+      super(props)
+      this.state = {
+        userId: "",
+        animalId: "",
+        date: "",
+        sessionId: "",
+        behaviorId: "",
+        rating: "",
+        notes: "" ,
+        modal: false
+      }
+    
+        this.toggle = this.toggle.bind(this)
+    }
+    
+    toggle() {
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }))
+    }
+
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -30,8 +43,8 @@ export default class SessionForm extends Component {
   constructNewSession = evt => {
     evt.preventDefault()
     // Ensure name & species are filled in. Notes and image are optional.
-    if (this.state.animalId === "") {
-      window.alert("Please choose an animal to train")
+    if (this.state.animalId === "" || this.state.date === "") {
+      this.toggle()
     }else {
       const session = {
         userId: this.props.activeUser.id,
@@ -91,6 +104,18 @@ export default class SessionForm extends Component {
           {/* session form */}
         <form className="sessionForm formContainer" id="sessionForm">
         <h2 className="formTitle">New Training Session</h2>
+
+        {/* error modal */}
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Oops!</ModalHeader>
+          <ModalBody>
+              Animal and date fields are both required!
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+
         <div className="form-group">
             <label htmlFor="animal">Animal to Train</label>
             <Input
@@ -146,6 +171,9 @@ export default class SessionForm extends Component {
         {/* sessionBehavior Form */}
         <form className="formContainer trainingForm hidden" id="trainingForm">
         <h2 className="formTitle">Training {this.state.animalName}</h2>
+
+
+
         <div className="form-group">
             <label htmlFor="behavior">Behavior</label>
             <Input
