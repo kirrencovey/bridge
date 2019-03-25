@@ -107,7 +107,10 @@ export default class SessionBehaviorForm extends Component {
                     if (nameA > nameB) {
                         return 1;
                     }})
-                  .map(b => (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>))
+                  .map(b => {
+                      console.log(b)
+                      return (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>)
+                  })
               }
             </Input>
           </div>
