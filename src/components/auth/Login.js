@@ -2,17 +2,33 @@ import React, { Component } from "react"
 import "./login.css"
 import UserManager from "../../modules/UserManager"
 import { Link } from 'react-router-dom'
-import {
-Container, Col, Form,
-FormGroup, Label, Input,
-Button,
-} from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
 
 export default class Login extends Component {
   // Set initial state
-  state = {
-    password: "",
-    email: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+      password: "",
+      email: "",
+      emptyModal: false,
+      wrongModal: false
+    }
+
+      this.toggleEmptyFieldModal = this.toggleEmptyFieldModal.bind(this)
+      this.toggleWrongModal = this.toggleWrongModal.bind(this)
+  }
+
+  toggleEmptyFieldModal() {
+    this.setState(prevState => ({
+      emptyModal: !prevState.emptyModal
+    }))
+  }
+
+  toggleWrongModal() {
+    this.setState(prevState => ({
+      wrongModal: !prevState.wrongModal
+    }))
   }
 
   goToRegister = evt => {
@@ -35,7 +51,7 @@ export default class Login extends Component {
       UserManager.searchEP(this.state.email, this.state.password).then(
         user => {
           if (!user.length) {
-            alert("Wrong email or password!")
+            this.toggleWrongModal()
           } else {
             sessionStorage.setItem("credentials", parseInt(user[0].id))
             this.props.setAuth()
@@ -44,18 +60,36 @@ export default class Login extends Component {
         }
       )
     } else {
-      alert("Please Fill Out Form 😬!")
+      this.toggleEmptyFieldModal()
     }
   }
 
 
-  //TO DO make separate login and register forms - register takes first and last name
   render() {
     return (
       <div className="homeCard">
         <h1 className="homeTitle">bridge!</h1>
         <div className="homeText">an app for animal trainers</div>
 
+      {/* error modals */}
+      <Modal isOpen={this.state.emptyModal} toggle={this.toggleEmptyFieldModal} className={this.props.className}>
+        <ModalHeader toggleEmptyFieldModal={this.toggleEmptyFieldModal}>Oops!</ModalHeader>
+        <ModalBody>
+            Please fill out all fields!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggleEmptyFieldModal}>OK</Button>
+        </ModalFooter>
+      </Modal>
+      <Modal isOpen={this.state.wrongModal} toggle={this.toggleWrongModal} className={this.props.className}>
+        <ModalHeader toggleWrongModal={this.toggleWrongModal}>Oops!</ModalHeader>
+        <ModalBody>
+            Wrong email or password!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggleWrongModal}>OK</Button>
+        </ModalFooter>
+      </Modal>
 
       <div className="formContainer" id="loginForm">
         <h2 className="formTitle">Sign In</h2>

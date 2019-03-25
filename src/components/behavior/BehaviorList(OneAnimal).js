@@ -1,11 +1,31 @@
 import React, { Component } from "react"
-import { Button, FormGroup, Input } from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
 
 export default class BehaviorList extends Component {
 
     // Set initial state
-    state = {
-        behaviorId: ""
+    constructor(props) {
+        super(props)
+        this.state = {
+          behaviorId: "",
+          addModal: false,
+          deleteModal: false
+      }
+  
+        this.toggleAddModal = this.toggleAddModal.bind(this)
+        this.toggleDeleteModal = this.toggleDeleteModal.bind(this)
+    }
+  
+    toggleAddModal() {
+      this.setState(prevState => ({
+        addModal: !prevState.addModal
+      }))
+    }
+  
+    toggleDeleteModal() {
+      this.setState(prevState => ({
+        deleteModal: !prevState.deleteModal
+      }))
     }
 
     // Update state whenever an input field is edited
@@ -19,7 +39,7 @@ export default class BehaviorList extends Component {
         evt.preventDefault()
         // Ensure a behavior has been chosen from the dropdown
         if (this.state.behaviorId === "") {
-            window.alert("Please choose a behavior to add")
+            this.toggleAddModal()
         } else {
           const assignedBehavior = {
             animalId: this.props.animal.id,
@@ -47,6 +67,19 @@ export default class BehaviorList extends Component {
         return (
 
             <React.Fragment>
+
+                {/* error modal */}
+                <Modal isOpen={this.state.addModal} toggle={this.toggleAddModal} className={this.props.className}>
+                    <ModalHeader toggleAddModal={this.toggleAddModal}>Oops!</ModalHeader>
+                    <ModalBody>
+                        Please choose a behavior to add
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="secondary" onClick={this.toggleAddModal}>OK</Button>
+                    </ModalFooter>
+                </Modal>
+
+
                 {/* Filter out current animal's behaviors, make list item for each */}
                 {
                     thisAnimalsBehaviors
@@ -57,12 +90,24 @@ export default class BehaviorList extends Component {
                                     type="button"
                                     className="btn animalBehaviorBtn"
                                     onClick={() => {
-                                        let confirm = window.confirm("Are you sure you want to remove this behavior?")
-                                        if (confirm === true) {
-                                            this.props.deleteAssignedBehavior(behavior.id)
-                                        }
+                                        this.toggleDeleteModal()
                                     }}
                                 ><i className="fas fa-minus"></i></Button>
+
+                                {/* confirm delete modal */}
+                                <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
+                                    <ModalHeader toggleDeleteModal={this.toggleDeleteModal}>Wait!</ModalHeader>
+                                    <ModalBody>
+                                        Are you sure you want to remove this behavior?
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    <Button color="info" onClick={() => {
+                                            this.props.deleteAssignedBehavior(behavior.id)
+                                            this.toggleDeleteModal()
+                                        }}>Delete</Button>
+                                    <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
+                                    </ModalFooter>
+                                </Modal>
                             </div>
                         })
                 }

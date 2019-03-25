@@ -1,21 +1,39 @@
 import React, { Component } from "react"
 // import { Button } from 'reactstrap'
 import UserManager from '../../modules/UserManager'
-import {
-  Container, Col, Form,
-  FormGroup, Label, Input,
-  Button,
-  } from 'reactstrap'
+import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
+
 
 export default class Register extends Component {
 
      // Set initial state
-  state = {
-    firstName: "",
-    lastName: "",
-    password: "",
-    username: ""
+     constructor(props) {
+      super(props)
+      this.state = {
+        firstName: "",
+        lastName: "",
+        password: "",
+        username: "",
+        emptyModal: false,
+        emailModal: false
+    }
+
+      this.toggleEmptyFieldModal = this.toggleEmptyFieldModal.bind(this)
+      this.toggleEmailModal = this.toggleEmailModal.bind(this)
   }
+
+  toggleEmptyFieldModal() {
+    this.setState(prevState => ({
+      emptyModal: !prevState.emptyModal
+    }))
+  }
+
+  toggleEmailModal() {
+    this.setState(prevState => ({
+      emailModal: !prevState.emailModal
+    }))
+  }
+
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -36,7 +54,7 @@ export default class Register extends Component {
           //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
           UserManager.searchEmail(this.state.email).then(users => {
             if (users.length) {
-              alert(`That email is already in use!`)
+              this.toggleEmailModal()
             } else {
               //If email doesn't already exist, adds new user and sets state of active user
               UserManager.add(newUser, "users").then(user => {
@@ -47,7 +65,7 @@ export default class Register extends Component {
             }
           })
         } else {
-          alert("Please Fill Out Form 😬!")
+          this.toggleEmptyFieldModal()
         }
       }
 
@@ -57,6 +75,26 @@ render() {
 
       <h1 className="homeTitle">bridge!</h1>
       <div className="homeText">an app for animal trainers</div>
+
+      {/* error modals */}
+      <Modal isOpen={this.state.emptyModal} toggle={this.toggleEmptyFieldModal} className={this.props.className}>
+        <ModalHeader toggleEmptyFieldModal={this.toggleEmptyFieldModal}>Oops!</ModalHeader>
+        <ModalBody>
+            Please fill out all fields!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggleEmptyFieldModal}>OK</Button>
+        </ModalFooter>
+      </Modal>
+      <Modal isOpen={this.state.emailModal} toggle={this.toggleEmailModal} className={this.props.className}>
+        <ModalHeader toggleEmailModal={this.toggleEmailModal}>Oops!</ModalHeader>
+        <ModalBody>
+            This email is already in use!
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={this.toggleEmailModal}>OK</Button>
+        </ModalFooter>
+      </Modal>
 
       <div className="formContainer" id="registerForm">
         <h2 className="formTitle">Register</h2>
@@ -100,7 +138,7 @@ render() {
           </Col>
           <Col>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
+              <Label for="password">Password</Label>
               <Input
                 onChange={this.handleFieldChange}
                 type="password"
@@ -110,6 +148,19 @@ render() {
               />
             </FormGroup>
           </Col>
+          {/* TODO CONFIRM PASSWORD */}
+          {/* <Col>
+            <FormGroup>
+              <Label for="confirmPassword">Confirm Password</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="password"
+                id="confirmPassword"
+                placeholder="**********"
+                required=""
+              />
+            </FormGroup>
+          </Col> */}
           <Button color="info" type="submit" onClick={this.handleRegister}>
             Register
           </Button>
