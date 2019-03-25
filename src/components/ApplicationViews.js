@@ -16,7 +16,8 @@ import SessionEdit from "./sessions/SessionEdit"
 import AnimalManager from "../modules/AnimalManager"
 import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
-import UserSettings from "./user/UserSettings";
+import UserSettings from "./user/UserSettings"
+import Contact from "./user/Contact"
 
 class ApplicationViews extends Component {
   activeUserId = this.props.activeUserId()
@@ -131,6 +132,14 @@ class ApplicationViews extends Component {
         <Route exact path="/" render={props => {
           if (this.isAuthenticated()) {
             return <HomePage {...props}/>
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/contact" render={props => {
+          if (this.isAuthenticated()) {
+            return <Contact {...props}/>
           } else {
             return <Redirect to="/login" />
           }
