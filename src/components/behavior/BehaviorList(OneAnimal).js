@@ -68,7 +68,7 @@ export default class BehaviorList extends Component {
 
             <React.Fragment>
 
-                {/* error modals */}
+                {/* error modal */}
                 <Modal isOpen={this.state.addModal} toggle={this.toggleAddModal} className={this.props.className}>
                     <ModalHeader toggleAddModal={this.toggleAddModal}>Oops!</ModalHeader>
                     <ModalBody>
@@ -90,12 +90,24 @@ export default class BehaviorList extends Component {
                                     type="button"
                                     className="btn animalBehaviorBtn"
                                     onClick={() => {
-                                        let confirm = window.confirm("Are you sure you want to remove this behavior?")
-                                        if (confirm === true) {
-                                            this.props.deleteAssignedBehavior(behavior.id)
-                                        }
+                                        this.toggleDeleteModal()
                                     }}
                                 ><i className="fas fa-minus"></i></Button>
+
+                                {/* confirm delete modal */}
+                                <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
+                                    <ModalHeader toggleDeleteModal={this.toggleDeleteModal}>Wait!</ModalHeader>
+                                    <ModalBody>
+                                        Are you sure you want to remove this behavior?
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    <Button color="info" onClick={() => {
+                                            this.props.deleteAssignedBehavior(behavior.id)
+                                            this.toggleDeleteModal()
+                                        }}>Delete</Button>
+                                    <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
+                                    </ModalFooter>
+                                </Modal>
                             </div>
                         })
                 }
