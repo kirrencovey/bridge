@@ -78,24 +78,41 @@ export default class BehaviorList extends Component {
                     <Button color="secondary" onClick={this.toggleAddModal}>OK</Button>
                     </ModalFooter>
                 </Modal>
+                {/* confirm delete modal */}
+                <Modal behaviorId={this.state.behaviorId} isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
+                    <ModalHeader toggleDeleteModal={this.toggleDeleteModal}>Wait!</ModalHeader>
+                    <ModalBody>
+                        Are you sure you want to remove this behavior?
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="info" onClick={() => {
+                            this.props.deleteAssignedBehavior(this.state.behaviorId)
+                            this.toggleDeleteModal()
+                        }}>Delete</Button>
+                    <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
 
 
                 {/* Filter out current animal's behaviors, make list item for each */}
                 {
                     thisAnimalsBehaviors
                         .map(behavior => {
-                            return <div key={behavior.id} className="behaviorListItem">
+                            return <div  key={behavior.id} className="behaviorListItem">
                                 <div>{behavior.behavior.name}</div>
                                 <Button color="secondary"
                                     type="button"
                                     className="btn animalBehaviorBtn"
-                                    onClick={() => {
+                                    id={behavior.id}
+                                    onClick={(evt) => {
+                                        // Set state of behaviorId of the correct behavior from button id, when clicked
+                                        this.setState({behaviorId: evt.target.parentElement.id})
                                         this.toggleDeleteModal()
                                     }}
                                 ><i className="fas fa-minus"></i></Button>
 
                                 {/* confirm delete modal */}
-                                <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
+                                {/* <Modal id={`delete--${behavior.id}`} isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
                                     <ModalHeader toggleDeleteModal={this.toggleDeleteModal}>Wait!</ModalHeader>
                                     <ModalBody>
                                         Are you sure you want to remove this behavior?
@@ -107,7 +124,7 @@ export default class BehaviorList extends Component {
                                         }}>Delete</Button>
                                     <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
                                     </ModalFooter>
-                                </Modal>
+                                </Modal> */}
                             </div>
                         })
                 }
