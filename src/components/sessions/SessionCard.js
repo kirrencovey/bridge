@@ -1,10 +1,14 @@
 import React, { Component } from "react"
-import TrainedBehaviorCard from "../behavior/TrainedBehaviorCard";
+import TrainedBehaviorCard from "../behavior/TrainedBehaviorCard"
+
 
 export default class SessionCard extends Component {
+
+
     render() {
         return (
             <React.Fragment>
+
                 <div className="cardHeading">
                     <div className="cardTitle">{this.props.session.animal.name}</div>
                         <div className="date">{this.props.session.date}</div>
@@ -13,7 +17,9 @@ export default class SessionCard extends Component {
                 <TrainedBehaviorCard session={this.props.session}
                     history={this.props.history}
                     sessionBehaviors={this.props.sessionBehaviors}
-                    deleteSession={this.props.deleteSession} />
+                    deleteSession={this.props.deleteSession}
+                    toggle={this.toggle} />
+
             </React.Fragment>
         )
     }

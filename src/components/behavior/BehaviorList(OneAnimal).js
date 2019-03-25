@@ -110,21 +110,6 @@ export default class BehaviorList extends Component {
                                         this.toggleDeleteModal()
                                     }}
                                 ><i className="fas fa-minus"></i></Button>
-
-                                {/* confirm delete modal */}
-                                {/* <Modal id={`delete--${behavior.id}`} isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal} >
-                                    <ModalHeader toggleDeleteModal={this.toggleDeleteModal}>Wait!</ModalHeader>
-                                    <ModalBody>
-                                        Are you sure you want to remove this behavior?
-                                    </ModalBody>
-                                    <ModalFooter>
-                                    <Button color="info" onClick={() => {
-                                            this.props.deleteAssignedBehavior(behavior.id)
-                                            this.toggleDeleteModal()
-                                        }}>Delete</Button>
-                                    <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
-                                    </ModalFooter>
-                                </Modal> */}
                             </div>
                         })
                 }
