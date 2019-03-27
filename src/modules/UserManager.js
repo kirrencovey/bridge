@@ -6,7 +6,7 @@ export default Object.create(APIManager, {
     value: function (email, password) {
 
     return fetch(
-      `${Settings.remoteURL}/login`,
+      `${Settings.remoteURL}/token`,
         {
           method: 'POST',
           body: JSON.stringify({email, password}),

@@ -37,7 +37,7 @@ class ApplicationViews extends Component {
   // Function to add new animal to database. Invoked by submit button on AnimalForm
   addAnimal = animal =>
     AnimalManager.add(animal, "animals")
-        .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`))
+        .then(() => AnimalManager.getAll(`animals`))
         .then(animals =>
         this.setState({
             animals: animals
@@ -46,21 +46,21 @@ class ApplicationViews extends Component {
 
   updateAnimal = editedAnimalObject =>
     AnimalManager.update(editedAnimalObject, "animals")
-      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+      .then(() => AnimalManager.getAll(`animals`)
       .then(animals => {
           this.setState({ animals: animals })
         }))
 
   deleteAnimal = animalId => {
     AnimalManager.delete(animalId, "animals")
-      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+      .then(() => AnimalManager.getAll(`animals`)
       .then(animals => this.setState({ animals: animals })))
   }
 
   // Function to add new behavior to database. Invoked by submit button on BehaviorForm
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
-      .then(() => BehaviorManager.getAll(`behaviors/users/${this.activeUserId}`))
+      .then(() => BehaviorManager.getAll(`behaviors`))
       .then(behaviors => this.setState({ behaviors: behaviors }))
 
   // Function to assign a new behavior to an animal. Invoked on AnimalDetail>BehaviorList
@@ -82,7 +82,7 @@ class ApplicationViews extends Component {
 
   deleteBehavior = behaviorId => {
           BehaviorManager.delete(behaviorId, "behaviors")
-            .then(() => BehaviorManager.getAll(`behaviors/users/${this.activeUserId}`)
+            .then(() => BehaviorManager.getAll(`behaviors`)
             .then(behaviors => {this.setState({ behaviors: behaviors })}))
   }
 
@@ -108,11 +108,11 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {}
 
-    AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+    AnimalManager.getAll(`animals`)
     .then(animals => newState.animals = animals)
-    .then(() => BehaviorManager.getAll(`behaviors/users/${this.activeUserId}`))
+    .then(() => BehaviorManager.getAll(`behaviors`))
     .then(behaviors => newState.behaviors = behaviors)
-    .then(() => SessionManager.getAll(`users/${this.activeUserId}/sessions?expand=animal`))
+    .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => newState.sessions = sessions)
     .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)

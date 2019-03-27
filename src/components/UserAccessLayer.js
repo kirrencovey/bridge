@@ -10,13 +10,13 @@ export default class UserAccessLayer extends Component {
 
   //Uses active user ID to fetch active user object and sets state
   componentDidMount() {
-    UserManager.get(this.activeUserId(), "users").then(activeUser =>
+    UserManager.getAll("user").then(activeUser =>
       this.setState({ activeUser: activeUser })
     )
   }
 
   //Gets active user ID from session storage
-  activeUserId = () => parseInt(sessionStorage.getItem("credentials"))
+  activeUserId = () => sessionStorage.getItem("credentials")
 
 
   //Sets state for activeUser, passes to app views

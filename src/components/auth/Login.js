@@ -53,7 +53,7 @@ export default class Login extends Component {
           if (typeof response.error !== 'undefined') {
             this.toggleWrongModal()
           } else {
-            sessionStorage.setItem("credentials", parseInt(response.data.id))
+            sessionStorage.setItem("credentials", response.token)
             this.props.setAuth()
             this.props.history.push("/")
           }
