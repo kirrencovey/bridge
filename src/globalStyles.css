@@ -258,9 +258,8 @@ button {
     margin: 15px;
     max-width: 100%;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 5px;
     padding: 15px;
-    max-width: 100%;
 }
 
 .formTitle {

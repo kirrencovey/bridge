@@ -6,12 +6,17 @@ import { Button } from 'reactstrap'
 
 
 export default class AnimalDetail extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     render() {
         // Get animal id from params
         const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
 
         return (
-            <div className="cardContainer">
+            <div className="cardContainer pageContents">
                 <div className="card">
                 <div className="cardHeading">
                     <h2>{animal.name}</h2>

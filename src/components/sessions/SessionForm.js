@@ -13,7 +13,7 @@ export default class SessionForm extends Component {
       this.state = {
         userId: "",
         animalId: "",
-        date: "",
+        date: new Date().toISOString().substr(0, 10),
         sessionId: "",
         behaviorId: "",
         rating: "",
@@ -29,7 +29,6 @@ export default class SessionForm extends Component {
         modal: !prevState.modal
       }))
     }
-
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -127,8 +126,8 @@ export default class SessionForm extends Component {
             type="date"
             name="date"
             id="date"
+            value={new Date().toISOString().substr(0, 10)}
             onChange={this.handleFieldChange}
-            placeholder="date placeholder"
           />
 
           </div>

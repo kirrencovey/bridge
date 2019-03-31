@@ -47,7 +47,7 @@ export default class SessionDetail extends Component {
                 </ModalFooter>
             </Modal>
 
-            <div className="cardContainer">
+            <div className="cardContainer pageContents">
                 <div className="card">
                 <div className="cardContents">
                     <div className="cardTitle">{animal.name}</div>
