@@ -72,6 +72,7 @@ class UserSettings extends Component {
                     onClick={this.showPasswordForm}
                 >Update Password</Button>
                  <Form id="passwordForm" className="hidden">
+                 <h4 className="formTitle">Update Your Password</h4>
                     <FormGroup>
                         <Label for="currentPassword">Enter Current Password</Label>
                         <Input

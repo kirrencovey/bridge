@@ -13,7 +13,7 @@ export default class Register extends Component {
         firstName: "",
         lastName: "",
         password: "",
-        username: "",
+        verifyPassword: "",
         emptyModal: false,
         emailModal: false
     }
@@ -50,7 +50,9 @@ export default class Register extends Component {
           email: this.state.email,
           password: this.state.password
         }
-        if (this.state.email && this.state.password && this.state.firstName && this.state.lastName) {
+        // Check that all fields are filled in
+        if (this.state.email && this.state.password && this.state.verifyPassword && this.state.firstName && this.state.lastName) {
+          if (this.state.password === this.state.verifyPassword) {
           //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
           UserManager.searchEmail(this.state.email).then(users => {
             if (users.length) {
@@ -64,6 +66,9 @@ export default class Register extends Component {
               .then(() => this.props.history.push("/"))
             }
           })
+        } else {
+          window.alert("Oops! Passwords don't match!")
+        }
         } else {
           this.toggleEmptyFieldModal()
         }
@@ -143,24 +148,23 @@ render() {
                 onChange={this.handleFieldChange}
                 type="password"
                 id="password"
-                placeholder=""
+                placeholder="password"
                 required=""
               />
             </FormGroup>
           </Col>
-          {/* TODO CONFIRM PASSWORD */}
-          {/* <Col>
+          <Col>
             <FormGroup>
-              <Label for="confirmPassword">Confirm Password</Label>
+              <Label for="verifyPassword">Verify Password</Label>
               <Input
-                onChange={this.handleFieldChange}
-                type="password"
-                id="confirmPassword"
-                placeholder="**********"
-                required=""
+                  onChange={this.handleFieldChange}
+                  type="password"
+                  name="verifyPassword"
+                  id="verifyPassword"
+                  placeholder="verify password"
               />
             </FormGroup>
-          </Col> */}
+          </Col>
           <Button color="info" type="submit" onClick={this.handleRegister}>
             Register
           </Button>
