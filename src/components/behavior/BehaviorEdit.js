@@ -44,6 +44,7 @@ state = {
     }
 
     componentDidMount() {
+        console.log(this.props.match.params.behaviorId)
     BehaviorManager.get(this.props.match.params.behaviorId, "behaviors")
     .then(behavior => {
         this.setState({

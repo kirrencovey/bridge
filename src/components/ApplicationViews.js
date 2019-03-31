@@ -99,11 +99,21 @@ class ApplicationViews extends Component {
 
   // Function to add new session behavior to database. Invoked by add/finish buttons on SessionForm
   addSessionBehavior = sessionBehavior =>
-  SessionManager.add(sessionBehavior, "sessionBehaviors")
+    SessionManager.add(sessionBehavior, "sessionBehaviors")
     .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
     .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`))
     .then(sessions => this.setState({sessions: sessions}))
+
+  updateSession = editedSessionBehaviorObject =>
+    SessionManager.update(editedSessionBehaviorObject, "sessionBehaviors")
+      .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+      .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
+
+  deleteSessionBehavior = sessionBehavior =>
+    SessionManager.delete(sessionBehavior, "sessionBehaviors")
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
 
 
   componentDidMount() {
@@ -232,7 +242,8 @@ class ApplicationViews extends Component {
         <Route exact path="/sessions/:sessionId(\d+)" render={(props) => {
           return <SessionDetail {...props}
                       sessions={this.state.sessions}
-                      sessionBehaviors={this.state.sessionBehaviors} />
+                      sessionBehaviors={this.state.sessionBehaviors}
+                      deleteSessionBehavior={this.deleteSessionBehavior} />
         }} />
         <Route path="/sessions/:sessionId(\d+)/edit" render={props => {
             return <SessionEdit {...props}

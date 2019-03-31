@@ -6,6 +6,7 @@ import SessionBehaviorForm from "./SessionBehaviorForm";
 
 
 export default class SessionForm extends Component {
+  
     // Set initial state
     constructor(props) {
       super(props)

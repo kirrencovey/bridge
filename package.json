@@ -8,6 +8,7 @@
     "react": "^16.8.4",
     "react-avatar-image-cropper": "^1.2.0",
     "react-dom": "^16.8.4",
+    "react-editext": "^3.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
     "reactstrap": "^6.5.0"
