@@ -2,6 +2,8 @@ import React, { Component } from "react"
 // import { Button } from 'reactstrap'
 import UserManager from '../../modules/UserManager'
 import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
+import { Link } from 'react-router-dom'
+
 
 
 export default class Register extends Component {
@@ -171,8 +173,14 @@ render() {
         </Form>
       </div>
 
-
+      <div>Already a user?</div>
+        <Link to="/login" >
+        <Button color="secondary" type="submit">
+            Sign In
+        </Button>
+        </Link>
 </div>
+
     )
 }
 }

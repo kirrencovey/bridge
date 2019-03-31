@@ -102,7 +102,7 @@ export default class Login extends Component {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="myemail@email.com"
+                placeholder="email@email.com"
               />
             </FormGroup>
           </Col>
@@ -114,7 +114,7 @@ export default class Login extends Component {
                 type="password"
                 name="password"
                 id="password"
-                placeholder=""
+                placeholder="password"
               />
             </FormGroup>
           </Col>
