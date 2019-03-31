@@ -7,7 +7,7 @@ export default class SessionCard extends Component {
             <React.Fragment>
                 <div className="cardHeading">
                     <div className="cardTitle">{this.props.session.animal.name}</div>
-                        <div className="date">{this.props.session.date}</div>
+                        <div className="date">{new Date(this.props.session.date).toDateString()}</div>
                         {/* <div className="cardSubtitle">{this.props.session.animal.species}</div> */}
                 </div>
                 <TrainedBehaviorCard session={this.props.session}

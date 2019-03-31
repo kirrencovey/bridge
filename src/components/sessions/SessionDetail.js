@@ -13,7 +13,7 @@ export default class SessionDetail extends Component {
                 <div className="card">
                 <div className="cardContents">
                     <div className="cardTitle">{animal.name}</div>
-                    <div className="date">{session.date}</div>
+                    <div className="date">{new Date(session.date).toDateString()}</div>
                 </div>
                 {
                     thisSessionBehaviors.map(sb =>
