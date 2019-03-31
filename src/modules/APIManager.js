@@ -41,8 +41,11 @@ export default {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem('credentials')}`
       }
-    }).then(data => data.json())
-    .then((res) => {return res})
+    }).then(data => {
+      this.verifyAuthed(data);
+      return data.json()
+    })
+    .then((res) => res)
   },
   update (editedObject, category) {
     return fetch(`${Settings.remoteURL}/${category}/${editedObject.id}`, {
@@ -71,6 +74,7 @@ export default {
   verifyAuthed(response) {
     if (response.status === 403) {
       sessionStorage.removeItem('credentials');
+      this.props.history.push('/login')
     }
   }
 }

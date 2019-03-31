@@ -48,27 +48,14 @@ export default class Register extends Component {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           email: this.state.email,
-          password: this.state.password
+          plainPassword: this.state.password
         }
         if (this.state.email && this.state.password && this.state.firstName && this.state.lastName) {
           UserManager.register(newUser, "register").then(user => {
-            sessionStorage.setItem("credentials", parseInt(user.id))
-            this.props.setAuth() //TO DO **????
+            sessionStorage.setItem("credentials", user.token)
+            this.props.setAuth()
           })
           .then(() => this.props.history.push("/"))
-          //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
-          // UserManager.searchEmail(this.state.email).then(users => {
-          //   if (users.length) {
-          //     this.toggleEmailModal()
-          //   } else {
-          //     //If email doesn't already exist, adds new user and sets state of active user
-          //     UserManager.add(newUser, "users").then(user => {
-          //       sessionStorage.setItem("credentials", parseInt(user.id))
-          //       this.props.setAuth() //TO DO **????
-          //     })
-          //     .then(() => this.props.history.push("/"))
-          //   }
-          // })
         } else {
           this.toggleEmptyFieldModal()
         }

@@ -54,11 +54,13 @@ export default class SessionBehaviorForm extends Component {
         // Create the session behavior and redirect user to animal list
         this.props
             .addSessionBehavior(sessionBehavior)
-            .then(() => this.props.history.push(`/animals/${this.props.animalId}`))
+            .then(() => {
+                this.props.history.push(`/animals/${this.props.animalId}`)
+            })
         } else if(evt.target.id === "trainAgain") {
             // Create the session behavior but remain on page and clear form for re-use
             this.props.addSessionBehavior(sessionBehavior)
-            document.querySelector("#trainingForm").reset()
+            document.querySelector(".trainingForm").reset()
             this.setState({notes: ""})
         }
 
@@ -108,7 +110,6 @@ export default class SessionBehaviorForm extends Component {
                         return 1;
                     }})
                   .map(b => {
-                      console.log(b)
                       return (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>)
                   })
               }

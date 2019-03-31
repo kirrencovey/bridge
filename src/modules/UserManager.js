@@ -17,6 +17,9 @@ export default Object.create(APIManager, {
     ).then(e => {
       return e.json();
     })
+        .catch(response => {
+            return {error: 'An error occurred.'}
+        })
   }
 },
   searchEmail: {

@@ -77,7 +77,7 @@ class ApplicationViews extends Component {
 
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
-      .then(() => BehaviorManager.getAll(`behaviors/users/${this.activeUserId}`)
+      .then(() => BehaviorManager.getAll(`behaviors`)
       .then(behaviors => {this.setState({ behaviors: behaviors })}))
 
   deleteBehavior = behaviorId => {
@@ -92,7 +92,7 @@ class ApplicationViews extends Component {
 
   deleteSession = sessionId => {
     SessionManager.delete(sessionId, "sessions")
-      .then(() => SessionManager.getAll(`/users/${this.activeUserId}/sessions?expand=animal`)
+      .then(() => SessionManager.getAll(`users/sessions?expand=animal`)
       .then(sessions => this.setState({ sessions: sessions })))
   }
 
@@ -101,7 +101,7 @@ class ApplicationViews extends Component {
   SessionManager.add(sessionBehavior, "sessionBehaviors")
     .then(() => SessionManager.getAll("sessionBehaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
-    .then(() => SessionManager.getAll(`/users/${this.activeUserId}/sessions?expand=animal`))
+    .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => this.setState({sessions: sessions}))
 
 
