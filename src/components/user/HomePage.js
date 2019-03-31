@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 class HomePage extends Component {
     render() {
         return (
-            <React.Fragment>
+            <section className="pageContents">
                     <div className="homeCard">
                         <h1 className="homeTitle">bridge!</h1>
                         <div className="homeText">ready to train?</div>
@@ -30,7 +30,7 @@ class HomePage extends Component {
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
                     }>Add Behavior</Button>
-            </React.Fragment>
+            </section>
         )
     }
 }

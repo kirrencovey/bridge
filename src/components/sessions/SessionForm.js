@@ -62,7 +62,7 @@ export default class SessionForm extends Component {
           let animal = this.props.animals.find(a => a.id === parseInt(this.state.animalId))
           this.setState({ animalName: animal.name })
           // Show the training form
-          document.querySelector("#trainingForm").classList.toggle("hidden")
+          document.querySelector("#trainingFormContainer").classList.toggle("hidden")
           // Hide the session form
           document.querySelector("#sessionForm").innerHTML=""
           document.querySelector("#sessionForm").classList.toggle("formContainer")
@@ -144,15 +144,16 @@ export default class SessionForm extends Component {
 
 
         {/* sessionBehavior Form */}
-        <div className="hidden" id="trainingForm">
+        <div className="hidden trainingForm" id="trainingFormContainer">
         
         <SessionBehaviorForm
             animalId={this.state.animalId}
             animalName={this.state.animalName}
-            behaviors={this.state.bahaviors}
+            behaviors={this.state.behaviors}
             assignedBehaviors={this.props.assignedBehaviors}
             sessionId={this.state.sessionId}
-            addSessionBehavior={this.props.addSessionBehavior} />
+            addSessionBehavior={this.props.addSessionBehavior}
+            history={this.props.history} />
         
         </div>
       </React.Fragment>

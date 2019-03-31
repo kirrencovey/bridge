@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-brand {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 
 }
 
@@ -42,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -51,17 +52,35 @@ h1, h2, h3, h4, h5, h6 {
 
 #footerTitle {
     color: rgba(0,0,0,.5);
+    font-weight: 300;
 }
 
 #contact {
     border: 1px solid rgba(0,0,0,.1);
     border-radius: .25rem;
     padding: .25rem .75rem;
+    box-shadow: 1px 1px rgb(226, 226, 226);
 }
 
-#contactEmail {
+.emphasize {
     font-weight: 500;
     font-size: 1.1em;
+}
+
+.deemphasize {
+    font-weight: 300;
+    font-size: .8em;
+}
+
+.pageContents {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px 70px 15px;
+}
+
+.pageContents > button {
+    margin: 10px 60px;
+    padding: 10px;
 }
 
 /* CARD STYLES */
@@ -72,11 +91,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card {
-    width: 300px;
-    border: 1px solid lightgray;
-    margin: 5px 5px;
+    width: 95%;
+    max-width: 380px;
+    border: 1px solid rgb(226, 226, 226);
+    margin: 5px 0;
     padding: 10px;
-    box-shadow: 3px 3px lightgray;
+    box-shadow: 3px 3px rgb(226, 226, 226);
 }
 
 .innerCard {
@@ -113,8 +133,18 @@ h1, h2, h3, h4, h5, h6 {
     width: 66%;
 }
 
+/* NAVBAR */
+
+.navbar {
+    padding: 10px 20px;
+}
 
 /* BUTTON STYLES */
+
+button {
+    box-shadow: 2px 2px rgb(226, 226, 226);
+}
+
 .btnContainer {
     margin-top: 5px;
     display: flex;
@@ -168,11 +198,6 @@ h1, h2, h3, h4, h5, h6 {
 .homeCard {
     text-align: center;
     margin: 40px 0px 10px 0px;
-}
-
-#root > button {
-    margin: 10px 60px;
-    padding: 10px;
 }
 
 .addBtn {
