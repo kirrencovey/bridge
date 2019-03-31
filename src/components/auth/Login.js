@@ -114,7 +114,7 @@ export default class Login extends Component {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="********"
+                placeholder=""
               />
             </FormGroup>
           </Col>

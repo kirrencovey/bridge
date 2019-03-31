@@ -143,7 +143,7 @@ render() {
                 onChange={this.handleFieldChange}
                 type="password"
                 id="password"
-                placeholder="**********"
+                placeholder=""
                 required=""
               />
             </FormGroup>
