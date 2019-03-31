@@ -98,8 +98,8 @@ class ApplicationViews extends Component {
 
   // Function to add new session behavior to database. Invoked by add/finish buttons on SessionForm
   addSessionBehavior = sessionBehavior =>
-  SessionManager.add(sessionBehavior, "sessionBehaviors")
-    .then(() => SessionManager.getAll("sessionBehaviors?expand[]=behavior&expand[]=session"))
+  SessionManager.add(sessionBehavior, "sessions/behaviors")
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
     .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => this.setState({sessions: sessions}))
@@ -116,7 +116,7 @@ class ApplicationViews extends Component {
     .then(sessions => newState.sessions = sessions)
     .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
-    .then(() => SessionManager.getAll("sessionBehaviors?expand[]=behavior&expand[]=session"))
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => newState.sessionBehaviors = sessionBehaviors)
     .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
