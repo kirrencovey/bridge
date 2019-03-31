@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 export default class SessionPage extends Component {
     render() {
         return (
-            <React.Fragment>
+            <section className="pageContents">
                 <Button color="info"
                     type="button"
                     className="btn btn-success addBtn"
@@ -26,7 +26,7 @@ export default class SessionPage extends Component {
                             </div>)
                 }
                 </div>
-            </React.Fragment>
+            </section>
         )
     }
 }

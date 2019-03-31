@@ -44,6 +44,7 @@ state = {
     }
 
     componentDidMount() {
+        console.log(this.props.match.params.behaviorId)
     BehaviorManager.get(this.props.match.params.behaviorId, "behaviors")
     .then(behavior => {
         this.setState({
@@ -57,7 +58,8 @@ state = {
     render() {
     return (
         <React.Fragment>
-        <form className="behaviorEditForm formContainer">
+        <div className="animalForm pageContents">
+        <div className="formContainer">
             <h2 className="formTitle">Edit Behavior</h2>
             <div className="form-group">
             <label htmlFor="behaviorName">Name</label>
@@ -86,7 +88,8 @@ state = {
             >
             Submit
             </Button>
-        </form>
+        </div>
+        </div>
         </React.Fragment>
     )
     }

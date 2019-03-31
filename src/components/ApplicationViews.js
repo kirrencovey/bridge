@@ -16,7 +16,8 @@ import SessionEdit from "./sessions/SessionEdit"
 import AnimalManager from "../modules/AnimalManager"
 import BehaviorManager from "../modules/BehaviorManager"
 import SessionManager from "../modules/SessionManager"
-import UserSettings from "./user/UserSettings";
+import UserSettings from "./user/UserSettings"
+import Contact from "./user/Contact"
 
 class ApplicationViews extends Component {
   activeUserId = this.props.activeUserId()
@@ -104,6 +105,16 @@ class ApplicationViews extends Component {
     .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => this.setState({sessions: sessions}))
 
+  updateSession = editedSessionBehaviorObject =>
+    SessionManager.update(editedSessionBehaviorObject, "sessionBehaviors")
+      .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+      .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
+
+  deleteSessionBehavior = sessionBehavior =>
+    SessionManager.delete(sessionBehavior, "sessionBehaviors")
+    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
+
 
   componentDidMount() {
     const newState = {}
@@ -124,13 +135,21 @@ class ApplicationViews extends Component {
 
   render() {
 
-    return <React.Fragment>
+    return <React.Fragment >
 
         <Route exact path="/login" component={Login} />
 
         <Route exact path="/" render={props => {
           if (this.isAuthenticated()) {
             return <HomePage {...props}/>
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/contact" render={props => {
+          if (this.isAuthenticated()) {
+            return <Contact {...props}/>
           } else {
             return <Redirect to="/login" />
           }
@@ -223,7 +242,8 @@ class ApplicationViews extends Component {
         <Route exact path="/sessions/:sessionId(\d+)" render={(props) => {
           return <SessionDetail {...props}
                       sessions={this.state.sessions}
-                      sessionBehaviors={this.state.sessionBehaviors} />
+                      sessionBehaviors={this.state.sessionBehaviors}
+                      deleteSessionBehavior={this.deleteSessionBehavior} />
         }} />
         <Route path="/sessions/:sessionId(\d+)/edit" render={props => {
             return <SessionEdit {...props}

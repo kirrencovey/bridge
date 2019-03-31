@@ -6,13 +6,14 @@ import SessionBehaviorForm from "./SessionBehaviorForm";
 
 
 export default class SessionForm extends Component {
+  
     // Set initial state
     constructor(props) {
       super(props)
       this.state = {
         userId: "",
         animalId: "",
-        date: "",
+        date: new Date().toISOString().substr(0, 10),
         sessionId: "",
         behaviorId: "",
         rating: "",
@@ -28,7 +29,6 @@ export default class SessionForm extends Component {
         modal: !prevState.modal
       }))
     }
-
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
@@ -62,7 +62,7 @@ export default class SessionForm extends Component {
           let animal = this.props.animals.find(a => a.id === parseInt(this.state.animalId))
           this.setState({ animalName: animal.name })
           // Show the training form
-          document.querySelector("#trainingForm").classList.toggle("hidden")
+          document.querySelector("#trainingFormContainer").classList.toggle("hidden")
           // Hide the session form
           document.querySelector("#sessionForm").innerHTML=""
           document.querySelector("#sessionForm").classList.toggle("formContainer")
@@ -126,8 +126,8 @@ export default class SessionForm extends Component {
             type="date"
             name="date"
             id="date"
+            value={new Date().toISOString().substr(0, 10)}
             onChange={this.handleFieldChange}
-            placeholder="date placeholder"
           />
 
           </div>
@@ -144,7 +144,7 @@ export default class SessionForm extends Component {
 
 
         {/* sessionBehavior Form */}
-        <div className="hidden" id="trainingForm">
+        <div className="hidden trainingForm" id="trainingFormContainer">
         
         <SessionBehaviorForm
             animalId={this.state.animalId}

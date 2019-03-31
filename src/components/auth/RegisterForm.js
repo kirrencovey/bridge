@@ -2,6 +2,8 @@ import React, { Component } from "react"
 // import { Button } from 'reactstrap'
 import UserManager from '../../modules/UserManager'
 import { Button, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Form, FormGroup } from 'reactstrap'
+import { Link } from 'react-router-dom'
+
 
 
 export default class Register extends Component {
@@ -13,7 +15,7 @@ export default class Register extends Component {
         firstName: "",
         lastName: "",
         password: "",
-        username: "",
+        verifyPassword: "",
         emptyModal: false,
         emailModal: false
     }
@@ -50,12 +52,17 @@ export default class Register extends Component {
           email: this.state.email,
           plainPassword: this.state.password
         }
-        if (this.state.email && this.state.password && this.state.firstName && this.state.lastName) {
-          UserManager.register(newUser, "register").then(user => {
-            sessionStorage.setItem("credentials", user.token)
-            this.props.setAuth()
-          })
-          .then(() => this.props.history.push("/"))
+
+        if (this.state.email && this.state.password && this.state.firstName && this.state.verifyPassword && this.state.lastName) {
+            if (this.state.password === this.state.verifyPassword) {
+            UserManager.register(newUser, "register").then(user => {
+                sessionStorage.setItem("credentials", user.token)
+                this.props.setAuth()
+            })
+            .then(() => this.props.history.push("/"))
+            } else {
+              window.alert("Oops! Passwords don't match!")
+            }
         } else {
           this.toggleEmptyFieldModal()
         }
@@ -135,32 +142,37 @@ render() {
                 onChange={this.handleFieldChange}
                 type="password"
                 id="password"
-                placeholder="**********"
+                placeholder="password"
                 required=""
               />
             </FormGroup>
           </Col>
-          {/* TODO CONFIRM PASSWORD */}
-          {/* <Col>
+          <Col>
             <FormGroup>
-              <Label for="confirmPassword">Confirm Password</Label>
+              <Label for="verifyPassword">Verify Password</Label>
               <Input
-                onChange={this.handleFieldChange}
-                type="password"
-                id="confirmPassword"
-                placeholder="**********"
-                required=""
+                  onChange={this.handleFieldChange}
+                  type="password"
+                  name="verifyPassword"
+                  id="verifyPassword"
+                  placeholder="verify password"
               />
             </FormGroup>
-          </Col> */}
+          </Col>
           <Button color="info" type="submit" onClick={this.handleRegister}>
             Register
           </Button>
         </Form>
       </div>
 
-
+      <div>Already a user?</div>
+        <Link to="/login" >
+        <Button color="secondary" type="submit">
+            Sign In
+        </Button>
+        </Link>
 </div>
+
     )
 }
 }
