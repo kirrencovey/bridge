@@ -70,7 +70,8 @@ state = {
     render() {
     return (
         <React.Fragment>
-        <form className="behaviorEditForm formContainer">
+        <div className="animalForm pageContents">
+        <div className="formContainer">
             <h2 className="formTitle">Edit Training Notes</h2>
             <div className="cardHeading">
                 <div className="cardTitle">{this.state.animal}: {this.state.behaviorName}</div>
@@ -111,7 +112,8 @@ state = {
             >
             Submit
             </Button>
-        </form>
+        </div>
+        </div>
         </React.Fragment>
     )
     }

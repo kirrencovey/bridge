@@ -56,7 +56,8 @@ constructNewBehavior = evt => {
 render() {
   return (
     <React.Fragment>
-      <form className="behaviorForm formContainer">
+      <div className="animalForm pageContents">
+        <div className="formContainer">
       <h2 className="formTitle">New Behavior</h2>
 
       {/* error modal */}
@@ -97,7 +98,8 @@ render() {
         >
           Submit
         </Button>
-      </form>
+      </div>
+      </div>
     </React.Fragment>
   )
 }

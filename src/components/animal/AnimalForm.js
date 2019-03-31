@@ -65,7 +65,8 @@ export default class AnimalForm extends Component {
   render() {
     return (
 
-        <div className="animalForm formContainer">
+        <div className="animalForm pageContents">
+        <div className="formContainer">
           <h2 className="formTitle">New Animal</h2>
 
           {/* error modal */}
@@ -121,6 +122,7 @@ export default class AnimalForm extends Component {
           >
             Submit
           </Button>
+        </div>
         </div>
     )
   }

@@ -135,7 +135,7 @@ class ApplicationViews extends Component {
 
   render() {
 
-    return <React.Fragment>
+    return <React.Fragment >
 
         <Route exact path="/login" component={Login} />
 
