@@ -144,7 +144,7 @@ export default class SessionForm extends Component {
 
 
         {/* sessionBehavior Form */}
-        <div className="hidden trainingForm" id="trainingFormContainer">
+        <div className="hidden" id="trainingFormContainer">
         
         <SessionBehaviorForm
             animalId={this.state.animalId}
