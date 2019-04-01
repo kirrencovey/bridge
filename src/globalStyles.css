@@ -7,6 +7,11 @@ body {
     /* font-size: .8em; */
 }
 
+input,
+select {
+    font-size: 16px;
+}
+
 .btn {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
@@ -250,7 +255,6 @@ button {
 
 /* FORM STYLES */
 .form-control {
-    font-size: .9em;
     font-weight: 300;
 }
 

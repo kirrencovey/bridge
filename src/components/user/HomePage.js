@@ -4,6 +4,11 @@ import { Button } from 'reactstrap'
 
 
 class HomePage extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     render() {
         return (
             <section className="pageContents">
