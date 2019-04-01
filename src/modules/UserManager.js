@@ -20,8 +20,31 @@ export default Object.create(APIManager, {
         .catch(response => {
             return {error: 'An error occurred.'}
         })
-  }
-},
+    }
+  },
+
+    updatePassword: {
+      value: function (payload) {
+        return fetch(
+            `${Settings.remoteURL}/user/${payload.id}/password/update`,
+            {
+                method: "PUT",
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${sessionStorage.getItem('credentials')}`
+                }
+            }
+        ).then(response => response.json()
+        ).then(response => {
+            if (typeof response.error !== 'undefined') {
+                return Promise.reject(response.error);
+            }
+
+            return response;
+        })
+    }},
+
   searchEmail: {
     value: function (email) {
     return fetch(`${Settings.remoteURL}/users?email=${email}`).then(e =>

@@ -72,7 +72,7 @@ class ApplicationViews extends Component {
 
   // Function to delete assigned behavior from an animal. Invoked on AnimalDetail>BehaviorList
   deleteAssignedBehavior = assignedBehavior =>
-    BehaviorManager.delete(assignedBehavior, "assignedBehaviors")
+    BehaviorManager.delete(assignedBehavior, "assignedBehaviors/animal")
     .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
     .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
 
@@ -106,13 +106,13 @@ class ApplicationViews extends Component {
     .then(sessions => this.setState({sessions: sessions}))
 
   updateSession = editedSessionBehaviorObject =>
-    SessionManager.update(editedSessionBehaviorObject, "sessionBehaviors")
-      .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    SessionManager.update(editedSessionBehaviorObject, "sessions/behaviors")
+      .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
       .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
 
   deleteSessionBehavior = sessionBehavior =>
-    SessionManager.delete(sessionBehavior, "sessionBehaviors")
-    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    SessionManager.delete(sessionBehavior, "sessions/behaviors")
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
 
 

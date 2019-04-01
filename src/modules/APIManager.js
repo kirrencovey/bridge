@@ -74,7 +74,7 @@ export default {
   verifyAuthed(response) {
     if (response.status === 403) {
       sessionStorage.removeItem('credentials');
-      this.props.history.push('/login')
+      // Need to figure out how to gracefully fail after this also.
     }
   }
 }

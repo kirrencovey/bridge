@@ -48,7 +48,7 @@ state = {
     // }
 
     componentDidMount() {
-    SessionManager.get(`${this.props.match.params.sessionId}?_expand=behavior`, "sessionBehaviors")
+    SessionManager.get(`${this.props.match.params.sessionId}?expand=behavior`, "sessions/behaviors")
     .then(behavior => {
         this.setState({
             sessionId: behavior.sessionId,
@@ -58,7 +58,7 @@ state = {
             behaviorName: behavior.behavior.name
         })
     })
-    .then(() => SessionManager.get(`${this.state.sessionId}?_expand=animal`, "sessions"))
+    .then(() => SessionManager.get(`${this.state.sessionId}?expand=animal`, "sessions"))
     .then(session => {
         this.setState({
             animal: session.animal.name,
@@ -76,7 +76,7 @@ state = {
             <div className="cardHeading">
                 <div className="cardTitle">{this.state.animal}: {this.state.behaviorName}</div>
             </div>
-                <div className="date">{this.state.date}</div><br />
+                <div className="date">{new Date(this.state.date).toDateString()}</div><br />
             <div className="form-group">
             <label htmlFor="rating">Rating</label>
             <Input
