@@ -156,6 +156,12 @@ button {
     justify-content: flex-end;
 }
 
+.sessionBtnContainer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .btn-details {
     /* width: 50%; */
     margin-right: 5px;
