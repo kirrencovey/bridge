@@ -45,6 +45,7 @@ export default class Login extends Component {
   //When login button is clicked
   handleLogin = e => {
     e.preventDefault()
+
     if (this.state.email && this.state.password) {
 
       //Checks if email and password are in data

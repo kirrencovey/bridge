@@ -138,7 +138,7 @@ export default class SessionBehaviorForm extends Component {
               placeholder="Any notes?"
             />
           </div>
-          <div className="btnContainer">
+          <div className="sessionBtnContainer">
           <Button color="secondary"
             type="submit"
             onClick={this.constructNewSessionBehavior}

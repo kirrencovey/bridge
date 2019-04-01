@@ -7,6 +7,11 @@ body {
     /* font-size: .8em; */
 }
 
+input,
+select {
+    font-size: 16px;
+}
+
 .btn {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
@@ -151,6 +156,12 @@ button {
     justify-content: flex-end;
 }
 
+.sessionBtnContainer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .btn-details {
     /* width: 50%; */
     margin-right: 5px;
@@ -250,7 +261,6 @@ button {
 
 /* FORM STYLES */
 .form-control {
-    font-size: .9em;
     font-weight: 300;
 }
 
