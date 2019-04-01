@@ -55,11 +55,15 @@ export default class Register extends Component {
 
         if (this.state.email && this.state.password && this.state.firstName && this.state.verifyPassword && this.state.lastName) {
             if (this.state.password === this.state.verifyPassword) {
-            UserManager.register(newUser, "register").then(user => {
-                sessionStorage.setItem("credentials", user.token)
-                this.props.setAuth()
-            })
-            .then(() => this.props.history.push("/"))
+                UserManager.register(newUser, "register").then(response => {
+                    if (typeof response.error !== 'undefined') {
+                      window.alert(response.error)
+                    } else {
+                      sessionStorage.setItem("credentials", response.token)
+                      this.props.setAuth()
+                      this.props.history.push("/")
+                    }
+                })
             } else {
               window.alert("Oops! Passwords don't match!")
             }

@@ -69,7 +69,6 @@ export default {
         "Content-Type": "application/json"
       }
     }).then(data => data.json())
-    .then((res) => {return res})
   },
   verifyAuthed(response) {
     if (response.status === 403) {
