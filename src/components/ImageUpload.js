@@ -59,10 +59,12 @@ class ImageUpload extends Component {
     }
 
     errorHandler = (type) => {
+        console.error(type);
         window.alert("Something went wrong. Try another image.")
     }
 
     render() {
+        const maxsize = 1024 * 1024 * 6
         return (
             <React.Fragment>
 
@@ -70,6 +72,7 @@ class ImageUpload extends Component {
                     <AvatarImageCropper
                         errorHandler={this.errorHandler}
                         apply={this.handleUpload}
+                        maxsize={maxsize}
                         />
                 </div>
 
