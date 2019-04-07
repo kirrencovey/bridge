@@ -153,6 +153,7 @@ export default class SessionForm extends Component {
             sessionId={this.state.sessionId}
             addSessionBehavior={this.props.addSessionBehavior}
             addAssignedBehavior={this.props.addAssignedBehavior}
+            refreshAssignedBehaviors={this.props.refreshAssignedBehaviors}
             history={this.props.history} />
         </div>
       </React.Fragment>
