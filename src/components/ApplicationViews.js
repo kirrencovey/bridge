@@ -235,7 +235,7 @@ class ApplicationViews extends Component {
           return <SessionForm {...props}
                       addSession={this.addSession}
                       addSessionBehavior={this.addSessionBehavior}
-                      assignedBehaviors={this.state.assignedBehaviors}
+                      behaviors={this.state.behaviors}
                       animals={this.state.animals}
                       activeUser={this.state.activeUser} />
         }} />

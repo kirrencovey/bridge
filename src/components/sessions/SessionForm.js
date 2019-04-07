@@ -149,8 +149,7 @@ export default class SessionForm extends Component {
         <SessionBehaviorForm
             animalId={this.state.animalId}
             animalName={this.state.animalName}
-            behaviors={this.state.behaviors}
-            assignedBehaviors={this.props.assignedBehaviors}
+            behaviors={this.props.behaviors}
             sessionId={this.state.sessionId}
             addSessionBehavior={this.props.addSessionBehavior}
             history={this.props.history} />

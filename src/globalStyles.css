@@ -1,8 +1,8 @@
 /* GLOBAL STYLES */
 
 body {
-    /* font-family: 'Open Sans', sans-serif; */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     font-weight: 300;
     /* font-size: .8em; */
 }
@@ -16,6 +16,7 @@ select {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: .9em;
+    /* max-width: 400px; */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -181,9 +182,9 @@ button {
     align-self: flex-end;
 }
 
-.animalBehaviorButton {
+/* .animalBehaviorButton {
 
-}
+} */
 
 /* IMAGE STYLES */
 
@@ -218,6 +219,18 @@ button {
 #mainBtn {
     height: 70px;
 }
+
+/* .mainBtn {
+    min-width: 250px;
+    max-width: 400px;
+    width: 70%;
+}
+
+.mainBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
 
 .homeTitle {
     font-family: 'Montserrat', sans-serif;
