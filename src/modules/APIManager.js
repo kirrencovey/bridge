@@ -39,7 +39,8 @@ export default {
       method: "POST",
       body: JSON.stringify(obj),
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem('credentials')}`
+        Authorization: `Bearer ${sessionStorage.getItem('credentials')}`,
+        "Content-Type": "application/json"
       }
     }).then(data => {
       this.verifyAuthed(data);
