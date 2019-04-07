@@ -4,6 +4,11 @@ import { Button } from 'reactstrap'
 
 
 class HomePage extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     render() {
         return (
             <section className="pageContents">
@@ -11,6 +16,7 @@ class HomePage extends Component {
                         <h1 className="homeTitle">bridge!</h1>
                         <div className="homeText">ready to train?</div>
                     </div>
+                {/* <span className="mainBtnContainer"> */}
                 <Button color="info"
                     type="button"
                     className="addBtn mainBtn"
@@ -30,6 +36,7 @@ class HomePage extends Component {
                     onClick={() => {
                         this.props.history.push("/behaviors/new")}
                     }>Add Behavior</Button>
+                    {/* </span> */}
             </section>
         )
     }
