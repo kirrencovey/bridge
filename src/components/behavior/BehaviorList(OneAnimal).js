@@ -47,8 +47,7 @@ export default class BehaviorList extends Component {
           }
 
           // Create the behavior
-          this.props
-            .addAssignedBehavior(assignedBehavior)
+          this.props.addAssignedBehavior(assignedBehavior)
           this.setState({behaviorId: ""})
         }
       }

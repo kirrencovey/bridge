@@ -21,7 +21,7 @@ export default class SessionBehaviorForm extends Component {
 
         this.toggle = this.toggle.bind(this)
     }
-    
+
     toggle() {
       this.setState(prevState => ({
         modal: !prevState.modal
@@ -55,13 +55,30 @@ export default class SessionBehaviorForm extends Component {
         this.props
             .addSessionBehavior(sessionBehavior)
             .then(() => this.props.history.push(`/animals/${this.props.animalId}`))
+            .then(this.constructNewAssignedBehavior())
         } else if(evt.target.id === "trainAgain") {
             // Create the session behavior but remain on page and clear form for re-use
             this.props.addSessionBehavior(sessionBehavior)
+            .then(this.constructNewAssignedBehavior())
             document.querySelector("#trainingForm").reset()
             this.setState({notes: ""})
         }
 
+    }
+  }
+
+  constructNewAssignedBehavior = () => {
+    // Check if animal already has behavior assigned
+    let checkIfBehaviorAssigned = this.props.assignedBehaviors.filter(b => b.animalId === parseInt(this.props.animalId))
+      .find(b => b.behavior.id === parseInt(this.state.behaviorId))
+    // If not already assigned, add it
+    if (checkIfBehaviorAssigned === undefined) {
+      const assignedBehavior = {
+        animalId: parseInt(this.props.animalId),
+        behaviorId: parseInt(this.state.behaviorId)
+      }
+      // Create the behavior
+      this.props.addAssignedBehavior(assignedBehavior)
     }
   }
 

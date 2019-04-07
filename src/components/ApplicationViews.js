@@ -237,7 +237,9 @@ class ApplicationViews extends Component {
                       addSessionBehavior={this.addSessionBehavior}
                       behaviors={this.state.behaviors}
                       animals={this.state.animals}
-                      activeUser={this.state.activeUser} />
+                      activeUser={this.state.activeUser}
+                      assignedBehaviors={this.state.assignedBehaviors}
+                      addAssignedBehavior={this.addAssignedBehavior} />
         }} />
         <Route exact path="/sessions/:sessionId(\d+)" render={(props) => {
           return <SessionDetail {...props}

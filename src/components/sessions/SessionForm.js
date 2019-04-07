@@ -145,15 +145,15 @@ export default class SessionForm extends Component {
 
         {/* sessionBehavior Form */}
         <div className="hidden" id="trainingFormContainer">
-        
         <SessionBehaviorForm
             animalId={this.state.animalId}
             animalName={this.state.animalName}
             behaviors={this.props.behaviors}
+            assignedBehaviors={this.props.assignedBehaviors}
             sessionId={this.state.sessionId}
             addSessionBehavior={this.props.addSessionBehavior}
+            addAssignedBehavior={this.props.addAssignedBehavior}
             history={this.props.history} />
-        
         </div>
       </React.Fragment>
     )
