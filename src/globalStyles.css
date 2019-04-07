@@ -1,16 +1,22 @@
 /* GLOBAL STYLES */
 
 body {
-    /* font-family: 'Open Sans', sans-serif; */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     font-weight: 300;
     /* font-size: .8em; */
+}
+
+input,
+select {
+    font-size: 16px;
 }
 
 .btn {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: .9em;
+    /* max-width: 400px; */
 }
 
 button > * {
@@ -155,6 +161,12 @@ button {
     justify-content: flex-end;
 }
 
+.sessionBtnContainer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .btn-details {
     /* width: 50%; */
     margin-right: 5px;
@@ -174,9 +186,9 @@ button {
     align-self: flex-end;
 }
 
-.animalBehaviorButton {
+/* .animalBehaviorButton {
 
-}
+} */
 
 /* IMAGE STYLES */
 
@@ -211,6 +223,18 @@ button {
 #mainBtn {
     height: 70px;
 }
+
+/* .mainBtn {
+    min-width: 250px;
+    max-width: 400px;
+    width: 70%;
+}
+
+.mainBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
 
 .homeTitle {
     font-family: 'Montserrat', sans-serif;
@@ -254,7 +278,6 @@ button {
 
 /* FORM STYLES */
 .form-control {
-    font-size: .9em;
     font-weight: 300;
 }
 
