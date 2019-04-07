@@ -21,7 +21,7 @@ export default class SessionBehaviorForm extends Component {
 
         this.toggle = this.toggle.bind(this)
     }
-    
+
     toggle() {
       this.setState(prevState => ({
         modal: !prevState.modal
@@ -55,13 +55,30 @@ export default class SessionBehaviorForm extends Component {
         this.props
             .addSessionBehavior(sessionBehavior)
             .then(() => this.props.history.push(`/animals/${this.props.animalId}`))
+            .then(this.constructNewAssignedBehavior())
         } else if(evt.target.id === "trainAgain") {
             // Create the session behavior but remain on page and clear form for re-use
             this.props.addSessionBehavior(sessionBehavior)
+            .then(this.constructNewAssignedBehavior())
             document.querySelector("#trainingForm").reset()
             this.setState({notes: ""})
         }
 
+    }
+  }
+
+  constructNewAssignedBehavior = () => {
+    // Check if animal already has behavior assigned
+    let checkIfBehaviorAssigned = this.props.assignedBehaviors.filter(b => b.animalId === parseInt(this.props.animalId))
+      .find(b => b.behavior.id === parseInt(this.state.behaviorId))
+    // If not already assigned, add it
+    if (checkIfBehaviorAssigned === undefined) {
+      const assignedBehavior = {
+        animalId: parseInt(this.props.animalId),
+        behaviorId: parseInt(this.state.behaviorId)
+      }
+      // Create the behavior
+      this.props.addAssignedBehavior(assignedBehavior)
     }
   }
 
@@ -95,19 +112,17 @@ export default class SessionBehaviorForm extends Component {
               onChange={this.handleFieldChange}
             >
               <option value="">Select a Behavior</option>
-              { //Filter behaviors available for current animal
-                this.props.assignedBehaviors.filter(behavior => behavior.animalId === parseInt(this.props.animalId))
-                  // Sort behaviors alphabetically by name
-                  .sort((a, b) => {
-                    var nameA = a.behavior.name.toUpperCase() // ignore upper and lowercase
-                    var nameB = b.behavior.name.toUpperCase() // ignore upper and lowercase
+              { // Sort behaviors alphabetically by name
+                this.props.behaviors.sort((a, b) => {
+                    var nameA = a.name.toUpperCase() // ignore upper and lowercase
+                    var nameB = b.name.toUpperCase() // ignore upper and lowercase
                     if (nameA < nameB) {
                         return -1;
                     }
                     if (nameA > nameB) {
                         return 1;
                     }})
-                  .map(b => (<option key={b.behavior.id} id={b.behavior.id} value={b.behavior.id}>{b.behavior.name}</option>))
+                  .map(b => (<option key={b.id} id={b.id} value={b.id}>{b.name}</option>))
               }
             </Input>
           </div>
