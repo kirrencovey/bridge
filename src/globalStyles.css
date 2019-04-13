@@ -98,12 +98,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .card {
     width: 95%;
-    max-width: 380px;
+    max-width: 500px;
     border: 1px solid rgb(226, 226, 226);
     margin: 5px 0;
     padding: 10px;
     box-shadow: 3px 3px rgb(226, 226, 226);
 }
+
+.animalCard,
+.animalSessionCard {
+    max-width: 800px;
+}
+
+/* .animalSessionCard {
+    display: flex;
+    flex-flow: row wrap;
+} */
 
 .innerCard {
     border: 1px solid lightgray;
@@ -111,6 +121,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     margin: 5px;
 }
+
+/* .animalSessionCard > .innerCard {
+    max-width: 300px;
+    min-width: 40%;
+} */
 
 .cardHeading {
     display: flex;
@@ -193,6 +208,7 @@ button {
     border: 1px solid lightgray;
     border-radius: 10px;
     align-self: center;
+    max-width: 300px;
 }
 
 .cardImage {
@@ -279,10 +295,12 @@ button {
 
 .formContainer {
     margin: 15px;
-    max-width: 100%;
+    width: 95%;
+    max-width: 500px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     padding: 15px;
+    display: inline-block;
 }
 
 .formTitle {

@@ -72,7 +72,7 @@ export default class SessionForm extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="homeCard">
 
           {/* session form */}
         <form className="sessionForm formContainer" id="sessionForm">
@@ -155,7 +155,7 @@ export default class SessionForm extends Component {
             addAssignedBehavior={this.props.addAssignedBehavior}
             history={this.props.history} />
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

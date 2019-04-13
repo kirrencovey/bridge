@@ -56,7 +56,7 @@ constructNewBehavior = evt => {
 render() {
   return (
     <React.Fragment>
-      <div className="animalForm pageContents">
+      <div className="animalForm homeCard">
         <div className="formContainer">
       <h2 className="formTitle">New Behavior</h2>
 
