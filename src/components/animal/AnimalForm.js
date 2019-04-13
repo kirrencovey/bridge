@@ -65,7 +65,7 @@ export default class AnimalForm extends Component {
   render() {
     return (
 
-        <div className="animalForm pageContents">
+        <div className="animalForm homeCard">
         <div className="formContainer">
           <h2 className="formTitle">New Animal</h2>
 

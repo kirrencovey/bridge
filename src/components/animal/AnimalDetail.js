@@ -17,12 +17,12 @@ export default class AnimalDetail extends Component {
 
         return (
             <div className="cardContainer pageContents">
-                <div className="card">
+                <div className="card animalCard">
                 <div className="cardHeading">
                     <h2>{animal.name}</h2>
                     <div className="cardSubtitle">{animal.species}</div>
                 </div>
-                <img className="detailImage" src={animal.image} />
+                <img className="detailImage" src={animal.image} alt="animal" />
                 <h5>Notes</h5>
                 {animal.notes}<br/>
                 <Button color="info"
@@ -33,7 +33,7 @@ export default class AnimalDetail extends Component {
                     }}
                     ><i className="fas fa-edit"></i></Button>
                     </div>
-                <div className="card">
+                <div className="card animalCard">
                 <h5>Behaviors</h5>
                 <BehaviorList animal={animal}
                         addAssignedBehavior={this.props.addAssignedBehavior}
@@ -41,7 +41,7 @@ export default class AnimalDetail extends Component {
                         behaviors={this.props.behaviors}
                         assignedBehaviors={this.props.assignedBehaviors}/>
                 </div>
-                <div className="card">
+                <div className="card animalSessionCard">
                 <h5>Training History</h5>
                 <SessionList animal={animal}
                         history={this.props.history}

@@ -8,6 +8,12 @@ export default class SessionList extends Component {
         return (
             <React.Fragment>
                 {/* Filter out current animal's sessions, make card for each */}
+                <Button color="info"
+                    type="button"
+                    className="btn btn-success addBtn"
+                    onClick={() => {
+                        this.props.history.push("/sessions/new")}
+                    }>Start a Session</Button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
                 {
                     this.props.sessions.filter(session => session.animalId === this.props.animal.id)
                     .sort((sessionA, sessionB) => new Date(sessionB.date) - new Date(sessionA.date))
@@ -19,12 +25,6 @@ export default class SessionList extends Component {
                                         deleteSession={this.props.deleteSession} />
                             </div>)
                 }
-                <Button color="info"
-                    type="button"
-                    className="btn btn-success addBtn"
-                    onClick={() => {
-                        this.props.history.push("/sessions/new")}
-                    }>Start a Session</Button>  {/* TODO this button routes to new session - but can i pass this animal to have form & state pre-filled when clicked from details page?? */}
             </React.Fragment>
         )
     }
