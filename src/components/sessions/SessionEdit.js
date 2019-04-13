@@ -70,7 +70,7 @@ state = {
     render() {
     return (
         <React.Fragment>
-        <div className="animalForm pageContents">
+        <div className="animalForm homeCard">
         <div className="formContainer">
             <h2 className="formTitle">Edit Training Notes</h2>
             <div className="cardHeading">
