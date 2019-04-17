@@ -1,6 +1,6 @@
 ![Bridge!](/public/images/bridge-preview.png)
 
-# Welcome to Bridge! ### An app for animal trainers.
+# Welcome to Bridge! An app for animal trainers.
 As a zookeeper, part of my job was training animals and recording training session data. But training sessions happen in the field, in barns, usually nowhere near a computer. Sometimes it was hours before I'd get computer access. Paper notes are no good, due to often working in inclement weather. So, I created Bridge! to provide a mobile solution.
 
 [View Deployed Site](https://www.trainingbridge.app)
