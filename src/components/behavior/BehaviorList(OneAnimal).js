@@ -105,7 +105,7 @@ export default class BehaviorList extends Component {
                                     id={behavior.id}
                                     onClick={(evt) => {
                                         // Set state of behaviorId of the correct behavior from button id, when clicked
-                                        this.setState({behaviorId: evt.target.parentElement.id})
+                                        this.setState({behaviorId: evt.target.id})
                                         this.toggleDeleteModal()
                                     }}
                                 ><i className="fas fa-minus"></i></Button>

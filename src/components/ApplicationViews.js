@@ -38,7 +38,7 @@ class ApplicationViews extends Component {
   // Function to add new animal to database. Invoked by submit button on AnimalForm
   addAnimal = animal =>
     AnimalManager.add(animal, "animals")
-        .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`))
+        .then(() => AnimalManager.getAll(`animals`))
         .then(animals =>
         this.setState({
             animals: animals
@@ -47,43 +47,47 @@ class ApplicationViews extends Component {
 
   updateAnimal = editedAnimalObject =>
     AnimalManager.update(editedAnimalObject, "animals")
-      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+      .then(() => AnimalManager.getAll(`animals`)
       .then(animals => {
           this.setState({ animals: animals })
         }))
 
   deleteAnimal = animalId => {
     AnimalManager.delete(animalId, "animals")
-      .then(() => AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+      .then(() => AnimalManager.getAll(`animals`)
       .then(animals => this.setState({ animals: animals })))
   }
 
   // Function to add new behavior to database. Invoked by submit button on BehaviorForm
   addBehavior = behavior =>
     BehaviorManager.add(behavior, "behaviors")
-      .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
+      .then(() => BehaviorManager.getAll(`behaviors`))
       .then(behaviors => this.setState({ behaviors: behaviors }))
 
   // Function to assign a new behavior to an animal. Invoked on AnimalDetail>BehaviorList
   addAssignedBehavior = assignedBehavior =>
       BehaviorManager.add(assignedBehavior, "assignedBehaviors")
-      .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
+      .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
       .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
+
+  refreshAssignedBehaviors = () =>
+      BehaviorManager.getAll("assignedBehaviors?expand=behavior")
+        .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
 
   // Function to delete assigned behavior from an animal. Invoked on AnimalDetail>BehaviorList
   deleteAssignedBehavior = assignedBehavior =>
-    BehaviorManager.delete(assignedBehavior, "assignedBehaviors")
-    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
+    BehaviorManager.delete(assignedBehavior, "assignedBehaviors/animal")
+    .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
     .then(assignedBehaviors => this.setState({assignedBehaviors: assignedBehaviors}))
 
   updateBehavior = editedBehaviorObject =>
     BehaviorManager.update(editedBehaviorObject, "behaviors")
-      .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
+      .then(() => BehaviorManager.getAll(`behaviors`)
       .then(behaviors => {this.setState({ behaviors: behaviors })}))
 
   deleteBehavior = behaviorId => {
           BehaviorManager.delete(behaviorId, "behaviors")
-            .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`)
+            .then(() => BehaviorManager.getAll(`behaviors`)
             .then(behaviors => {this.setState({ behaviors: behaviors })}))
   }
 
@@ -93,41 +97,41 @@ class ApplicationViews extends Component {
 
   deleteSession = sessionId => {
     SessionManager.delete(sessionId, "sessions")
-      .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`)
+      .then(() => SessionManager.getAll(`users/sessions?expand=animal`)
       .then(sessions => this.setState({ sessions: sessions })))
   }
 
   // Function to add new session behavior to database. Invoked by add/finish buttons on SessionForm
   addSessionBehavior = sessionBehavior =>
-    SessionManager.add(sessionBehavior, "sessionBehaviors")
-    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+  SessionManager.add(sessionBehavior, "sessions/behaviors")
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
-    .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`))
+    .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => this.setState({sessions: sessions}))
 
   updateSession = editedSessionBehaviorObject =>
-    SessionManager.update(editedSessionBehaviorObject, "sessionBehaviors")
-      .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    SessionManager.update(editedSessionBehaviorObject, "sessions/behaviors")
+      .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
       .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
 
   deleteSessionBehavior = sessionBehavior =>
-    SessionManager.delete(sessionBehavior, "sessionBehaviors")
-    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    SessionManager.delete(sessionBehavior, "sessions/behaviors")
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => this.setState({sessionBehaviors: sessionBehaviors}))
 
 
   componentDidMount() {
     const newState = {}
 
-    AnimalManager.getAll(`animals?userId=${this.activeUserId}`)
+    AnimalManager.getAll(`animals`)
     .then(animals => newState.animals = animals)
-    .then(() => BehaviorManager.getAll(`behaviors?userId=${this.activeUserId}`))
+    .then(() => BehaviorManager.getAll(`behaviors`))
     .then(behaviors => newState.behaviors = behaviors)
-    .then(() => SessionManager.getAll(`sessions?_expand=animal&userId=${this.activeUserId}`))
+    .then(() => SessionManager.getAll(`users/sessions?expand=animal`))
     .then(sessions => newState.sessions = sessions)
-    .then(() => BehaviorManager.getAll("assignedBehaviors?_expand=behavior"))
+    .then(() => BehaviorManager.getAll("assignedBehaviors?expand=behavior"))
     .then(assignedBehaviors => newState.assignedBehaviors = assignedBehaviors)
-    .then(() => SessionManager.getAll("sessionBehaviors?_expand=behavior&_expand=session"))
+    .then(() => SessionManager.getAll("sessions/behaviors?expand[]=behavior&expand[]=session"))
     .then(sessionBehaviors => newState.sessionBehaviors = sessionBehaviors)
     .then(() => newState.activeUser = this.props.activeUser)
     .then(() => this.setState(newState))
@@ -239,7 +243,8 @@ class ApplicationViews extends Component {
                       animals={this.state.animals}
                       activeUser={this.state.activeUser}
                       assignedBehaviors={this.state.assignedBehaviors}
-                      addAssignedBehavior={this.addAssignedBehavior} />
+                      addAssignedBehavior={this.addAssignedBehavior}
+                      refreshAssignedBehaviors={this.refreshAssignedBehaviors}/>
         }} />
         <Route exact path="/sessions/:sessionId(\d+)" render={(props) => {
           return <SessionDetail {...props}

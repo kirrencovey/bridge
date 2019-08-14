@@ -51,7 +51,7 @@ export default class SessionDetail extends Component {
                 <div className="card">
                 <div className="cardContents">
                     <div className="cardTitle">{animal.name}</div>
-                    <div className="date">{session.date}</div>
+                    <div className="date">{new Date(session.date).toDateString()}</div>
                 </div>
                 {
                     thisSessionBehaviors.map(sb =>
@@ -75,7 +75,7 @@ export default class SessionDetail extends Component {
                                     id={sb.id}
                                     onClick={(evt) => {
                                         // Set state of behaviorId of the correct behavior from button id, when clicked
-                                        this.setState({sessionBehaviorId: evt.target.parentElement.id})
+                                        this.setState({sessionBehaviorId: evt.target.id})
                                         this.toggle()
                                     }}
                                 ><i className="fas fa-trash-alt"></i></Button>

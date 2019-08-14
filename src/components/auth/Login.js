@@ -50,11 +50,11 @@ export default class Login extends Component {
 
       //Checks if email and password are in data
       UserManager.searchEP(this.state.email, this.state.password).then(
-        user => {
-          if (!user.length) {
+        response => {
+          if (typeof response.error !== 'undefined') {
             this.toggleWrongModal()
           } else {
-            sessionStorage.setItem("credentials", parseInt(user[0].id))
+            sessionStorage.setItem("credentials", response.token)
             this.props.setAuth()
             this.props.history.push("/")
           }

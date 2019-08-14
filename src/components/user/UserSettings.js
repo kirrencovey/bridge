@@ -36,26 +36,23 @@ class UserSettings extends Component {
     e.preventDefault()
     const updatedUser = {
         id: this.props.activeUser.id,
-        firstName: this.props.activeUser.firstName,
-        lastName: this.props.activeUser.lastName,
-        email: this.props.activeUser.email,
-        password: this.state.newPassword
+        password: this.state.newPassword,
+        currentPassword: this.state.currentPassword
       }
-    // Check if current password entered correctly
-    if (this.state.currentPassword === this.props.activeUser.password) {
         // Check that new password entered the same in both fields
         if (this.state.newPassword === this.state.verifyPassword) {
-            UserManager.update(updatedUser, "users")
+            UserManager.updatePassword(updatedUser)
+            .then(response => {
+                sessionStorage.setItem("credentials", response.token)
+            })
             .then(() => document.querySelector("#passwordForm").classList.toggle("hidden"))
             .then(() => document.querySelector("#passwordForm").reset())
             .then(() => document.querySelector("#showPassFormBtn").classList.toggle("hidden"))
             .then(() => window.alert("Password updated!"))
+            .catch(error => window.alert(error));
         } else {
             window.alert("Oops! Your new passwords don't match!")
         }
-    } else {
-        window.alert("Oops! Your current password is incorrect!")
-    }
   }
 
     render() {

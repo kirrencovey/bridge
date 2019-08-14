@@ -50,27 +50,23 @@ export default class Register extends Component {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           email: this.state.email,
-          password: this.state.password
+          plainPassword: this.state.password
         }
-        // Check that all fields are filled in
-        if (this.state.email && this.state.password && this.state.verifyPassword && this.state.firstName && this.state.lastName) {
-          if (this.state.password === this.state.verifyPassword) {
-          //Checks to see if email entered matches any already in the data  ** TO DO make auth more secure
-          UserManager.searchEmail(this.state.email).then(users => {
-            if (users.length) {
-              this.toggleEmailModal()
+
+        if (this.state.email && this.state.password && this.state.firstName && this.state.verifyPassword && this.state.lastName) {
+            if (this.state.password === this.state.verifyPassword) {
+                UserManager.register(newUser, "register").then(response => {
+                    if (typeof response.error !== 'undefined') {
+                      window.alert(response.error)
+                    } else {
+                      sessionStorage.setItem("credentials", response.token)
+                      this.props.setAuth()
+                      this.props.history.push("/")
+                    }
+                })
             } else {
-              //If email doesn't already exist, adds new user and sets state of active user
-              UserManager.add(newUser, "users").then(user => {
-                sessionStorage.setItem("credentials", parseInt(user.id))
-                this.props.setAuth() //TO DO **????
-              })
-              .then(() => this.props.history.push("/"))
+              window.alert("Oops! Passwords don't match!")
             }
-          })
-        } else {
-          window.alert("Oops! Passwords don't match!")
-        }
         } else {
           this.toggleEmptyFieldModal()
         }
